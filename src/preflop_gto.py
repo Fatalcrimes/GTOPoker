@@ -6,40 +6,47 @@ class PokerRange:
         self.pairs = []
         self.suited = []
         self.offsuit = []
-        self.parse_range()
+        if range_str:  # Only parse if range_str is not empty.
+            self.parse_range()
 
     def parse_range(self):
         """Parse a range string into pairs, suited, and offsuit hands."""
         parts = self.range_str.split(',')
         for part in parts:
             part = part.strip()
+            if not part:  # Skip empty parts.
+                continue
             if '+' in part:
-                if part[0].isdigit() or part[0] in 'TJQKA':
-                    # Pairs like "88+"
-                    start = self.rank_to_num(part[:2])
+                if part[0] == part[1]:
+                    # For pairs like "88+"
+                    start = PokerRange.rank_to_num(part[0])
                     self.pairs.extend(range(start, 15))
                 elif part[1] == 's':
-                    # Suited like "ATs+"
-                    rank1, rank2 = self.rank_to_num(part[0]), self.rank_to_num(part[2])
+                    # Suited range like "ATs+"
+                    rank1 = PokerRange.rank_to_num(part[0])
+                    rank2 = PokerRange.rank_to_num(part[2])
                     self.suited.extend([(r1, r2) for r1 in range(rank1, 15) for r2 in range(rank2, r1)])
                 elif part[1] == 'o':
-                    # Offsuit like "AQo+"
-                    rank1, rank2 = self.rank_to_num(part[0]), self.rank_to_num(part[2])
+                    # Offsuit range like "AQo+"
+                    rank1 = PokerRange.rank_to_num(part[0])
+                    rank2 = PokerRange.rank_to_num(part[2])
                     self.offsuit.extend([(r1, r2) for r1 in range(rank1, 15) for r2 in range(rank2, r1)])
             else:
                 if len(part) == 2 and part[0] == part[1]:
-                    self.pairs.append(self.rank_to_num(part[0]))
-                elif part[2] == 's':
-                    self.suited.append((self.rank_to_num(part[0]), self.rank_to_num(part[1])))
-                elif part[2] == 'o':
-                    self.offsuit.append((self.rank_to_num(part[0]), self.rank_to_num(part[1])))
+                    self.pairs.append(PokerRange.rank_to_num(part[0]))
+                elif len(part) >= 3 and part[2] == 's':
+                    self.suited.append((PokerRange.rank_to_num(part[0]), PokerRange.rank_to_num(part[1])))
+                elif len(part) >= 3 and part[2] == 'o':
+                    self.offsuit.append((PokerRange.rank_to_num(part[0]), PokerRange.rank_to_num(part[1])))
 
-    def rank_to_num(self, rank):
+    @staticmethod
+    def rank_to_num(rank):
         """Convert card rank to numeric value (2-14)."""
         ranks = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, 'T': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14}
         return ranks[rank]
 
-    def num_to_rank(self, num):
+    @staticmethod
+    def num_to_rank(num):
         """Convert numeric rank back to string."""
         ranks = {2: '2', 3: '3', 4: '4', 5: '5', 6: '6', 7: '7', 8: '8', 9: '9', 10: 'T', 11: 'J', 12: 'Q', 13: 'K', 14: 'A'}
         return ranks[num]
@@ -53,7 +60,6 @@ class PokerRange:
             return (rank1, rank2) in self.suited
         else:
             return (rank1, rank2) in self.offsuit
-
 class GTOPreflopStrategy:
     def __init__(self, stack_size=100):
         self.stack_size = stack_size  # Starting stack in BB
@@ -190,13 +196,32 @@ class GTOPreflopStrategy:
                         sample_hands = [self.hand_to_string(h) for h in actions[action][:min(5, count)]]
                         print(f"    Example hands: {', '.join(sample_hands)}")
 
-# Helper function to convert hand string to tuple
 def hand_to_tuple(hand_str):
-    """Convert hand string (e.g., 'AsKs') to (rank1, rank2, suited)."""
-    rank1, rank2 = hand_str[0], hand_str[1]
-    suited = hand_str[2] == 's'
-    rank1_num = PokerRange('').rank_to_num(rank1)
-    rank2_num = PokerRange('').rank_to_num(rank2)
+    """
+    Convert a hand string to a tuple (rank1, rank2, suited).
+    
+    Accepted formats:
+      - 3-character format: "AKs" means Ace, King suited.
+      - 4-character format: "AsAc" means Ace of spades and Ace of clubs.
+    """
+    if len(hand_str) == 3:
+        # Format like "AKs" or "AQo"
+        rank1 = hand_str[0]
+        rank2 = hand_str[1]
+        suited = hand_str[2] == 's'
+    elif len(hand_str) == 4:
+        # Format like "AsAc": first two characters are card1, last two are card2.
+        card1 = hand_str[:2]  # e.g., "As"
+        card2 = hand_str[2:]  # e.g., "Ac"
+        rank1 = card1[0]      # 'A'
+        rank2 = card2[0]      # 'A'
+        suited = card1[1] == card2[1]  # Compare suits
+    else:
+        raise ValueError("Hand string must be either 3 or 4 characters long")
+    
+    rank1_num = PokerRange.rank_to_num(rank1)
+    rank2_num = PokerRange.rank_to_num(rank2)
+    # Ensure that rank1_num >= rank2_num
     if rank1_num < rank2_num:
         rank1_num, rank2_num = rank2_num, rank1_num
     return (rank1_num, rank2_num, suited)
