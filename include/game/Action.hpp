@@ -2,6 +2,7 @@
 
 #include <string>
 #include <vector>
+#include <functional>
 #include "game/PokerDefs.hpp"
 
 namespace poker {
@@ -64,9 +65,27 @@ public:
     // String representation of history
     std::string toString() const;
 
+    // Add a new betting round
+    void startNewRound() {
+        roundStartIndices_.push_back(actions_.size());
+    }
+
 private:
     std::vector<std::pair<Position, Action>> actions_;
     std::vector<int> roundStartIndices_ = {0}; // Indices where new betting rounds start
 };
 
 } // namespace poker
+
+// Hash function for Action for STL containers
+namespace std {
+    template <>
+    struct hash<poker::Action> {
+        size_t operator()(const poker::Action& action) const {
+            // Combine action type and amount for hashing
+            size_t h1 = hash<int>()(static_cast<int>(action.getType()));
+            size_t h2 = hash<double>()(action.getAmount());
+            return h1 ^ (h2 << 1);
+        }
+    };
+}

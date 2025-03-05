@@ -16,6 +16,11 @@ namespace poker {
  */
 class RegretTable {
 public:
+    // Custom hash function for Actions
+    struct ActionHash {
+        std::size_t operator()(const Action& action) const;
+    };
+    
     // Constructor
     RegretTable();
     
@@ -45,11 +50,6 @@ public:
     std::vector<std::string> getAllInfoSets() const;
 
 private:
-    // Custom hash function for Actions
-    struct ActionHash {
-        std::size_t operator()(const Action& action) const;
-    };
-    
     // Type definitions for nested maps
     using ActionRegretMap = std::unordered_map<Action, double, ActionHash>;
     using InfoSetRegretMap = std::unordered_map<std::string, ActionRegretMap>;

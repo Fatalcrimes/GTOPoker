@@ -8,6 +8,8 @@
 
 #include "game/Action.hpp"
 #include "game/PokerDefs.hpp"
+#include "cfr/RegretTable.hpp"
+#include "cfr/StrategyTable.hpp"
 
 namespace poker {
 
@@ -17,13 +19,13 @@ namespace poker {
 class Serialization {
 public:
     // Save strategy data to file
-    template <typename T>
-    static bool saveToFile(const std::unordered_map<std::string, std::unordered_map<Action, T>>& data, 
+    template <typename T, typename Hash>
+    static bool saveToFile(const std::unordered_map<std::string, std::unordered_map<Action, T, Hash>>& data, 
                           const std::string& filename);
     
     // Load strategy data from file
-    template <typename T>
-    static bool loadFromFile(std::unordered_map<std::string, std::unordered_map<Action, T>>& data, 
+    template <typename T, typename Hash>
+    static bool loadFromFile(std::unordered_map<std::string, std::unordered_map<Action, T, Hash>>& data, 
                             const std::string& filename);
     
     // Serialize/deserialize card
@@ -63,8 +65,8 @@ public:
 };
 
 // Template implementation for saving strategy data
-template <typename T>
-bool Serialization::saveToFile(const std::unordered_map<std::string, std::unordered_map<Action, T>>& data, 
+template <typename T, typename Hash>
+bool Serialization::saveToFile(const std::unordered_map<std::string, std::unordered_map<Action, T, Hash>>& data, 
                               const std::string& filename) {
     std::ofstream ofs(filename, std::ios::binary);
     if (!ofs.is_open()) {
@@ -106,8 +108,8 @@ bool Serialization::saveToFile(const std::unordered_map<std::string, std::unorde
 }
 
 // Template implementation for loading strategy data
-template <typename T>
-bool Serialization::loadFromFile(std::unordered_map<std::string, std::unordered_map<Action, T>>& data, 
+template <typename T, typename Hash>
+bool Serialization::loadFromFile(std::unordered_map<std::string, std::unordered_map<Action, T, Hash>>& data, 
                                 const std::string& filename) {
     std::ifstream ifs(filename, std::ios::binary);
     if (!ifs.is_open()) {
@@ -128,7 +130,7 @@ bool Serialization::loadFromFile(std::unordered_map<std::string, std::unordered_
         int numActions = readBinaryInt(ifs);
         
         // Read each action and its value
-        std::unordered_map<Action, T> actionMap;
+        std::unordered_map<Action, T, Hash> actionMap;
         for (int j = 0; j < numActions; ++j) {
             // Read action
             std::string actionStr = readBinaryString(ifs);

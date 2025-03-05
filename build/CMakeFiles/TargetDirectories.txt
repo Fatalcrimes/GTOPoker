@@ -1,0 +1,10 @@
+/Users/maxim/Desktop/GTOPoker/build/CMakeFiles/poker_cfr_lib.dir
+/Users/maxim/Desktop/GTOPoker/build/CMakeFiles/poker_cfr_bot.dir
+/Users/maxim/Desktop/GTOPoker/build/CMakeFiles/poker_cfr_tests.dir
+/Users/maxim/Desktop/GTOPoker/build/CMakeFiles/test.dir
+/Users/maxim/Desktop/GTOPoker/build/CMakeFiles/edit_cache.dir
+/Users/maxim/Desktop/GTOPoker/build/CMakeFiles/rebuild_cache.dir
+/Users/maxim/Desktop/GTOPoker/build/CMakeFiles/list_install_components.dir
+/Users/maxim/Desktop/GTOPoker/build/CMakeFiles/install.dir
+/Users/maxim/Desktop/GTOPoker/build/CMakeFiles/install/local.dir
+/Users/maxim/Desktop/GTOPoker/build/CMakeFiles/install/strip.dir

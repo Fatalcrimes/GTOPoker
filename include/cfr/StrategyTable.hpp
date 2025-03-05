@@ -16,6 +16,11 @@ namespace poker {
  */
 class StrategyTable {
 public:
+    // Custom hash function for Actions
+    struct ActionHash {
+        std::size_t operator()(const Action& action) const;
+    };
+    
     // Constructor
     StrategyTable();
     
@@ -54,11 +59,6 @@ public:
     std::vector<std::string> getAllInfoSets() const;
 
 private:
-    // Custom hash function for Actions
-    struct ActionHash {
-        std::size_t operator()(const Action& action) const;
-    };
-    
     // Type definitions for nested maps
     using ActionStrategyMap = std::unordered_map<Action, double, ActionHash>;
     using InfoSetStrategyMap = std::unordered_map<std::string, ActionStrategyMap>;

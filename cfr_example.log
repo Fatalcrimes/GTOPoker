@@ -1,0 +1,9 @@
+[2025-03-04 18:49:14.531] [INFO] Starting 3-player CFRM-based Poker Bot example
+[2025-03-04 18:49:14.532] [INFO] Precomputing hand abstractions...
+[2025-03-04 18:49:14.532] [INFO] Initializing CFR solver...
+[2025-03-04 18:49:14.532] [INFO] Starting CFR training for 1000 iterations...
+[2025-03-04 18:49:14.532] [INFO] Starting CFRM training for 1000 iterations
+[2025-03-04 18:49:14.532] [INFO] Hand abstraction: Standard
+[2025-03-04 18:49:14.532] [INFO] Bet abstraction: Standard
+[2025-03-04 18:49:14.532] [INFO] Using Monte Carlo sampling: No
+[2025-03-04 18:49:14.535] [ERROR] Exception: Invalid action: BET 0.825

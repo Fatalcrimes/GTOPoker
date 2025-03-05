@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <array>
+#include <iostream>
 
 namespace poker {
 
@@ -122,5 +123,11 @@ BettingRound nextBettingRound(BettingRound round);
 std::string positionToString(Position pos);
 std::string bettingRoundToString(BettingRound round);
 std::string handRankToString(HandRank rank);
+
+// Stream operators for enum types
+std::ostream& operator<<(std::ostream& os, Position pos);
+std::ostream& operator<<(std::ostream& os, BettingRound round);
+std::ostream& operator<<(std::ostream& os, HandRank rank);
+std::ostream& operator<<(std::ostream& os, const Card& card);
 
 } // namespace poker

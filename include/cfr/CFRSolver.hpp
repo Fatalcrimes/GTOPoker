@@ -41,9 +41,9 @@ public:
     std::unordered_map<Action, double, RegretTable::ActionHash> 
     getStrategy(const std::string& infoSet, const std::vector<Action>& validActions);
     
-    // Get average strategy
+    // Get average strategy - FIXED: Added const qualifier
     std::unordered_map<Action, double, RegretTable::ActionHash> 
-    getAverageStrategy(const std::string& infoSet);
+    getAverageStrategy(const std::string& infoSet) const;
     
     // Save learned strategy
     bool saveStrategy(const std::string& filename) const;
@@ -90,10 +90,11 @@ private:
     RegretTable regretTable_;
     StrategyTable strategyTable_;
     
-    // Training statistics
-    std::atomic<int> iterationsCompleted_;
-    std::atomic<double> totalTrainingTime_;
+    // Training statistics - no need for atomic since we protect with mutex
+    int iterationsCompleted_{0};
+    double totalTrainingTime_{0.0};
     ProgressCallback progressCallback_;
+    mutable std::mutex statsMutex_;  // Add mutex for thread safety
 };
 
 } // namespace poker

@@ -39,7 +39,7 @@ double StrategyTable::getStrategy(const std::string& infoSet, const Action& acti
     return actionIt->second;
 }
 
-std::unordered_map<Action, double, ActionHash> 
+std::unordered_map<Action, double, StrategyTable::ActionHash> 
 StrategyTable::getStrategies(const std::string& infoSet) const {
     // Read lock for thread safety
     std::shared_lock<std::shared_mutex> lock(mutex_);
@@ -93,7 +93,7 @@ double StrategyTable::getAverageStrategy(const std::string& infoSet, const Actio
     }
 }
 
-std::unordered_map<Action, double, ActionHash> 
+std::unordered_map<Action, double, StrategyTable::ActionHash> 
 StrategyTable::getAverageStrategies(const std::string& infoSet) const {
     // Read lock for thread safety
     std::shared_lock<std::shared_mutex> lock(mutex_);
@@ -161,8 +161,8 @@ bool StrategyTable::saveToFile(const std::string& filename) const {
     std::string currentStrategyFile = filename + ".current";
     std::string strategySumFile = filename + ".sum";
     
-    bool currentSaved = Serialization::saveToFile(currentStrategy_, currentStrategyFile);
-    bool sumSaved = Serialization::saveToFile(strategySum_, strategySumFile);
+    bool currentSaved = Serialization::saveToFile<double, ActionHash>(currentStrategy_, currentStrategyFile);
+    bool sumSaved = Serialization::saveToFile<double, ActionHash>(strategySum_, strategySumFile);
     
     return currentSaved && sumSaved;
 }
@@ -175,8 +175,8 @@ bool StrategyTable::loadFromFile(const std::string& filename) {
     std::string currentStrategyFile = filename + ".current";
     std::string strategySumFile = filename + ".sum";
     
-    bool currentLoaded = Serialization::loadFromFile(currentStrategy_, currentStrategyFile);
-    bool sumLoaded = Serialization::loadFromFile(strategySum_, strategySumFile);
+    bool currentLoaded = Serialization::loadFromFile<double, ActionHash>(currentStrategy_, currentStrategyFile);
+    bool sumLoaded = Serialization::loadFromFile<double, ActionHash>(strategySum_, strategySumFile);
     
     return currentLoaded && sumLoaded;
 }

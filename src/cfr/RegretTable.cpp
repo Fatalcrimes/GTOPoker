@@ -85,7 +85,7 @@ bool RegretTable::saveToFile(const std::string& filename) const {
     std::shared_lock<std::shared_mutex> lock(mutex_);
     
     // Use the Serialization utility to save the regrets
-    return Serialization::saveToFile(regrets_, filename);
+    return Serialization::saveToFile<double, ActionHash>(regrets_, filename);
 }
 
 bool RegretTable::loadFromFile(const std::string& filename) {
@@ -93,7 +93,7 @@ bool RegretTable::loadFromFile(const std::string& filename) {
     std::unique_lock<std::shared_mutex> lock(mutex_);
     
     // Use the Serialization utility to load the regrets
-    return Serialization::loadFromFile(regrets_, filename);
+    return Serialization::loadFromFile<double, ActionHash>(regrets_, filename);
 }
 
 std::vector<std::string> RegretTable::getAllInfoSets() const {

@@ -72,6 +72,9 @@ private:
     // Timestamp formatting
     std::string getTimestamp() const;
     
+    // Format log message
+    std::string formatLogMessage(Level level, const std::string& message) const;
+    
     // Data members
     Level minLevel_ = Level::INFO;
     Destination destination_ = Destination::CONSOLE;

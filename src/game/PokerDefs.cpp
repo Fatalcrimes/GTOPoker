@@ -127,4 +127,25 @@ std::string handRankToString(HandRank rank) {
     }
 }
 
+// Stream operators for enum types
+std::ostream& operator<<(std::ostream& os, Position pos) {
+    os << positionToString(pos);
+    return os;
+}
+
+std::ostream& operator<<(std::ostream& os, BettingRound round) {
+    os << bettingRoundToString(round);
+    return os;
+}
+
+std::ostream& operator<<(std::ostream& os, HandRank rank) {
+    os << handRankToString(rank);
+    return os;
+}
+
+std::ostream& operator<<(std::ostream& os, const Card& card) {
+    os << card.toString();
+    return os;
+}
+
 } // namespace poker

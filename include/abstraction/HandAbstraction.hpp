@@ -76,16 +76,17 @@ private:
     Level level_;
     BucketConfig config_;
     
+    // Make these mutable so const methods can modify them for caching
     mutable std::mutex mutex_;
-    
-    // Maps from hand to bucket index
-    std::unordered_map<BucketKey, int, BucketKeyHash> handToBucket_;
+    mutable std::unordered_map<BucketKey, int, BucketKeyHash> handToBucket_;
     
     // Precomputation helpers
     void computePreflopBuckets();
-    void computeFlopBuckets();
-    void computeTurnBuckets();
-    void computeRiverBuckets();
+    
+    // Helper methods for bucket calculation
+    int calculatePreflopBucket(const std::array<Card, NUM_HOLE_CARDS>& holeCards) const;
+    int calculatePostflopBucket(double equity, BettingRound round) const;
+    double calculatePreflopHandStrength(const std::array<Card, NUM_HOLE_CARDS>& holeCards) const;
     
     // Equity calculation for postflop
     double calculateHandEquity(

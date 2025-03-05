@@ -13,8 +13,19 @@ echo "  Build type: $BUILD_TYPE"
 echo "  Build directory: $BUILD_DIR"
 echo "  Using $NUM_CORES cores for compilation"
 
-# Create build directory if it doesn't exist
+# Create necessary directories if they don't exist
+echo "Creating required directories..."
 mkdir -p $BUILD_DIR
+mkdir -p data/strategies
+mkdir -p data/abstractions
+
+# Make sure source directories exist (for clean checkouts)
+mkdir -p src/game
+mkdir -p src/cfr
+mkdir -p src/abstraction
+mkdir -p src/utils
+mkdir -p examples
+mkdir -p tests
 
 # Configure CMake
 echo "Configuring CMake..."

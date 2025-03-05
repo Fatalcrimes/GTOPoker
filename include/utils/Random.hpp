@@ -6,6 +6,10 @@
 #include <algorithm>
 #include <unordered_map>
 #include <mutex>
+#include "game/Action.hpp"
+#include "game/PokerDefs.hpp"
+#include "cfr/RegretTable.hpp"
+#include "cfr/StrategyTable.hpp"
 
 namespace poker {
 
@@ -32,6 +36,10 @@ public:
     // Shuffle a vector
     template <typename T>
     void shuffle(std::vector<T>& vec);
+    
+    // Sample from discrete distribution with custom hash functions
+    Action sample(const std::unordered_map<Action, double, RegretTable::ActionHash>& distribution);
+    Action sample(const std::unordered_map<Action, double, StrategyTable::ActionHash>& distribution);
     
     // Sample from discrete distribution
     template <typename T>
@@ -74,6 +82,10 @@ void Random::shuffle(std::vector<T>& vec) {
 
 template <typename T>
 T Random::sample(const std::unordered_map<T, double>& distribution) {
+    if (distribution.empty()) {
+        throw std::invalid_argument("Cannot sample from empty distribution");
+    }
+    
     std::lock_guard<std::mutex> lock(mutex_);
     
     // Convert map to vectors

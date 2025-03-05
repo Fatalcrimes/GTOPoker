@@ -16,10 +16,8 @@ CFRSolver::CFRSolver(
     std::shared_ptr<BetAbstraction> betAbstraction
 ) : initialState_(std::move(initialState)),
     handAbstraction_(handAbstraction),
-    betAbstraction_(betAbstraction),
-    iterationsCompleted_(0),
-    totalTrainingTime_(0) {
-    
+    betAbstraction_(betAbstraction)
+{
     // If no abstractions provided, create default ones
     if (!handAbstraction_) {
         handAbstraction_ = HandAbstraction::create(HandAbstraction::Level::STANDARD);
@@ -30,7 +28,7 @@ CFRSolver::CFRSolver(
     }
     
     // Initialize the default progress callback
-    progressCallback_ = [](int iteration, const TrainingStats&) {
+    progressCallback_ = [](int /*iteration*/, const TrainingStats&) {
         // Default progress callback does nothing
     };
 }
@@ -54,14 +52,16 @@ void CFRSolver::train(int iterations, bool useMonteCarloSampling) {
         // Run a single iteration
         runIteration(useMonteCarloSampling);
         
-        // Update counters
-        iterationsCompleted_++;
-        
         auto iterationEnd = std::chrono::high_resolution_clock::now();
         auto iterationTime = std::chrono::duration_cast<std::chrono::milliseconds>(
             iterationEnd - iterationStart).count();
         
-        totalTrainingTime_ += iterationTime;
+        // Update counters with mutex protection
+        {
+            std::lock_guard<std::mutex> lock(statsMutex_);
+            iterationsCompleted_++;
+            totalTrainingTime_ += static_cast<double>(iterationTime);
+        }
         
         // Report progress
         if ((i + 1) % 100 == 0 || i == iterations - 1) {
@@ -142,9 +142,18 @@ CFRSolver::getStrategy(const std::string& infoSet, const std::vector<Action>& va
     return strategy;
 }
 
+// FIXED: Added const qualifier to match header
 std::unordered_map<Action, double, RegretTable::ActionHash> 
-CFRSolver::getAverageStrategy(const std::string& infoSet) {
-    return strategyTable_.getAverageStrategies(infoSet);
+CFRSolver::getAverageStrategy(const std::string& infoSet) const {
+    auto strategies = strategyTable_.getAverageStrategies(infoSet);
+    
+    // Convert StrategyTable::ActionHash to RegretTable::ActionHash
+    std::unordered_map<Action, double, RegretTable::ActionHash> result;
+    for (const auto& [action, prob] : strategies) {
+        result[action] = prob;
+    }
+    
+    return result;
 }
 
 bool CFRSolver::saveStrategy(const std::string& filename) const {
@@ -180,14 +189,19 @@ bool CFRSolver::loadStrategy(const std::string& filename) {
 CFRSolver::TrainingStats CFRSolver::getTrainingStats() const {
     TrainingStats stats;
     
-    stats.iterations = iterationsCompleted_;
-    stats.infoSetCount = regretTable_.size();
-    
-    if (iterationsCompleted_ > 0) {
-        stats.avgTimePerIteration = static_cast<double>(totalTrainingTime_) / iterationsCompleted_;
-    } else {
-        stats.avgTimePerIteration = 0.0;
+    // Thread safety for reading statistics
+    {
+        std::lock_guard<std::mutex> lock(statsMutex_);
+        stats.iterations = iterationsCompleted_;
+        
+        if (iterationsCompleted_ > 0) {
+            stats.avgTimePerIteration = totalTrainingTime_ / iterationsCompleted_;
+        } else {
+            stats.avgTimePerIteration = 0.0;
+        }
     }
+    
+    stats.infoSetCount = regretTable_.size();
     
     // TODO: Calculate exploitability
     // This is computationally expensive and typically done offline
@@ -385,8 +399,8 @@ std::string CFRSolver::getAbstractedInfoSet(const GameState& state, Position pos
     
     // Format: <position>|<round>|<hand_bucket>|<action_history>
     std::ostringstream oss;
-    oss << position << "|" 
-        << state.getBettingRound() << "|" 
+    oss << positionToString(position) << "|" 
+        << bettingRoundToString(state.getBettingRound()) << "|" 
         << handBucket << "|"
         << state.getActionHistory().toString();
     

@@ -63,9 +63,9 @@ private:
     Level level_;
     BetSizing betSizing_;
     
-    // Helper methods
-    std::vector<double> getPreflopRaiseSizes(double bigBlind, double maxSize) const;
-    std::vector<double> getPostflopBetSizes(double potSize, double maxSize) const;
+    // Helper methods for bet size generation
+    std::vector<double> getAbstractedBetSizes(double potSize, double maxSize, bool isPreflop) const;
+    std::vector<double> getAbstractedRaiseSizes(double potSize, double callAmount, double maxSize, bool isPreflop) const;
     
     // Find closest abstracted bet size
     double findClosestBetSize(double targetSize, const std::vector<double>& sizes) const;
