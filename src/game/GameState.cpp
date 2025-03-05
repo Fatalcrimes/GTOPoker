@@ -416,14 +416,36 @@ void GameState::dealRiver() {
     communityCards_.push_back(dealCard());
 }
 
-bool GameState::applyAction(const Action& action) {
-    // Validate the action
+bool GameState::applyAction(const Action& requestedAction) {
+    // Find the closest valid action
+    Action action = findClosestValidAction(requestedAction);
+    
+    // Check if this action is valid
     auto validActions = getValidActions();
-    if (std::none_of(validActions.begin(), validActions.end(), 
-                    [&action](const Action& a) { return a == action; })) {
-        throw std::invalid_argument("Invalid action: " + action.toString());
+    bool isValid = false;
+    
+    for (const auto& validAction : validActions) {
+        if (validAction == action) {
+            isValid = true;
+            break;
+        }
     }
     
+    // If not valid, report error with details
+    if (!isValid) {
+        std::ostringstream oss;
+        oss << "Invalid action: " << requestedAction.toString();
+        if (requestedAction.toString() != action.toString()) {
+            oss << " (adjusted to " << action.toString() << ")";
+        }
+        oss << ". Valid actions are: ";
+        for (const auto& validAction : validActions) {
+            oss << validAction.toString() << ", ";
+        }
+        throw std::invalid_argument(oss.str());
+    }
+    
+    // Rest of the method remains the same...
     // Get current player
     PlayerState& player = players_[static_cast<size_t>(currentPosition_)];
     
@@ -850,6 +872,45 @@ double GameState::getHighestBet() const {
     }
     
     return highestBet;
+}
+
+Action GameState::findClosestValidAction(const Action& action) const {
+    auto validActions = getValidActions();
+    
+    // First, try to find an exact match
+    for (const auto& validAction : validActions) {
+        if (validAction == action) {
+            return validAction;
+        }
+    }
+    
+    // If not found, find the closest by amount (for BET/RAISE/CALL)
+    if (action.getType() == ActionType::BET || 
+        action.getType() == ActionType::RAISE || 
+        action.getType() == ActionType::CALL) {
+        
+        Action closestAction = action;
+        double minDiff = std::numeric_limits<double>::max();
+        
+        for (const auto& validAction : validActions) {
+            if (validAction.getType() == action.getType()) {
+                double diff = std::abs(validAction.getAmount() - action.getAmount());
+                if (diff < minDiff) {
+                    minDiff = diff;
+                    closestAction = validAction;
+                }
+            }
+        }
+        
+        // If we found a close match with small difference, return it
+        const double EPSILON = 0.01; // 1 cent difference is acceptable
+        if (minDiff < EPSILON) {
+            return closestAction;
+        }
+    }
+    
+    // For non-bet actions or if no close match, return the original
+    return action;
 }
 
 } // namespace poker

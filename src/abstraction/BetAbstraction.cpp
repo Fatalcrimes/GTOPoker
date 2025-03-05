@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <cmath>
 #include <sstream>
+#include "utils/Logger.hpp"
 
 namespace poker {
 
@@ -55,95 +56,91 @@ std::vector<Action> BetAbstraction::getAbstractedActions(
     
     std::vector<Action> abstractedActions;
     
-    // Group actions by type
-    bool hasFold = false;
-    bool hasCheck = false;
-    bool hasCall = false;
-    double callAmount = 0.0;
-    std::vector<double> betAmounts;
-    std::vector<double> raiseAmounts;
+    // Always include fold, check, call actions
+    for (const auto& action : validActions) {
+        if (action.getType() == ActionType::FOLD || 
+            action.getType() == ActionType::CHECK || 
+            action.getType() == ActionType::CALL) {
+            abstractedActions.push_back(action);
+        }
+    }
+    
+    // For bets and raises, select a subset based on abstraction level
+    std::vector<Action> betActions;
+    std::vector<Action> raiseActions;
     
     for (const auto& action : validActions) {
-        switch (action.getType()) {
-            case ActionType::FOLD:
-                hasFold = true;
-                break;
-            case ActionType::CHECK:
-                hasCheck = true;
-                break;
-            case ActionType::CALL:
-                hasCall = true;
-                callAmount = action.getAmount();
-                break;
-            case ActionType::BET:
-                betAmounts.push_back(action.getAmount());
-                break;
-            case ActionType::RAISE:
-                raiseAmounts.push_back(action.getAmount());
-                break;
+        if (action.getType() == ActionType::BET) {
+            betActions.push_back(action);
+        } else if (action.getType() == ActionType::RAISE) {
+            raiseActions.push_back(action);
         }
     }
     
-    // Add fold, check, call actions as-is
-    if (hasFold) {
-        abstractedActions.push_back(Action::fold());
+    // Sort bet/raise actions by amount
+    auto sortByAmount = [](const Action& a, const Action& b) {
+        return a.getAmount() < b.getAmount();
+    };
+    
+    std::sort(betActions.begin(), betActions.end(), sortByAmount);
+    std::sort(raiseActions.begin(), raiseActions.end(), sortByAmount);
+    
+    // Select a subset of bet/raise actions based on abstraction level
+    int numBetActions = betActions.size();
+    int numRaiseActions = raiseActions.size();
+    
+    // Determine how many actions to include based on level
+    int maxBetActions = 0;
+    switch (level_) {
+        case Level::MINIMAL:  maxBetActions = 2; break; // Small number
+        case Level::STANDARD: maxBetActions = 3; break; // Medium number
+        case Level::DETAILED: maxBetActions = 5; break; // Larger number
     }
     
-    if (hasCheck) {
-        abstractedActions.push_back(Action::check());
-    }
-    
-    if (hasCall) {
-        abstractedActions.push_back(Action::call(callAmount));
-    }
-    
-    // Abstract bet sizes
-    if (!betAmounts.empty()) {
-        bool isPreflop = round == BettingRound::PREFLOP;
-        const auto& multipliers = isPreflop ? 
-                                betSizing_.preflopRaiseMultipliers : 
-                                betSizing_.postflopBetMultipliers;
+    // Select evenly spaced bet actions
+    if (!betActions.empty()) {
+        // Always include min bet and max bet
+        abstractedActions.push_back(betActions.front());
         
-        if (multipliers.empty()) {
-            // No abstraction, use original bets
-            for (double amount : betAmounts) {
-                abstractedActions.push_back(Action::bet(amount));
-            }
-        } else {
-            // Abstracted bets
-            std::vector<double> abstractedBets = getAbstractedBetSizes(potSize, stackSize, isPreflop);
-            
-            for (double amount : abstractedBets) {
-                if (amount <= stackSize) {
-                    abstractedActions.push_back(Action::bet(amount));
+        if (betActions.size() > 1) {
+            abstractedActions.push_back(betActions.back());
+        }
+        
+        // Add intermediate bets if we have more than 2 actions
+        if (numBetActions > 2 && maxBetActions > 2) {
+            int step = (numBetActions - 1) / (maxBetActions - 1);
+            if (step > 0) {
+                for (int i = step; i < numBetActions - 1; i += step) {
+                    abstractedActions.push_back(betActions[i]);
+                    if (abstractedActions.size() >= maxBetActions) break;
                 }
             }
         }
     }
     
-    // Abstract raise sizes
-    if (!raiseAmounts.empty()) {
-        bool isPreflop = round == BettingRound::PREFLOP;
-        const auto& multipliers = isPreflop ? 
-                                betSizing_.preflopRaiseMultipliers : 
-                                betSizing_.postflopBetMultipliers;
+    // Do the same for raise actions
+    if (!raiseActions.empty()) {
+        // Always include min raise and max raise
+        abstractedActions.push_back(raiseActions.front());
         
-        if (multipliers.empty()) {
-            // No abstraction, use original raises
-            for (double amount : raiseAmounts) {
-                abstractedActions.push_back(Action::raise(amount));
-            }
-        } else {
-            // Abstracted raises
-            std::vector<double> abstractedRaises = getAbstractedRaiseSizes(potSize, callAmount, stackSize, isPreflop);
-            
-            for (double amount : abstractedRaises) {
-                if (amount <= stackSize && amount > callAmount) {
-                    abstractedActions.push_back(Action::raise(amount));
+        if (raiseActions.size() > 1) {
+            abstractedActions.push_back(raiseActions.back());
+        }
+        
+        // Add intermediate raises if we have more than 2 actions
+        if (numRaiseActions > 2 && maxBetActions > 2) {
+            int step = (numRaiseActions - 1) / (maxBetActions - 1);
+            if (step > 0) {
+                for (int i = step; i < numRaiseActions - 1; i += step) {
+                    abstractedActions.push_back(raiseActions[i]);
+                    if (abstractedActions.size() >= 2 * maxBetActions) break; // Limit total actions
                 }
             }
         }
     }
+    
+    // Add debug logging
+    debugLogActions(validActions, abstractedActions);
     
     return abstractedActions;
 }
@@ -242,13 +239,18 @@ std::vector<double> BetAbstraction::getAbstractedBetSizes(
             // Special case: all-in
             sizes.push_back(maxSize);
         } else {
-            sizes.push_back(std::min(reference * mult, maxSize));
+            // Calculate bet size and round to 2 decimal places for consistency
+            double rawSize = reference * mult;
+            double roundedSize = std::round(rawSize * 100) / 100.0;
+            sizes.push_back(std::min(roundedSize, maxSize));
         }
     }
     
     // Remove duplicates and sort
     std::sort(sizes.begin(), sizes.end());
-    sizes.erase(std::unique(sizes.begin(), sizes.end()), sizes.end());
+    sizes.erase(std::unique(sizes.begin(), sizes.end(), 
+        [](double a, double b) { return std::abs(a - b) < 0.01; }), 
+        sizes.end());
     
     return sizes;
 }
@@ -293,6 +295,25 @@ double BetAbstraction::findClosestBetSize(
     }
     
     return closestSize;
+}
+
+void BetAbstraction::debugLogActions(const std::vector<Action>& originalActions, 
+                                    const std::vector<Action>& abstractedActions) const {
+    // Log the original actions
+    std::ostringstream originalOss;
+    originalOss << "Original actions: ";
+    for (const auto& action : originalActions) {
+        originalOss << action.toString() << ", ";
+    }
+    LOG_DEBUG(originalOss.str());
+    
+    // Log the abstracted actions
+    std::ostringstream abstractedOss;
+    abstractedOss << "Abstracted actions: ";
+    for (const auto& action : abstractedActions) {
+        abstractedOss << action.toString() << ", ";
+    }
+    LOG_DEBUG(abstractedOss.str());
 }
 
 } // namespace poker

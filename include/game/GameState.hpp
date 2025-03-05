@@ -54,6 +54,8 @@ public:
     // Actions
     std::vector<Action> getValidActions() const;
     
+    Action findClosestValidAction(const Action& action) const;
+
     // Information sets
     std::string getInfoSet(Position position) const;
     

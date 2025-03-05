@@ -69,6 +69,7 @@ private:
     
     // Find closest abstracted bet size
     double findClosestBetSize(double targetSize, const std::vector<double>& sizes) const;
+    void debugLogActions(const std::vector<Action>& originalActions, const std::vector<Action>& abstractedActions) const;
 };
 
 } // namespace poker

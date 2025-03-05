@@ -1,6 +1,7 @@
 #include "cfr/CFRSolver.hpp"
 #include "utils/Logger.hpp"
 #include "utils/Random.hpp"
+#include "abstraction/BetAbstraction.hpp"
 #include <chrono>
 #include <thread>
 #include <numeric>
@@ -342,11 +343,50 @@ CFRSolver::monteCarloSample(GameState& state, std::unordered_map<Position, doubl
     auto& random = Random::getInstance();
     Action sampledAction = random.sample(strategy);
     
+    // Make sure the action is in our abstracted action set
+    if (sampledAction.getType() == ActionType::BET || sampledAction.getType() == ActionType::RAISE) {
+        // Find the closest valid action
+        Action closestAction = sampledAction;
+        double minDiff = std::numeric_limits<double>::max();
+        
+        for (const auto& validAction : validActions) {
+            if (validAction.getType() == sampledAction.getType()) {
+                double diff = std::abs(validAction.getAmount() - sampledAction.getAmount());
+                if (diff < minDiff) {
+                    minDiff = diff;
+                    closestAction = validAction;
+                }
+            }
+        }
+        
+        // If we found a closer valid action, use it
+        if (minDiff < std::numeric_limits<double>::max()) {
+            LOG_DEBUG("Adjusting action from " + sampledAction.toString() + " to " + closestAction.toString());
+            sampledAction = closestAction;
+        }
+    }
+    
     // Create a copy of the game state
     auto nextState = state.clone();
     
     // Apply the sampled action
-    bool roundOver = nextState->applyAction(sampledAction);
+    bool roundOver = false;
+    try {
+        roundOver = nextState->applyAction(sampledAction);
+    } catch (const std::invalid_argument& e) {
+        // If action is invalid, log the error and try to recover
+        LOG_ERROR("Invalid action in monteCarloSample: " + std::string(e.what()));
+        
+        // Try to choose a valid action as fallback
+        if (!validActions.empty()) {
+            sampledAction = validActions[0]; // Use first valid action as fallback
+            LOG_INFO("Falling back to action: " + sampledAction.toString());
+            roundOver = nextState->applyAction(sampledAction);
+        } else {
+            // Something is seriously wrong if we have no valid actions
+            throw std::runtime_error("No valid actions available in non-terminal state");
+        }
+    }
     
     // If round is over but game is not terminal, start next round
     if (roundOver && !nextState->isTerminal()) {
@@ -384,6 +424,27 @@ CFRSolver::monteCarloSample(GameState& state, std::unordered_map<Position, doubl
     return expectedUtility;
 }
 
+std::vector<Action> CFRSolver::getAbstractedActions(const GameState& state) const {
+    // Get valid actions for the current game state
+    std::vector<Action> validActions = state.getValidActions();
+    
+    // If no bet abstraction is used, return all valid actions
+    if (!betAbstraction_) {
+        return validActions;
+    }
+    
+    // Otherwise, apply bet abstraction
+    Position currentPosition = state.getCurrentPosition();
+    const PlayerState& player = state.getPlayerState(currentPosition);
+    
+    return betAbstraction_->getAbstractedActions(
+        validActions,
+        state.getPot(),
+        player.stack,
+        state.getBettingRound()
+    );
+}
+
 std::string CFRSolver::getAbstractedInfoSet(const GameState& state, Position position) const {
     // Get the raw info set
     std::string rawInfoSet = state.getInfoSet(position);
@@ -405,27 +466,6 @@ std::string CFRSolver::getAbstractedInfoSet(const GameState& state, Position pos
         << state.getActionHistory().toString();
     
     return oss.str();
-}
-
-std::vector<Action> CFRSolver::getAbstractedActions(const GameState& state) const {
-    // Get valid actions for the current game state
-    std::vector<Action> validActions = state.getValidActions();
-    
-    // If no bet abstraction is used, return all valid actions
-    if (!betAbstraction_) {
-        return validActions;
-    }
-    
-    // Otherwise, apply bet abstraction
-    Position currentPosition = state.getCurrentPosition();
-    const PlayerState& player = state.getPlayerState(currentPosition);
-    
-    return betAbstraction_->getAbstractedActions(
-        validActions,
-        state.getPot(),
-        player.stack,
-        state.getBettingRound()
-    );
 }
 
 } // namespace poker
