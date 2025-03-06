@@ -1,86 +1,75 @@
-cmake_minimum_required(VERSION 3.14)
-project(poker_cfr_bot VERSION 0.1.0 LANGUAGES CXX)
+cmake_minimum_required(VERSION 3.10)
+project(poker_cfr_bot)
 
 # Set C++ standard
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
 
-# Build type
+# Set build type if not specified
 if(NOT CMAKE_BUILD_TYPE)
-  set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Choose the type of build" FORCE)
+    set(CMAKE_BUILD_TYPE Release)
 endif()
 
-# Compiler flags
-if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -pedantic")
-  set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g -O0")
-  set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")
-elseif(MSVC)
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W4")
+# Add compiler flags
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g -O0 -DDEBUG")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3 -DNDEBUG")
+
+# Find Boost (required for PokerStove)
+find_package(Boost REQUIRED)
+if(NOT Boost_FOUND)
+    message(FATAL_ERROR "Boost not found. Please install Boost or specify its location.")
 endif()
 
-# Include directories
+# Find other required packages
+find_package(Threads REQUIRED)
+find_package(OpenMP)
+if(OpenMP_CXX_FOUND)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
+endif()
+
+# Add include directories
 include_directories(
-  ${PROJECT_SOURCE_DIR}/include
-  ${PROJECT_SOURCE_DIR}/third_party
+    ${CMAKE_SOURCE_DIR}/include
+    ${CMAKE_SOURCE_DIR}/third_party/pokerstove/src/lib
+    ${Boost_INCLUDE_DIRS}
 )
 
-set(BOOST_ROOT /opt/homebrew/Cellar/boost/1.87.0)
-find_package(Boost REQUIRED)
-include_directories(${Boost_INCLUDE_DIRS})
-include_directories(/Users/maxim/Desktop/GTOPoker/pokerstove/src/lib)
+# Your project source files
+set(SOURCES
+    src/game/Action.cpp
+    src/game/GameState.cpp
+    src/game/PokerDefs.cpp
+    src/cfr/CFRSolver.cpp
+    src/cfr/RegretTable.cpp
+    src/cfr/StrategyTable.cpp
+    src/abstraction/HandAbstraction.cpp
+    src/abstraction/BetAbstraction.cpp
+    src/utils/Random.cpp
+    src/utils/Logger.cpp
+    src/utils/Serialization.cpp
+    src/utils/Converter.cpp
+    src/game/HandEvaluator.cpp
+)
 
-target_link_libraries(poker_cfr_bot
-    /Users/maxim/Desktop/GTOPoker/pokerstove/build/lib/libpeval.a
+# Define main executable
+add_executable(poker_cfr_bot examples/basic_cfr_example.cpp ${SOURCES})
+target_link_libraries(poker_cfr_bot PRIVATE 
+    Threads::Threads 
     ${Boost_LIBRARIES}
 )
 
-# Source files
-file(GLOB_RECURSE SRC_FILES 
-  ${PROJECT_SOURCE_DIR}/src/*.cpp
-)
-
-# Library target
-add_library(poker_cfr_lib ${SRC_FILES})
-target_include_directories(poker_cfr_lib PUBLIC 
-  ${PROJECT_SOURCE_DIR}/include
-)
-
-# Main executable
-add_executable(poker_cfr_bot ${PROJECT_SOURCE_DIR}/examples/basic_cfr_example.cpp)
-target_link_libraries(poker_cfr_bot poker_cfr_lib)
-
 # Add strategy viewer executable
-add_executable(strategy_viewer
-    examples/strategy_viewer.cpp
+add_executable(strategy_viewer examples/strategy_viewer.cpp ${SOURCES})
+target_link_libraries(strategy_viewer PRIVATE 
+    Threads::Threads 
+    ${Boost_LIBRARIES}
 )
-target_link_libraries(strategy_viewer
-    poker_cfr_lib
+
+# Install targets
+install(TARGETS poker_cfr_bot strategy_viewer
+    RUNTIME DESTINATION bin
 )
 
-
-# Tests
-option(BUILD_TESTS "Build tests" ON)
-if(BUILD_TESTS)
-  enable_testing()
-
-  # The below assumes googletest is available
-  # If using a different testing framework, adjust accordingly
-  # add_subdirectory(third_party/googletest)
-  
-  file(GLOB_RECURSE TEST_FILES 
-    ${PROJECT_SOURCE_DIR}/tests/*.cpp
-  )
-  
-  add_executable(poker_cfr_tests ${TEST_FILES})
-  target_link_libraries(poker_cfr_tests poker_cfr_lib)
-  # target_link_libraries(poker_cfr_tests gtest gtest_main)
-  
-  add_test(NAME poker_cfr_tests COMMAND poker_cfr_tests)
-endif()
-
-# Installation
-install(TARGETS poker_cfr_bot
-  RUNTIME DESTINATION bin
-)
+# Testing setup
+enable_testing()

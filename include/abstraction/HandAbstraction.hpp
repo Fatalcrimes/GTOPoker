@@ -33,6 +33,10 @@ public:
         const std::vector<Card>& communityCards
     ) const;
     
+    std::string getBucketHandRange(int bucket, BettingRound round) const;
+    std::string convertToHandString(const std::array<Card, NUM_HOLE_CARDS>& holeCards) const;
+    std::string compressHandRange(const std::vector<std::string>& hands) const;
+
     // Get number of buckets for a specific round
     int getNumBuckets(BettingRound round) const;
     

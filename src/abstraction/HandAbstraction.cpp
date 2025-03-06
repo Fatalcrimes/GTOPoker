@@ -1,4 +1,5 @@
-#include "abstraction/HandAbstraction.hpp"
+#include <HandAbstraction.hpp>
+#include <game/HandEvaluator.hpp>
 #include <algorithm>
 #include <fstream>
 #include <iostream>
@@ -393,104 +394,122 @@ double HandAbstraction::calculateHandEquity(
     const std::array<Card, NUM_HOLE_CARDS>& holeCards,
     const std::vector<Card>& communityCards
 ) const {
-    // This is a simplified equity calculation
-    // In a real implementation, this would:
-    // 1. Enumerate all possible remaining community cards
-    // 2. For each, enumerate opponent hands and calculate win probability
+    // Create a single static instance for efficiency
+    static std::shared_ptr<HandEvaluator> evaluator = std::make_shared<HandEvaluator>();
     
-    // For demonstration, we'll implement a Monte Carlo approximation
-    // with a limited number of samples
-    const int NUM_SAMPLES = 1000;
-    
-    // Create a list of the remaining deck
-    std::vector<Card> remainingDeck;
-    std::unordered_set<int> usedCardIndices;
-    
-    // Mark hole cards as used
-    for (const auto& card : holeCards) {
-        int cardIndex = static_cast<int>(card.rank) * NUM_SUITS + static_cast<int>(card.suit);
-        usedCardIndices.insert(cardIndex);
+    // Use the improved equity calculation
+    return evaluator->calculateEquity(holeCards, communityCards, 10000);
+}
+
+// Add the new methods
+std::string HandAbstraction::getBucketHandRange(int bucket, BettingRound round) const {
+    if (round != BettingRound::PREFLOP) {
+        return "Bucket " + std::to_string(bucket); // Only implemented for preflop
     }
     
-    // Mark community cards as used
-    for (const auto& card : communityCards) {
-        int cardIndex = static_cast<int>(card.rank) * NUM_SUITS + static_cast<int>(card.suit);
-        usedCardIndices.insert(cardIndex);
-    }
+    std::vector<std::string> handStrings;
     
-    // Fill remaining deck
-    for (int r = static_cast<int>(Rank::TWO); r <= static_cast<int>(Rank::ACE); ++r) {
-        for (int s = 0; s < NUM_SUITS; ++s) {
-            int cardIndex = r * NUM_SUITS + s;
-            if (usedCardIndices.find(cardIndex) == usedCardIndices.end()) {
-                remainingDeck.push_back(Card(static_cast<Rank>(r), static_cast<Suit>(s)));
+    // Generate all 52 choose 2 combinations
+    for (int r1 = static_cast<int>(Rank::TWO); r1 <= static_cast<int>(Rank::ACE); ++r1) {
+        for (int s1 = 0; s1 < NUM_SUITS; ++s1) {
+            for (int r2 = r1; r2 <= static_cast<int>(Rank::ACE); ++r2) {
+                int s2Start = (r1 == r2) ? s1 + 1 : 0;
+                for (int s2 = s2Start; s2 < NUM_SUITS; ++s2) {
+                    std::array<Card, NUM_HOLE_CARDS> holeCards = {
+                        Card(static_cast<Rank>(r1), static_cast<Suit>(s1)),
+                        Card(static_cast<Rank>(r2), static_cast<Suit>(s2))
+                    };
+                    
+                    // Check if this hand belongs to the bucket
+                    int handBucket = getBucket(holeCards, {});
+                    if (handBucket == bucket) {
+                        // Convert to human-readable format (e.g., "AKs", "TT")
+                        std::string handStr = convertToHandString(holeCards);
+                        handStrings.push_back(handStr);
+                    }
+                }
             }
         }
     }
     
-    // Setup for Monte Carlo simulation
-    std::random_device rd;
-    std::mt19937 rng(rd());
+    // If we found hands, compress them into range notation
+    if (!handStrings.empty()) {
+        return compressHandRange(handStrings);
+    }
     
-    int totalOpponents = 2; // For 3-player game
-    int wins = 0;
-    int ties = 0;
+    return "Bucket " + std::to_string(bucket) + " (empty)";
+}
+
+std::string HandAbstraction::convertToHandString(const std::array<Card, NUM_HOLE_CARDS>& holeCards) const {
+    static const std::vector<char> rankChars = {'2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'};
     
-    // Run the simulation
-    for (int sample = 0; sample < NUM_SAMPLES; ++sample) {
-        // Shuffle the remaining deck
-        std::shuffle(remainingDeck.begin(), remainingDeck.end(), rng);
-        
-        // Deal cards to complete the board (if needed)
-        std::vector<Card> sampleCommunityCards = communityCards;
-        size_t cardsToAdd = 5 - sampleCommunityCards.size();
-        sampleCommunityCards.insert(sampleCommunityCards.end(), 
-                                   remainingDeck.begin(), 
-                                   remainingDeck.begin() + cardsToAdd);
-        
-        // Deal hole cards to opponents
-        std::vector<std::array<Card, NUM_HOLE_CARDS>> opponentHoleCards(totalOpponents);
-        for (int i = 0; i < totalOpponents; ++i) {
-            for (int j = 0; j < NUM_HOLE_CARDS; ++j) {
-                opponentHoleCards[i][j] = remainingDeck[cardsToAdd + i * NUM_HOLE_CARDS + j];
-            }
+    Rank r1 = holeCards[0].rank;
+    Rank r2 = holeCards[1].rank;
+    bool suited = holeCards[0].suit == holeCards[1].suit;
+    
+    // Make sure higher rank is first
+    if (r1 < r2) {
+        std::swap(r1, r2);
+    }
+    
+    std::string result;
+    result += rankChars[static_cast<int>(r1) - 2]; // -2 because TWO=2 in enum
+    result += rankChars[static_cast<int>(r2) - 2];
+    
+    // Add 's' if suited, 'o' if offsuit (unless pair)
+    if (r1 == r2) {
+        // It's a pair, no suffix
+    } else if (suited) {
+        result += 's';
+    } else {
+        result += 'o';
+    }
+    
+    return result;
+}
+
+std::string HandAbstraction::compressHandRange(const std::vector<std::string>& hands) const {
+    // This is a simplified implementation
+    if (hands.size() <= 5) {
+        // Just return the comma-separated list for small ranges
+        std::string result;
+        for (size_t i = 0; i < hands.size(); ++i) {
+            if (i > 0) result += ", ";
+            result += hands[i];
         }
-        
-        // Evaluate hands
-        // Use a simple hand evaluator for this example
-        // In a real implementation, you'd use the HandEvaluator class
-        
-        // For simplicity, we'll just compare the highest card in this example
-        // This is NOT suitable for real play, just for demonstration
-        Rank heroHighestRank = std::max(holeCards[0].rank, holeCards[1].rank);
-        
-        bool heroWins = true;
-        int tieCount = 0;
-        
-        for (const auto& oppHoleCards : opponentHoleCards) {
-            Rank oppHighestRank = std::max(oppHoleCards[0].rank, oppHoleCards[1].rank);
-            
-            if (oppHighestRank > heroHighestRank) {
-                heroWins = false;
-                break;
-            } else if (oppHighestRank == heroHighestRank) {
-                tieCount++;
-            }
-        }
-        
-        if (heroWins) {
-            if (tieCount > 0) {
-                ties++;
-            } else {
-                wins++;
-            }
+        return result;
+    }
+    
+    // Group pairs, suited hands, and offsuit hands
+    std::vector<std::string> pairs, suited, offsuit;
+    for (const auto& hand : hands) {
+        if (hand.size() == 2) { // Pair (no suffix)
+            pairs.push_back(hand);
+        } else if (hand.back() == 's') { // Suited
+            suited.push_back(hand);
+        } else { // Offsuit
+            offsuit.push_back(hand);
         }
     }
     
-    // Calculate equity
-    double equity = (wins + 0.5 * ties) / NUM_SAMPLES;
+    // Combine them with counts
+    std::string result;
     
-    return equity;
+    if (!pairs.empty()) {
+        result += std::to_string(pairs.size()) + " pairs";
+        if (!suited.empty() || !offsuit.empty()) result += ", ";
+    }
+    
+    if (!suited.empty()) {
+        result += std::to_string(suited.size()) + " suited";
+        if (!offsuit.empty()) result += ", ";
+    }
+    
+    if (!offsuit.empty()) {
+        result += std::to_string(offsuit.size()) + " offsuit";
+    }
+    
+    return result + " (total: " + std::to_string(hands.size()) + " hands)";
 }
 
 } // namespace poker

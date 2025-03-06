@@ -1,1 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/c++  -Wall -Wextra -pedantic -O3 -DNDEBUG -O3 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/opt/homebrew/opt/tcl-tk/lib CMakeFiles/poker_cfr_tests.dir/tests/test_game.cpp.o -o poker_cfr_tests  libpoker_cfr_lib.a
