@@ -77,6 +77,10 @@ struct Card {
     bool operator==(const Card& other) const {
         return rank == other.rank && suit == other.suit;
     }
+
+    bool operator!=(const Card& other) const {
+        return !(*this == other);
+    }
     
     bool operator<(const Card& other) const {
         if (rank != other.rank) {
@@ -86,6 +90,7 @@ struct Card {
     }
     
     std::string toString() const;
+
 };
 
 // Define a full deck of cards

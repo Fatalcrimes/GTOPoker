@@ -19,7 +19,7 @@ int main(int argc, char* argv[]) {
     LOG_INFO("Starting 3-player CFRM-based Poker Bot example");
     
     // Parse command line arguments
-    int iterations = 1000;
+    int iterations = 50000;
     std::string loadFile = "";
     std::string saveFile = "strategy.dat";
     bool useMonteCarloSampling = true;
@@ -52,7 +52,7 @@ int main(int argc, char* argv[]) {
     
     try {
         // Create abstraction objects
-        auto handAbstraction = HandAbstraction::create(HandAbstraction::Level::MINIMAL);
+        auto handAbstraction = HandAbstraction::create(HandAbstraction::Level::DETAILED);
         auto betAbstraction = BetAbstraction::create(BetAbstraction::Level::MINIMAL);
         
         // Precompute abstractions
@@ -97,6 +97,9 @@ int main(int argc, char* argv[]) {
             
             solver.train(iterations, useMonteCarloSampling);
             
+            LOG_INFO("Extracting RFI ranges from trained strategy");
+solver.extractRFIRanges("data/strategies/btn_rfi_range.txt", "data/strategies/sb_rfi_range.txt");
+
             auto endTime = std::chrono::high_resolution_clock::now();
             auto duration = std::chrono::duration_cast<std::chrono::seconds>(endTime - startTime).count();
             

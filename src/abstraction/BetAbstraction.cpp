@@ -110,7 +110,7 @@ std::vector<Action> BetAbstraction::getAbstractedActions(
         if (numBetActions > 2 && maxBetActions > 2) {
             int step = (numBetActions - 1) / (maxBetActions - 1);
             if (step > 0) {
-                for (int i = step; i < numBetActions - 1; i += step) {
+                for (size_t i = step; i < numBetActions - 1; i += step) {
                     abstractedActions.push_back(betActions[i]);
                     if (abstractedActions.size() >= maxBetActions) break;
                 }
@@ -131,7 +131,7 @@ std::vector<Action> BetAbstraction::getAbstractedActions(
         if (numRaiseActions > 2 && maxBetActions > 2) {
             int step = (numRaiseActions - 1) / (maxBetActions - 1);
             if (step > 0) {
-                for (int i = step; i < numRaiseActions - 1; i += step) {
+                for (size_t i = step; i < numRaiseActions - 1; i += step) {
                     abstractedActions.push_back(raiseActions[i]);
                     if (abstractedActions.size() >= 2 * maxBetActions) break; // Limit total actions
                 }

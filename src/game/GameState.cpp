@@ -5,6 +5,8 @@
 #include <sstream>
 #include <chrono>
 #include <stdexcept>
+#include <pokerstove/peval/HoldemHandEvaluator.h>
+#include <pokerstove/peval/CardSet.h>
 
 namespace poker {
 
@@ -295,7 +297,7 @@ private:
 
 // GameState implementation
 GameState::GameState() 
-    : currentPosition_(Position::SB), 
+    : currentPosition_(Position::BTN), 
       lastAggressor_(Position::SB),
       bettingRound_(BettingRound::PREFLOP),
       pot_(0.0),
@@ -356,7 +358,7 @@ void GameState::reset() {
     usedCards_.clear();
     resetDeck();
     
-    currentPosition_ = Position::SB;
+    currentPosition_ = Position::BTN;
     lastAggressor_ = Position::SB;
     bettingRound_ = BettingRound::PREFLOP;
     pot_ = 0.0;
@@ -419,44 +421,26 @@ void GameState::dealRiver() {
 
 bool GameState::applyAction(const Action& requestedAction) {
     if (!isActionValid(requestedAction)) {
-        // Find the closest valid action for error reporting
+        // Log the invalid action attempt for debugging
+        LOG_WARNING("Attempted invalid action: " + requestedAction.toString() + 
+                    " in state: " + this->toString());
+
+        // Construct a detailed error message
         std::ostringstream oss;
-        oss << "Invalid action: " << requestedAction.toString() << ". Valid actions are: ";
+        oss << "Invalid action: " << requestedAction.toString() 
+            << ". Valid actions are: ";
         for (const auto& validAction : getValidActions()) {
             oss << validAction.toString() << ", ";
         }
+        oss << ". Current game state: " << this->toString();
+
+        // Throw the exception with the detailed message
         throw std::invalid_argument(oss.str());
     }
+
+    // Apply the action directly (assuming Action is a value type)
+    Action action = requestedAction;
     
-    // Find the closest valid action
-    Action action = findClosestValidAction(requestedAction);
-    
-    // Check if this action is valid
-    auto validActions = getValidActions();
-    bool isValid = false;
-    
-    for (const auto& validAction : validActions) {
-        if (validAction == action) {
-            isValid = true;
-            break;
-        }
-    }
-    
-    // If not valid, report error with details
-    if (!isValid) {
-        std::ostringstream oss;
-        oss << "Invalid action: " << requestedAction.toString();
-        if (requestedAction.toString() != action.toString()) {
-            oss << " (adjusted to " << action.toString() << ")";
-        }
-        oss << ". Valid actions are: ";
-        for (const auto& validAction : validActions) {
-            oss << validAction.toString() << ", ";
-        }
-        throw std::invalid_argument(oss.str());
-    }
-    
-    // Rest of the method remains the same...
     // Get current player
     PlayerState& player = players_[static_cast<size_t>(currentPosition_)];
     

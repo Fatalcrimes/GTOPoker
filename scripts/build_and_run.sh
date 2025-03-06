@@ -1,13 +1,11 @@
 #!/bin/bash
 
-# Build and run script for poker_cfr_bot
-
-# Set default values
-BUILD_TYPE=${1:-Release}
+# Default values
+BUILD_TYPE="Release"
 BUILD_DIR="build"
-ITERATIONS=1000
+ITERATIONS=""
 USE_MC=false
-SAVE_FILE="strategy.dat"
+SAVE_FILE=""
 LOAD_FILE=""
 RUN_TEST=true
 
@@ -16,35 +14,32 @@ for arg in "$@"; do
   case $arg in
     --debug)
       BUILD_TYPE="Debug"
-      shift
+      ;;
+    --build-type=*)
+      BUILD_TYPE="${arg#*=}"
       ;;
     --iterations=*)
       ITERATIONS="${arg#*=}"
-      shift
       ;;
     --monte-carlo)
       USE_MC=true
-      shift
       ;;
     --save=*)
       SAVE_FILE="${arg#*=}"
-      shift
       ;;
     --load=*)
       LOAD_FILE="${arg#*=}"
-      shift
       ;;
     --no-test)
       RUN_TEST=false
-      shift
       ;;
     *)
-      # Unknown option
+      echo "Unknown option: $arg"
       ;;
   esac
 done
 
-# Print build information
+# Rest of the script...
 echo "Building poker_cfr_bot..."
 echo "  Build type: $BUILD_TYPE"
 echo "  Build directory: $BUILD_DIR"

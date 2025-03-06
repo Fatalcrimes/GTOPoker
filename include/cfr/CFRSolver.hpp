@@ -64,6 +64,11 @@ public:
     using ProgressCallback = std::function<void(int iteration, const TrainingStats&)>;
     void setProgressCallback(ProgressCallback callback);
 
+    void extractRFIRanges(const std::string& btnOutputFile = "btn_rfi_range.txt", 
+                          const std::string& sbOutputFile = "sb_rfi_range.txt") const;
+
+    const StrategyTable& getStrategyTable() const { return strategyTable_; }
+
 private:
     // CFR+ implementation with regret matching and averaging
     std::unordered_map<Position, double> 

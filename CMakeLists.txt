@@ -26,6 +26,16 @@ include_directories(
   ${PROJECT_SOURCE_DIR}/third_party
 )
 
+set(BOOST_ROOT /opt/homebrew/Cellar/boost/1.87.0)
+find_package(Boost REQUIRED)
+include_directories(${Boost_INCLUDE_DIRS})
+include_directories(/Users/maxim/Desktop/GTOPoker/pokerstove/src/lib)
+
+target_link_libraries(poker_cfr_bot
+    /Users/maxim/Desktop/GTOPoker/pokerstove/build/lib/libpeval.a
+    ${Boost_LIBRARIES}
+)
+
 # Source files
 file(GLOB_RECURSE SRC_FILES 
   ${PROJECT_SOURCE_DIR}/src/*.cpp
@@ -49,11 +59,12 @@ target_link_libraries(strategy_viewer
     poker_cfr_lib
 )
 
+
 # Tests
 option(BUILD_TESTS "Build tests" ON)
 if(BUILD_TESTS)
   enable_testing()
-  
+
   # The below assumes googletest is available
   # If using a different testing framework, adjust accordingly
   # add_subdirectory(third_party/googletest)

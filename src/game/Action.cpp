@@ -95,7 +95,7 @@ std::string ActionHistory::toString() const {
                         ? roundStartIndices_[round + 1] : actions_.size();
         
         // Add actions for this round
-        for (size_t i = roundStartIndices_[round]; i < endIdx; ++i) {
+        for (int i = roundStartIndices_[round]; i < endIdx; ++i) {
             if (i > roundStartIndices_[round]) {
                 oss << ", ";
             }

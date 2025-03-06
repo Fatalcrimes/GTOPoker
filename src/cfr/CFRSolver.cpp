@@ -253,7 +253,7 @@ void CFRSolver::setProgressCallback(ProgressCallback callback) {
 std::unordered_map<Position, double> 
 CFRSolver::cfr(GameState& state, std::unordered_map<Position, double>& reachProbabilities, int depth) {
     const int MAX_RECURSION_DEPTH = 100;
-    
+
     // Check recursion depth
     if (depth > MAX_RECURSION_DEPTH) {
         LOG_WARNING("Maximum recursion depth exceeded in CFR");
@@ -378,7 +378,7 @@ CFRSolver::cfr(GameState& state, std::unordered_map<Position, double>& reachProb
 
 std::unordered_map<Position, double> 
 CFRSolver::monteCarloSample(GameState& state, std::unordered_map<Position, double>& reachProbabilities, int depth = 0) {
-    
+
     if (depth > MAX_RECURSION_DEPTH) {
         LOG_ERROR("Maximum recursion depth exceeded in monteCarloSample");
         std::unordered_map<Position, double> emergency_payoffs;
@@ -552,6 +552,85 @@ std::string CFRSolver::getAbstractedInfoSet(const GameState& state, Position pos
         << state.getActionHistory().toString();
     
     return oss.str();
+}
+
+// In src/cfr/CFRSolver.cpp
+
+void CFRSolver::extractRFIRanges(const std::string& btnOutputFile, 
+                                const std::string& sbOutputFile) const {
+    LOG_INFO("Extracting RFI ranges...");
+    
+    // Create mappings for hand buckets to raise frequencies
+    std::unordered_map<int, double> btnBucketRaiseFreq;
+    std::unordered_map<int, double> sbBucketRaiseFreq;
+    
+    // Get all info sets
+    auto infoSets = strategyTable_.getAllInfoSets();
+    
+    // For each info set, check if it's a preflop decision with no prior action
+    for (const auto& infoSet : infoSets) {
+        std::istringstream iss(infoSet);
+        std::string position, round, handBucketStr, actions;
+        
+        // Parse info set format: "<position>|<round>|<hand_bucket>|<action_history>"
+        std::getline(iss, position, '|');
+        std::getline(iss, round, '|');
+        std::getline(iss, handBucketStr, '|');
+        std::getline(iss, actions, '|');
+        
+        // Only consider preflop info sets without prior actions
+        if (round == "PREFLOP" && actions.empty()) {
+            int handBucket = std::stoi(handBucketStr);
+            
+            // Get strategy for this info set
+            auto strategies = strategyTable_.getAverageStrategies(infoSet);
+            
+            // Calculate raise frequency (sum of all raise/bet actions)
+            double raiseFreq = 0.0;
+            for (const auto& [action, prob] : strategies) {
+                if (action.getType() == ActionType::BET || action.getType() == ActionType::RAISE) {
+                    raiseFreq += prob;
+                }
+            }
+            
+            // Store by position
+            if (position == "BTN") {
+                btnBucketRaiseFreq[handBucket] = raiseFreq;
+            } else if (position == "SB") {
+                sbBucketRaiseFreq[handBucket] = raiseFreq;
+            }
+        }
+    }
+    
+    // Open output files
+    std::ofstream btnFile(btnOutputFile);
+    std::ofstream sbFile(sbOutputFile);
+    
+    if (!btnFile.is_open() || !sbFile.is_open()) {
+        LOG_ERROR("Failed to open output files for RFI ranges");
+        return;
+    }
+    
+    // Get abstraction level for debugging info
+    int numBuckets = handAbstraction_->getNumBuckets(BettingRound::PREFLOP);
+    
+    // Write headers
+    btnFile << "# Button RFI Range - Using " << numBuckets << " hand buckets" << std::endl;
+    sbFile << "# Small Blind RFI Range - Using " << numBuckets << " hand buckets" << std::endl;
+    
+    // Output each bucket's raise frequency
+    for (int bucket = 0; bucket < numBuckets; bucket++) {
+        double btnFreq = btnBucketRaiseFreq.count(bucket) ? btnBucketRaiseFreq[bucket] : 0.0;
+        double sbFreq = sbBucketRaiseFreq.count(bucket) ? sbBucketRaiseFreq[bucket] : 0.0;
+        
+        btnFile << "Bucket " << bucket << ": " << (btnFreq * 100.0) << "%" << std::endl;
+        sbFile << "Bucket " << bucket << ": " << (sbFreq * 100.0) << "%" << std::endl;
+    }
+    
+    btnFile.close();
+    sbFile.close();
+    
+    LOG_INFO("RFI ranges extracted to " + btnOutputFile + " and " + sbOutputFile);
 }
 
 } // namespace poker
