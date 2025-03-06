@@ -1,43 +1,782 @@
-[2025-03-04 18:49:14.531] [INFO] Starting 3-player CFRM-based Poker Bot example
-[2025-03-04 18:49:14.532] [INFO] Precomputing hand abstractions...
-[2025-03-04 18:49:14.532] [INFO] Initializing CFR solver...
-[2025-03-04 18:49:14.532] [INFO] Starting CFR training for 1000 iterations...
-[2025-03-04 18:49:14.532] [INFO] Starting CFRM training for 1000 iterations
-[2025-03-04 18:49:14.532] [INFO] Hand abstraction: Standard
-[2025-03-04 18:49:14.532] [INFO] Bet abstraction: Standard
-[2025-03-04 18:49:14.532] [INFO] Using Monte Carlo sampling: No
-[2025-03-04 18:49:14.535] [ERROR] Exception: Invalid action: BET 0.825
-[2025-03-04 19:23:36.107] [INFO] Starting 3-player CFRM-based Poker Bot example
-[2025-03-04 19:23:36.107] [INFO] Precomputing hand abstractions...
-[2025-03-04 19:23:36.107] [INFO] Initializing CFR solver...
-[2025-03-04 19:23:36.107] [INFO] Starting CFR training for 1000 iterations...
-[2025-03-04 19:23:36.107] [INFO] Starting CFRM training for 1000 iterations
-[2025-03-04 19:23:36.107] [INFO] Hand abstraction: Standard
-[2025-03-04 19:23:36.107] [INFO] Bet abstraction: Standard
-[2025-03-04 19:23:36.107] [INFO] Using Monte Carlo sampling: No
-[2025-03-04 19:23:36.109] [ERROR] Exception: Invalid action: BET 0.825
-[2025-03-04 19:50:50.736] [INFO] Starting 3-player CFRM-based Poker Bot example
-[2025-03-04 19:50:50.737] [INFO] Precomputing hand abstractions...
-[2025-03-04 19:50:50.737] [INFO] Initializing CFR solver...
-[2025-03-04 19:50:50.737] [INFO] Starting CFR training for 1000 iterations...
-[2025-03-04 19:50:50.737] [INFO] Starting CFRM training for 1000 iterations
-[2025-03-04 19:50:50.737] [INFO] Hand abstraction: Standard
-[2025-03-04 19:50:50.737] [INFO] Bet abstraction: Standard
-[2025-03-04 19:50:50.737] [INFO] Using Monte Carlo sampling: No
-[2025-03-04 19:50:50.740] [ERROR] Exception: Invalid action: BET 0.83. Valid actions are: CHECK, BET 1.25, BET 2.5, BET 5, BET 24, 
-[2025-03-04 20:00:11.155] [INFO] Starting 3-player CFRM-based Poker Bot example
-[2025-03-04 20:00:11.156] [INFO] Precomputing hand abstractions...
-[2025-03-04 20:00:11.156] [INFO] Initializing CFR solver...
-[2025-03-04 20:00:11.156] [INFO] Starting CFR training for 1000 iterations...
-[2025-03-04 20:00:11.156] [INFO] Starting CFRM training for 1000 iterations
-[2025-03-04 20:00:11.156] [INFO] Hand abstraction: Standard
-[2025-03-04 20:00:11.156] [INFO] Bet abstraction: Standard
-[2025-03-04 20:00:11.156] [INFO] Using Monte Carlo sampling: No
-[2025-03-04 20:08:43.930] [INFO] Starting 3-player CFRM-based Poker Bot example
-[2025-03-04 20:08:43.931] [INFO] Precomputing hand abstractions...
-[2025-03-04 20:08:43.931] [INFO] Initializing CFR solver...
-[2025-03-04 20:08:43.931] [INFO] Starting CFR training for 1000 iterations...
-[2025-03-04 20:08:43.931] [INFO] Starting CFRM training for 1000 iterations
-[2025-03-04 20:08:43.931] [INFO] Hand abstraction: Standard
-[2025-03-04 20:08:43.931] [INFO] Bet abstraction: Standard
-[2025-03-04 20:08:43.931] [INFO] Using Monte Carlo sampling: No
+[2025-03-04 20:44:10.474] [INFO] Starting 3-player CFRM-based Poker Bot example
+[2025-03-04 20:44:10.475] [INFO] Precomputing hand abstractions...
+[2025-03-04 20:44:10.475] [INFO] Initializing CFR solver...
+[2025-03-04 20:44:10.475] [INFO] Starting CFR training for 1000 iterations...
+[2025-03-04 20:44:10.475] [INFO] Starting CFRM training for 1000 iterations
+[2025-03-04 20:44:10.475] [INFO] Hand abstraction: Standard
+[2025-03-04 20:44:10.475] [INFO] Bet abstraction: Standard
+[2025-03-04 20:44:10.475] [INFO] Using Monte Carlo sampling: No
+[2025-03-04 21:33:36.794] [INFO] Starting 3-player CFRM-based Poker Bot example
+[2025-03-04 21:33:36.794] [INFO] Precomputing hand abstractions...
+[2025-03-04 21:33:36.794] [INFO] Initializing CFR solver...
+[2025-03-04 21:33:36.794] [INFO] Starting CFR training for 1000 iterations...
+[2025-03-04 21:33:36.794] [INFO] Starting CFRM training for 1000 iterations
+[2025-03-04 21:33:36.794] [INFO] Hand abstraction: Standard
+[2025-03-04 21:33:36.794] [INFO] Bet abstraction: Standard
+[2025-03-04 21:33:36.794] [INFO] Using Monte Carlo sampling: No
+[2025-03-05 10:26:48.404] [INFO] Starting 3-player CFRM-based Poker Bot example
+[2025-03-05 10:26:48.404] [INFO] Precomputing hand abstractions...
+[2025-03-05 10:26:48.405] [INFO] Initializing CFR solver...
+[2025-03-05 10:26:48.405] [INFO] Starting CFR training for 1000 iterations...
+[2025-03-05 10:26:48.405] [INFO] Starting CFRM training for 1000 iterations
+[2025-03-05 10:26:48.405] [INFO] Hand abstraction: Standard
+[2025-03-05 10:26:48.405] [INFO] Bet abstraction: Standard
+[2025-03-05 10:26:48.405] [INFO] Using Monte Carlo sampling: No
+[2025-03-05 17:19:15.612] [INFO] Starting 3-player CFRM-based Poker Bot example
+[2025-03-05 17:19:15.612] [INFO] Precomputing hand abstractions...
+[2025-03-05 17:19:15.613] [INFO] Initializing CFR solver...
+[2025-03-05 17:19:15.613] [INFO] Starting CFR training for 1000 iterations...
+[2025-03-05 17:19:15.613] [INFO] Starting CFRM training for 1000 iterations
+[2025-03-05 17:19:15.613] [INFO] Hand abstraction: Minimal
+[2025-03-05 17:19:15.613] [INFO] Bet abstraction: Minimal
+[2025-03-05 17:19:15.613] [INFO] Using Monte Carlo sampling: Yes
+[2025-03-05 17:19:15.630] [INFO] Completed iteration 100/1000 (0ms)
+[2025-03-05 17:19:15.630] [INFO] Iteration 100 complete. Info sets: 17
+[2025-03-05 17:19:15.640] [INFO] Completed iteration 200/1000 (0ms)
+[2025-03-05 17:19:15.640] [INFO] Iteration 200 complete. Info sets: 17
+[2025-03-05 17:19:15.648] [INFO] Completed iteration 300/1000 (0ms)
+[2025-03-05 17:19:15.648] [INFO] Iteration 300 complete. Info sets: 17
+[2025-03-05 17:19:15.655] [INFO] Completed iteration 400/1000 (0ms)
+[2025-03-05 17:19:15.655] [INFO] Iteration 400 complete. Info sets: 17
+[2025-03-05 17:19:15.662] [INFO] Completed iteration 500/1000 (0ms)
+[2025-03-05 17:19:15.662] [INFO] Iteration 500 complete. Info sets: 17
+[2025-03-05 17:19:15.669] [INFO] Completed iteration 600/1000 (0ms)
+[2025-03-05 17:19:15.669] [INFO] Iteration 600 complete. Info sets: 17
+[2025-03-05 17:19:15.675] [INFO] Completed iteration 700/1000 (0ms)
+[2025-03-05 17:19:15.675] [INFO] Iteration 700 complete. Info sets: 17
+[2025-03-05 17:19:15.681] [INFO] Completed iteration 800/1000 (0ms)
+[2025-03-05 17:19:15.681] [INFO] Iteration 800 complete. Info sets: 17
+[2025-03-05 17:19:15.688] [INFO] Completed iteration 900/1000 (0ms)
+[2025-03-05 17:19:15.688] [INFO] Iteration 900 complete. Info sets: 17
+[2025-03-05 17:19:15.693] [INFO] Completed iteration 1000/1000 (0ms)
+[2025-03-05 17:19:15.693] [INFO] Iteration 1000 complete. Info sets: 17
+[2025-03-05 17:19:15.693] [INFO] Training completed in 80ms
+[2025-03-05 17:19:15.693] [INFO] Processed information sets: 17
+[2025-03-05 17:19:15.693] [INFO] Training completed in 0 seconds
+[2025-03-05 17:19:15.693] [INFO] Saving strategy to data/strategies/strategy.dat
+[2025-03-05 17:19:15.693] [INFO] Saving strategy to: data/strategies/strategy.dat
+[2025-03-05 17:19:15.694] [INFO] Strategy saved successfully
+[2025-03-05 17:19:15.694] [INFO] Strategy saved successfully
+[2025-03-05 17:19:15.694] [INFO] Final statistics:
+[2025-03-05 17:19:15.694] [INFO]   Iterations: 1000
+[2025-03-05 17:19:15.694] [INFO]   Info sets: 17
+[2025-03-05 17:19:15.694] [INFO]   Exploitability: 0.000000
+[2025-03-05 17:19:15.694] [INFO]   Avg time per iteration: 0.006000 ms
+[2025-03-05 17:19:15.694] [INFO] Example completed successfully
+[2025-03-05 17:44:37.650] [INFO] Starting 3-player CFRM-based Poker Bot example
+[2025-03-05 17:44:37.651] [INFO] Precomputing hand abstractions...
+[2025-03-05 17:44:37.651] [INFO] Initializing CFR solver...
+[2025-03-05 17:44:37.651] [INFO] Starting CFR training for 1000 iterations...
+[2025-03-05 17:44:37.651] [INFO] Starting CFRM training for 1000 iterations
+[2025-03-05 17:44:37.651] [INFO] Hand abstraction: Minimal
+[2025-03-05 17:44:37.651] [INFO] Bet abstraction: Minimal
+[2025-03-05 17:44:37.651] [INFO] Using Monte Carlo sampling: No
+[2025-03-05 17:57:48.760] [INFO] Starting 3-player CFRM-based Poker Bot example
+[2025-03-05 17:57:48.761] [INFO] Precomputing hand abstractions...
+[2025-03-05 17:57:48.762] [INFO] Initializing CFR solver...
+[2025-03-05 17:57:48.762] [INFO] Starting CFR training for 1000 iterations...
+[2025-03-05 17:57:48.762] [INFO] Starting CFRM training for 1000 iterations
+[2025-03-05 17:57:48.762] [INFO] Hand abstraction: Minimal
+[2025-03-05 17:57:48.762] [INFO] Bet abstraction: Minimal
+[2025-03-05 17:57:48.762] [INFO] Using Monte Carlo sampling: No
+[2025-03-05 18:19:48.483] [INFO] Starting 3-player CFRM-based Poker Bot example
+[2025-03-05 18:19:48.485] [INFO] Precomputing hand abstractions...
+[2025-03-05 18:19:48.486] [INFO] Initializing CFR solver...
+[2025-03-05 18:19:48.486] [INFO] Starting CFR training for 1000 iterations...
+[2025-03-05 18:19:48.486] [INFO] Starting CFRM training for 1000 iterations
+[2025-03-05 18:19:48.486] [INFO] Hand abstraction: Minimal
+[2025-03-05 18:19:48.486] [INFO] Bet abstraction: Minimal
+[2025-03-05 18:19:48.486] [INFO] Using Monte Carlo sampling: No
+[2025-03-05 18:24:40.184] [INFO] Starting 3-player CFRM-based Poker Bot example
+[2025-03-05 18:24:40.184] [INFO] Precomputing hand abstractions...
+[2025-03-05 18:24:40.184] [INFO] Initializing CFR solver...
+[2025-03-05 18:24:40.184] [INFO] Starting CFR training for 1000 iterations...
+[2025-03-05 18:24:40.184] [INFO] Starting CFRM training for 1000 iterations
+[2025-03-05 18:24:40.184] [INFO] Hand abstraction: Minimal
+[2025-03-05 18:24:40.184] [INFO] Bet abstraction: Minimal
+[2025-03-05 18:24:40.184] [INFO] Using Monte Carlo sampling: Yes
+[2025-03-05 18:24:40.190] [INFO] Completed iteration 10/1000 (1ms)
+[2025-03-05 18:24:40.206] [INFO] Completed iteration 20/1000 (0ms)
+[2025-03-05 18:24:40.206] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:40.206] [INFO] Memory cleanup: removed 52 low-value info sets
+[2025-03-05 18:24:40.219] [INFO] Completed iteration 30/1000 (1ms)
+[2025-03-05 18:24:40.230] [INFO] Completed iteration 40/1000 (1ms)
+[2025-03-05 18:24:40.230] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:40.230] [INFO] Memory cleanup: removed 44 low-value info sets
+[2025-03-05 18:24:40.242] [INFO] Completed iteration 50/1000 (1ms)
+[2025-03-05 18:24:40.254] [INFO] Completed iteration 60/1000 (1ms)
+[2025-03-05 18:24:40.254] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:40.254] [INFO] Memory cleanup: removed 39 low-value info sets
+[2025-03-05 18:24:40.263] [INFO] Completed iteration 70/1000 (0ms)
+[2025-03-05 18:24:40.275] [INFO] Completed iteration 80/1000 (1ms)
+[2025-03-05 18:24:40.275] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:40.275] [INFO] Memory cleanup: removed 38 low-value info sets
+[2025-03-05 18:24:40.286] [INFO] Completed iteration 90/1000 (1ms)
+[2025-03-05 18:24:40.298] [INFO] Completed iteration 100/1000 (1ms)
+[2025-03-05 18:24:40.298] [INFO] Iteration 100 complete. Info sets: 169
+[2025-03-05 18:24:40.298] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:40.298] [INFO] Memory cleanup: removed 32 low-value info sets
+[2025-03-05 18:24:40.309] [INFO] Completed iteration 110/1000 (1ms)
+[2025-03-05 18:24:40.322] [INFO] Completed iteration 120/1000 (1ms)
+[2025-03-05 18:24:40.322] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:40.322] [INFO] Memory cleanup: removed 27 low-value info sets
+[2025-03-05 18:24:40.338] [INFO] Completed iteration 130/1000 (1ms)
+[2025-03-05 18:24:40.352] [INFO] Completed iteration 140/1000 (1ms)
+[2025-03-05 18:24:40.352] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:40.352] [INFO] Memory cleanup: removed 36 low-value info sets
+[2025-03-05 18:24:40.364] [INFO] Completed iteration 150/1000 (1ms)
+[2025-03-05 18:24:40.381] [INFO] Completed iteration 160/1000 (1ms)
+[2025-03-05 18:24:40.381] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:40.381] [INFO] Memory cleanup: removed 42 low-value info sets
+[2025-03-05 18:24:40.394] [INFO] Completed iteration 170/1000 (1ms)
+[2025-03-05 18:24:40.405] [INFO] Completed iteration 180/1000 (1ms)
+[2025-03-05 18:24:40.405] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:40.405] [INFO] Memory cleanup: removed 18 low-value info sets
+[2025-03-05 18:24:40.419] [INFO] Completed iteration 190/1000 (1ms)
+[2025-03-05 18:24:40.430] [INFO] Completed iteration 200/1000 (1ms)
+[2025-03-05 18:24:40.430] [INFO] Iteration 200 complete. Info sets: 255
+[2025-03-05 18:24:40.430] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:40.430] [INFO] Memory cleanup: removed 30 low-value info sets
+[2025-03-05 18:24:40.444] [INFO] Completed iteration 210/1000 (1ms)
+[2025-03-05 18:24:40.456] [INFO] Completed iteration 220/1000 (1ms)
+[2025-03-05 18:24:40.456] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:40.456] [INFO] Memory cleanup: removed 27 low-value info sets
+[2025-03-05 18:24:40.469] [INFO] Completed iteration 230/1000 (1ms)
+[2025-03-05 18:24:40.482] [INFO] Completed iteration 240/1000 (0ms)
+[2025-03-05 18:24:40.482] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:40.482] [INFO] Memory cleanup: removed 23 low-value info sets
+[2025-03-05 18:24:40.495] [INFO] Completed iteration 250/1000 (1ms)
+[2025-03-05 18:24:40.510] [INFO] Completed iteration 260/1000 (1ms)
+[2025-03-05 18:24:40.510] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:40.510] [INFO] Memory cleanup: removed 20 low-value info sets
+[2025-03-05 18:24:40.523] [INFO] Completed iteration 270/1000 (1ms)
+[2025-03-05 18:24:40.535] [INFO] Completed iteration 280/1000 (1ms)
+[2025-03-05 18:24:40.535] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:40.535] [INFO] Memory cleanup: removed 31 low-value info sets
+[2025-03-05 18:24:40.548] [INFO] Completed iteration 290/1000 (1ms)
+[2025-03-05 18:24:40.562] [INFO] Completed iteration 300/1000 (1ms)
+[2025-03-05 18:24:40.562] [INFO] Iteration 300 complete. Info sets: 362
+[2025-03-05 18:24:40.562] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:40.562] [INFO] Memory cleanup: removed 40 low-value info sets
+[2025-03-05 18:24:40.574] [INFO] Completed iteration 310/1000 (1ms)
+[2025-03-05 18:24:40.589] [INFO] Completed iteration 320/1000 (1ms)
+[2025-03-05 18:24:40.589] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:40.589] [INFO] Memory cleanup: removed 16 low-value info sets
+[2025-03-05 18:24:40.602] [INFO] Completed iteration 330/1000 (1ms)
+[2025-03-05 18:24:40.615] [INFO] Completed iteration 340/1000 (1ms)
+[2025-03-05 18:24:40.615] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:40.615] [INFO] Memory cleanup: removed 20 low-value info sets
+[2025-03-05 18:24:40.627] [INFO] Completed iteration 350/1000 (1ms)
+[2025-03-05 18:24:40.640] [INFO] Completed iteration 360/1000 (1ms)
+[2025-03-05 18:24:40.640] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:40.640] [INFO] Memory cleanup: removed 19 low-value info sets
+[2025-03-05 18:24:40.652] [INFO] Completed iteration 370/1000 (1ms)
+[2025-03-05 18:24:40.666] [INFO] Completed iteration 380/1000 (1ms)
+[2025-03-05 18:24:40.666] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:40.666] [INFO] Memory cleanup: removed 27 low-value info sets
+[2025-03-05 18:24:40.678] [INFO] Completed iteration 390/1000 (1ms)
+[2025-03-05 18:24:40.691] [INFO] Completed iteration 400/1000 (1ms)
+[2025-03-05 18:24:40.691] [INFO] Iteration 400 complete. Info sets: 385
+[2025-03-05 18:24:40.691] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:40.691] [INFO] Memory cleanup: removed 10 low-value info sets
+[2025-03-05 18:24:40.702] [INFO] Completed iteration 410/1000 (1ms)
+[2025-03-05 18:24:40.714] [INFO] Completed iteration 420/1000 (1ms)
+[2025-03-05 18:24:40.714] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:40.714] [INFO] Memory cleanup: removed 13 low-value info sets
+[2025-03-05 18:24:40.728] [INFO] Completed iteration 430/1000 (1ms)
+[2025-03-05 18:24:40.741] [INFO] Completed iteration 440/1000 (1ms)
+[2025-03-05 18:24:40.741] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:40.741] [INFO] Memory cleanup: removed 18 low-value info sets
+[2025-03-05 18:24:40.753] [INFO] Completed iteration 450/1000 (1ms)
+[2025-03-05 18:24:40.766] [INFO] Completed iteration 460/1000 (1ms)
+[2025-03-05 18:24:40.766] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:40.766] [INFO] Memory cleanup: removed 22 low-value info sets
+[2025-03-05 18:24:40.778] [INFO] Completed iteration 470/1000 (1ms)
+[2025-03-05 18:24:40.793] [INFO] Completed iteration 480/1000 (1ms)
+[2025-03-05 18:24:40.793] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:40.793] [INFO] Memory cleanup: removed 21 low-value info sets
+[2025-03-05 18:24:40.806] [INFO] Completed iteration 490/1000 (1ms)
+[2025-03-05 18:24:40.816] [INFO] Completed iteration 500/1000 (1ms)
+[2025-03-05 18:24:40.816] [INFO] Iteration 500 complete. Info sets: 446
+[2025-03-05 18:24:40.816] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:40.816] [INFO] Memory cleanup: removed 13 low-value info sets
+[2025-03-05 18:24:40.828] [INFO] Completed iteration 510/1000 (1ms)
+[2025-03-05 18:24:40.839] [INFO] Completed iteration 520/1000 (1ms)
+[2025-03-05 18:24:40.839] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:40.839] [INFO] Memory cleanup: removed 14 low-value info sets
+[2025-03-05 18:24:40.853] [INFO] Completed iteration 530/1000 (1ms)
+[2025-03-05 18:24:40.868] [INFO] Completed iteration 540/1000 (1ms)
+[2025-03-05 18:24:40.868] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:40.868] [INFO] Memory cleanup: removed 20 low-value info sets
+[2025-03-05 18:24:40.881] [INFO] Completed iteration 550/1000 (1ms)
+[2025-03-05 18:24:40.894] [INFO] Completed iteration 560/1000 (1ms)
+[2025-03-05 18:24:40.894] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:40.894] [INFO] Memory cleanup: removed 12 low-value info sets
+[2025-03-05 18:24:40.905] [INFO] Completed iteration 570/1000 (1ms)
+[2025-03-05 18:24:40.918] [INFO] Completed iteration 580/1000 (1ms)
+[2025-03-05 18:24:40.918] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:40.918] [INFO] Memory cleanup: removed 22 low-value info sets
+[2025-03-05 18:24:40.932] [INFO] Completed iteration 590/1000 (1ms)
+[2025-03-05 18:24:40.944] [INFO] Completed iteration 600/1000 (1ms)
+[2025-03-05 18:24:40.945] [INFO] Iteration 600 complete. Info sets: 494
+[2025-03-05 18:24:40.945] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:40.945] [INFO] Memory cleanup: removed 13 low-value info sets
+[2025-03-05 18:24:40.958] [INFO] Completed iteration 610/1000 (1ms)
+[2025-03-05 18:24:40.971] [INFO] Completed iteration 620/1000 (1ms)
+[2025-03-05 18:24:40.971] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:40.971] [INFO] Memory cleanup: removed 22 low-value info sets
+[2025-03-05 18:24:40.985] [INFO] Completed iteration 630/1000 (1ms)
+[2025-03-05 18:24:40.996] [INFO] Completed iteration 640/1000 (1ms)
+[2025-03-05 18:24:40.996] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:40.996] [INFO] Memory cleanup: removed 18 low-value info sets
+[2025-03-05 18:24:41.010] [INFO] Completed iteration 650/1000 (1ms)
+[2025-03-05 18:24:41.023] [INFO] Completed iteration 660/1000 (1ms)
+[2025-03-05 18:24:41.023] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:41.023] [INFO] Memory cleanup: removed 22 low-value info sets
+[2025-03-05 18:24:41.037] [INFO] Completed iteration 670/1000 (2ms)
+[2025-03-05 18:24:41.049] [INFO] Completed iteration 680/1000 (1ms)
+[2025-03-05 18:24:41.049] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:41.049] [INFO] Memory cleanup: removed 16 low-value info sets
+[2025-03-05 18:24:41.062] [INFO] Completed iteration 690/1000 (1ms)
+[2025-03-05 18:24:41.075] [INFO] Completed iteration 700/1000 (1ms)
+[2025-03-05 18:24:41.075] [INFO] Iteration 700 complete. Info sets: 541
+[2025-03-05 18:24:41.075] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:41.075] [INFO] Memory cleanup: removed 17 low-value info sets
+[2025-03-05 18:24:41.088] [INFO] Completed iteration 710/1000 (1ms)
+[2025-03-05 18:24:41.101] [INFO] Completed iteration 720/1000 (1ms)
+[2025-03-05 18:24:41.101] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:41.101] [INFO] Memory cleanup: removed 14 low-value info sets
+[2025-03-05 18:24:41.113] [INFO] Completed iteration 730/1000 (1ms)
+[2025-03-05 18:24:41.126] [INFO] Completed iteration 740/1000 (1ms)
+[2025-03-05 18:24:41.126] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:41.126] [INFO] Memory cleanup: removed 11 low-value info sets
+[2025-03-05 18:24:41.140] [INFO] Completed iteration 750/1000 (1ms)
+[2025-03-05 18:24:41.153] [INFO] Completed iteration 760/1000 (1ms)
+[2025-03-05 18:24:41.153] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:41.153] [INFO] Memory cleanup: removed 24 low-value info sets
+[2025-03-05 18:24:41.166] [INFO] Completed iteration 770/1000 (2ms)
+[2025-03-05 18:24:41.179] [INFO] Completed iteration 780/1000 (1ms)
+[2025-03-05 18:24:41.180] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:41.180] [INFO] Memory cleanup: removed 21 low-value info sets
+[2025-03-05 18:24:41.193] [INFO] Completed iteration 790/1000 (1ms)
+[2025-03-05 18:24:41.208] [INFO] Completed iteration 800/1000 (1ms)
+[2025-03-05 18:24:41.208] [INFO] Iteration 800 complete. Info sets: 584
+[2025-03-05 18:24:41.208] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:41.208] [INFO] Memory cleanup: removed 17 low-value info sets
+[2025-03-05 18:24:41.220] [INFO] Completed iteration 810/1000 (1ms)
+[2025-03-05 18:24:41.233] [INFO] Completed iteration 820/1000 (1ms)
+[2025-03-05 18:24:41.233] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:41.234] [INFO] Memory cleanup: removed 6 low-value info sets
+[2025-03-05 18:24:41.246] [INFO] Completed iteration 830/1000 (1ms)
+[2025-03-05 18:24:41.261] [INFO] Completed iteration 840/1000 (3ms)
+[2025-03-05 18:24:41.261] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:41.261] [INFO] Memory cleanup: removed 12 low-value info sets
+[2025-03-05 18:24:41.274] [INFO] Completed iteration 850/1000 (1ms)
+[2025-03-05 18:24:41.286] [INFO] Completed iteration 860/1000 (1ms)
+[2025-03-05 18:24:41.286] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:41.286] [INFO] Memory cleanup: removed 14 low-value info sets
+[2025-03-05 18:24:41.299] [INFO] Completed iteration 870/1000 (1ms)
+[2025-03-05 18:24:41.311] [INFO] Completed iteration 880/1000 (1ms)
+[2025-03-05 18:24:41.311] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:41.312] [INFO] Memory cleanup: removed 15 low-value info sets
+[2025-03-05 18:24:41.324] [INFO] Completed iteration 890/1000 (1ms)
+[2025-03-05 18:24:41.339] [INFO] Completed iteration 900/1000 (1ms)
+[2025-03-05 18:24:41.339] [INFO] Iteration 900 complete. Info sets: 615
+[2025-03-05 18:24:41.339] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:41.339] [INFO] Memory cleanup: removed 15 low-value info sets
+[2025-03-05 18:24:41.352] [INFO] Completed iteration 910/1000 (1ms)
+[2025-03-05 18:24:41.364] [INFO] Completed iteration 920/1000 (1ms)
+[2025-03-05 18:24:41.364] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:41.364] [INFO] Memory cleanup: removed 13 low-value info sets
+[2025-03-05 18:24:41.379] [INFO] Completed iteration 930/1000 (1ms)
+[2025-03-05 18:24:41.391] [INFO] Completed iteration 940/1000 (1ms)
+[2025-03-05 18:24:41.391] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:41.391] [INFO] Memory cleanup: removed 9 low-value info sets
+[2025-03-05 18:24:41.405] [INFO] Completed iteration 950/1000 (1ms)
+[2025-03-05 18:24:41.418] [INFO] Completed iteration 960/1000 (1ms)
+[2025-03-05 18:24:41.418] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:41.418] [INFO] Memory cleanup: removed 12 low-value info sets
+[2025-03-05 18:24:41.431] [INFO] Completed iteration 970/1000 (1ms)
+[2025-03-05 18:24:41.443] [INFO] Completed iteration 980/1000 (1ms)
+[2025-03-05 18:24:41.443] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:41.443] [INFO] Memory cleanup: removed 17 low-value info sets
+[2025-03-05 18:24:41.456] [INFO] Completed iteration 990/1000 (1ms)
+[2025-03-05 18:24:41.469] [INFO] Completed iteration 1000/1000 (1ms)
+[2025-03-05 18:24:41.469] [INFO] Iteration 1000 complete. Info sets: 649
+[2025-03-05 18:24:41.469] [INFO] Performing memory cleanup...
+[2025-03-05 18:24:41.469] [INFO] Memory cleanup: removed 14 low-value info sets
+[2025-03-05 18:24:41.469] [INFO] Training completed in 1284ms
+[2025-03-05 18:24:41.469] [INFO] Processed information sets: 635
+[2025-03-05 18:24:41.469] [INFO] Training completed in 1 seconds
+[2025-03-05 18:24:41.469] [INFO] Saving strategy to data/strategies/strategy.dat
+[2025-03-05 18:24:41.469] [INFO] Saving strategy to: data/strategies/strategy.dat
+[2025-03-05 18:24:41.472] [INFO] Strategy saved successfully
+[2025-03-05 18:24:41.472] [INFO] Strategy saved successfully
+[2025-03-05 18:24:41.472] [INFO] Final statistics:
+[2025-03-05 18:24:41.472] [INFO]   Iterations: 1000
+[2025-03-05 18:24:41.472] [INFO]   Info sets: 635
+[2025-03-05 18:24:41.472] [INFO]   Exploitability: 0.000000
+[2025-03-05 18:24:41.472] [INFO]   Avg time per iteration: 0.998000 ms
+[2025-03-05 18:24:41.472] [INFO] Example completed successfully
+[2025-03-05 18:25:10.763] [INFO] Starting 3-player CFRM-based Poker Bot example
+[2025-03-05 18:25:10.764] [INFO] Precomputing hand abstractions...
+[2025-03-05 18:25:10.764] [INFO] Initializing CFR solver...
+[2025-03-05 18:25:10.764] [INFO] Starting CFR training for 1000 iterations...
+[2025-03-05 18:25:10.764] [INFO] Starting CFRM training for 1000 iterations
+[2025-03-05 18:25:10.764] [INFO] Hand abstraction: Minimal
+[2025-03-05 18:25:10.764] [INFO] Bet abstraction: Minimal
+[2025-03-05 18:25:10.764] [INFO] Using Monte Carlo sampling: Yes
+[2025-03-05 18:25:10.777] [INFO] Completed iteration 10/1000 (2ms)
+[2025-03-05 18:25:10.781] [INFO] Completed iteration 20/1000 (1ms)
+[2025-03-05 18:25:10.781] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:10.781] [INFO] Memory cleanup: removed 55 low-value info sets
+[2025-03-05 18:25:10.795] [INFO] Completed iteration 30/1000 (1ms)
+[2025-03-05 18:25:10.807] [INFO] Completed iteration 40/1000 (1ms)
+[2025-03-05 18:25:10.807] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:10.807] [INFO] Memory cleanup: removed 52 low-value info sets
+[2025-03-05 18:25:10.821] [INFO] Completed iteration 50/1000 (2ms)
+[2025-03-05 18:25:10.833] [INFO] Completed iteration 60/1000 (0ms)
+[2025-03-05 18:25:10.833] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:10.833] [INFO] Memory cleanup: removed 69 low-value info sets
+[2025-03-05 18:25:10.846] [INFO] Completed iteration 70/1000 (1ms)
+[2025-03-05 18:25:10.858] [INFO] Completed iteration 80/1000 (1ms)
+[2025-03-05 18:25:10.858] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:10.858] [INFO] Memory cleanup: removed 37 low-value info sets
+[2025-03-05 18:25:10.867] [INFO] Completed iteration 90/1000 (0ms)
+[2025-03-05 18:25:10.878] [INFO] Completed iteration 100/1000 (1ms)
+[2025-03-05 18:25:10.878] [INFO] Iteration 100 complete. Info sets: 221
+[2025-03-05 18:25:10.878] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:10.878] [INFO] Memory cleanup: removed 49 low-value info sets
+[2025-03-05 18:25:10.889] [INFO] Completed iteration 110/1000 (1ms)
+[2025-03-05 18:25:10.905] [INFO] Completed iteration 120/1000 (0ms)
+[2025-03-05 18:25:10.905] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:10.905] [INFO] Memory cleanup: removed 54 low-value info sets
+[2025-03-05 18:25:10.915] [INFO] Completed iteration 130/1000 (1ms)
+[2025-03-05 18:25:10.926] [INFO] Completed iteration 140/1000 (1ms)
+[2025-03-05 18:25:10.926] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:10.926] [INFO] Memory cleanup: removed 33 low-value info sets
+[2025-03-05 18:25:10.941] [INFO] Completed iteration 150/1000 (1ms)
+[2025-03-05 18:25:10.953] [INFO] Completed iteration 160/1000 (1ms)
+[2025-03-05 18:25:10.953] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:10.953] [INFO] Memory cleanup: removed 33 low-value info sets
+[2025-03-05 18:25:10.966] [INFO] Completed iteration 170/1000 (1ms)
+[2025-03-05 18:25:10.978] [INFO] Completed iteration 180/1000 (1ms)
+[2025-03-05 18:25:10.978] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:10.978] [INFO] Memory cleanup: removed 30 low-value info sets
+[2025-03-05 18:25:10.992] [INFO] Completed iteration 190/1000 (1ms)
+[2025-03-05 18:25:11.009] [INFO] Completed iteration 200/1000 (3ms)
+[2025-03-05 18:25:11.009] [INFO] Iteration 200 complete. Info sets: 338
+[2025-03-05 18:25:11.009] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:11.009] [INFO] Memory cleanup: removed 41 low-value info sets
+[2025-03-05 18:25:11.021] [INFO] Completed iteration 210/1000 (1ms)
+[2025-03-05 18:25:11.033] [INFO] Completed iteration 220/1000 (1ms)
+[2025-03-05 18:25:11.033] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:11.033] [INFO] Memory cleanup: removed 35 low-value info sets
+[2025-03-05 18:25:11.045] [INFO] Completed iteration 230/1000 (1ms)
+[2025-03-05 18:25:11.058] [INFO] Completed iteration 240/1000 (1ms)
+[2025-03-05 18:25:11.058] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:11.058] [INFO] Memory cleanup: removed 29 low-value info sets
+[2025-03-05 18:25:11.073] [INFO] Completed iteration 250/1000 (1ms)
+[2025-03-05 18:25:11.085] [INFO] Completed iteration 260/1000 (1ms)
+[2025-03-05 18:25:11.085] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:11.085] [INFO] Memory cleanup: removed 45 low-value info sets
+[2025-03-05 18:25:11.095] [INFO] Completed iteration 270/1000 (1ms)
+[2025-03-05 18:25:11.111] [INFO] Completed iteration 280/1000 (2ms)
+[2025-03-05 18:25:11.111] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:11.111] [INFO] Memory cleanup: removed 35 low-value info sets
+[2025-03-05 18:25:11.123] [INFO] Completed iteration 290/1000 (1ms)
+[2025-03-05 18:25:11.136] [INFO] Completed iteration 300/1000 (1ms)
+[2025-03-05 18:25:11.136] [INFO] Iteration 300 complete. Info sets: 418
+[2025-03-05 18:25:11.136] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:11.136] [INFO] Memory cleanup: removed 20 low-value info sets
+[2025-03-05 18:25:11.148] [INFO] Completed iteration 310/1000 (1ms)
+[2025-03-05 18:25:11.162] [INFO] Completed iteration 320/1000 (1ms)
+[2025-03-05 18:25:11.162] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:11.162] [INFO] Memory cleanup: removed 28 low-value info sets
+[2025-03-05 18:25:11.174] [INFO] Completed iteration 330/1000 (1ms)
+[2025-03-05 18:25:11.186] [INFO] Completed iteration 340/1000 (1ms)
+[2025-03-05 18:25:11.186] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:11.186] [INFO] Memory cleanup: removed 28 low-value info sets
+[2025-03-05 18:25:11.201] [INFO] Completed iteration 350/1000 (1ms)
+[2025-03-05 18:25:11.213] [INFO] Completed iteration 360/1000 (1ms)
+[2025-03-05 18:25:11.213] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:11.213] [INFO] Memory cleanup: removed 24 low-value info sets
+[2025-03-05 18:25:11.227] [INFO] Completed iteration 370/1000 (1ms)
+[2025-03-05 18:25:11.241] [INFO] Completed iteration 380/1000 (1ms)
+[2025-03-05 18:25:11.241] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:11.241] [INFO] Memory cleanup: removed 28 low-value info sets
+[2025-03-05 18:25:11.256] [INFO] Completed iteration 390/1000 (1ms)
+[2025-03-05 18:25:11.269] [INFO] Completed iteration 400/1000 (1ms)
+[2025-03-05 18:25:11.269] [INFO] Iteration 400 complete. Info sets: 519
+[2025-03-05 18:25:11.269] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:11.269] [INFO] Memory cleanup: removed 34 low-value info sets
+[2025-03-05 18:25:11.282] [INFO] Completed iteration 410/1000 (1ms)
+[2025-03-05 18:25:11.299] [INFO] Completed iteration 420/1000 (2ms)
+[2025-03-05 18:25:11.299] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:11.299] [INFO] Memory cleanup: removed 32 low-value info sets
+[2025-03-05 18:25:11.312] [INFO] Completed iteration 430/1000 (1ms)
+[2025-03-05 18:25:11.325] [INFO] Completed iteration 440/1000 (1ms)
+[2025-03-05 18:25:11.325] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:11.325] [INFO] Memory cleanup: removed 23 low-value info sets
+[2025-03-05 18:25:11.337] [INFO] Completed iteration 450/1000 (1ms)
+[2025-03-05 18:25:11.351] [INFO] Completed iteration 460/1000 (1ms)
+[2025-03-05 18:25:11.351] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:11.351] [INFO] Memory cleanup: removed 25 low-value info sets
+[2025-03-05 18:25:11.364] [INFO] Completed iteration 470/1000 (1ms)
+[2025-03-05 18:25:11.376] [INFO] Completed iteration 480/1000 (1ms)
+[2025-03-05 18:25:11.376] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:11.377] [INFO] Memory cleanup: removed 20 low-value info sets
+[2025-03-05 18:25:11.389] [INFO] Completed iteration 490/1000 (1ms)
+[2025-03-05 18:25:11.402] [INFO] Completed iteration 500/1000 (1ms)
+[2025-03-05 18:25:11.402] [INFO] Iteration 500 complete. Info sets: 585
+[2025-03-05 18:25:11.403] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:11.403] [INFO] Memory cleanup: removed 26 low-value info sets
+[2025-03-05 18:25:11.415] [INFO] Completed iteration 510/1000 (1ms)
+[2025-03-05 18:25:11.428] [INFO] Completed iteration 520/1000 (2ms)
+[2025-03-05 18:25:11.428] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:11.428] [INFO] Memory cleanup: removed 25 low-value info sets
+[2025-03-05 18:25:11.442] [INFO] Completed iteration 530/1000 (2ms)
+[2025-03-05 18:25:11.467] [INFO] Completed iteration 540/1000 (1ms)
+[2025-03-05 18:25:11.467] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:11.467] [INFO] Memory cleanup: removed 22 low-value info sets
+[2025-03-05 18:25:11.481] [INFO] Completed iteration 550/1000 (1ms)
+[2025-03-05 18:25:11.496] [INFO] Completed iteration 560/1000 (1ms)
+[2025-03-05 18:25:11.496] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:11.496] [INFO] Memory cleanup: removed 27 low-value info sets
+[2025-03-05 18:25:11.509] [INFO] Completed iteration 570/1000 (1ms)
+[2025-03-05 18:25:11.522] [INFO] Completed iteration 580/1000 (1ms)
+[2025-03-05 18:25:11.522] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:11.522] [INFO] Memory cleanup: removed 25 low-value info sets
+[2025-03-05 18:25:11.536] [INFO] Completed iteration 590/1000 (1ms)
+[2025-03-05 18:25:11.549] [INFO] Completed iteration 600/1000 (1ms)
+[2025-03-05 18:25:11.549] [INFO] Iteration 600 complete. Info sets: 641
+[2025-03-05 18:25:11.549] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:11.549] [INFO] Memory cleanup: removed 24 low-value info sets
+[2025-03-05 18:25:11.560] [INFO] Completed iteration 610/1000 (1ms)
+[2025-03-05 18:25:11.575] [INFO] Completed iteration 620/1000 (2ms)
+[2025-03-05 18:25:11.575] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:11.576] [INFO] Memory cleanup: removed 25 low-value info sets
+[2025-03-05 18:25:11.588] [INFO] Completed iteration 630/1000 (1ms)
+[2025-03-05 18:25:11.599] [INFO] Completed iteration 640/1000 (1ms)
+[2025-03-05 18:25:11.599] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:11.599] [INFO] Memory cleanup: removed 16 low-value info sets
+[2025-03-05 18:25:11.612] [INFO] Completed iteration 650/1000 (1ms)
+[2025-03-05 18:25:11.625] [INFO] Completed iteration 660/1000 (1ms)
+[2025-03-05 18:25:11.625] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:11.625] [INFO] Memory cleanup: removed 14 low-value info sets
+[2025-03-05 18:25:11.637] [INFO] Completed iteration 670/1000 (1ms)
+[2025-03-05 18:25:11.650] [INFO] Completed iteration 680/1000 (1ms)
+[2025-03-05 18:25:11.650] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:11.650] [INFO] Memory cleanup: removed 17 low-value info sets
+[2025-03-05 18:25:11.661] [INFO] Completed iteration 690/1000 (1ms)
+[2025-03-05 18:25:11.676] [INFO] Completed iteration 700/1000 (1ms)
+[2025-03-05 18:25:11.676] [INFO] Iteration 700 complete. Info sets: 703
+[2025-03-05 18:25:11.676] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:11.676] [INFO] Memory cleanup: removed 36 low-value info sets
+[2025-03-05 18:25:11.688] [INFO] Completed iteration 710/1000 (1ms)
+[2025-03-05 18:25:11.702] [INFO] Completed iteration 720/1000 (1ms)
+[2025-03-05 18:25:11.702] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:11.702] [INFO] Memory cleanup: removed 19 low-value info sets
+[2025-03-05 18:25:11.716] [INFO] Completed iteration 730/1000 (1ms)
+[2025-03-05 18:25:11.730] [INFO] Completed iteration 740/1000 (1ms)
+[2025-03-05 18:25:11.730] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:11.730] [INFO] Memory cleanup: removed 17 low-value info sets
+[2025-03-05 18:25:11.742] [INFO] Completed iteration 750/1000 (1ms)
+[2025-03-05 18:25:11.754] [INFO] Completed iteration 760/1000 (1ms)
+[2025-03-05 18:25:11.754] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:11.754] [INFO] Memory cleanup: removed 13 low-value info sets
+[2025-03-05 18:25:11.768] [INFO] Completed iteration 770/1000 (1ms)
+[2025-03-05 18:25:11.781] [INFO] Completed iteration 780/1000 (1ms)
+[2025-03-05 18:25:11.781] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:11.781] [INFO] Memory cleanup: removed 18 low-value info sets
+[2025-03-05 18:25:11.796] [INFO] Completed iteration 790/1000 (1ms)
+[2025-03-05 18:25:11.808] [INFO] Completed iteration 800/1000 (1ms)
+[2025-03-05 18:25:11.809] [INFO] Iteration 800 complete. Info sets: 744
+[2025-03-05 18:25:11.809] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:11.809] [INFO] Memory cleanup: removed 28 low-value info sets
+[2025-03-05 18:25:11.821] [INFO] Completed iteration 810/1000 (1ms)
+[2025-03-05 18:25:11.835] [INFO] Completed iteration 820/1000 (1ms)
+[2025-03-05 18:25:11.835] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:11.835] [INFO] Memory cleanup: removed 15 low-value info sets
+[2025-03-05 18:25:11.850] [INFO] Completed iteration 830/1000 (2ms)
+[2025-03-05 18:25:11.865] [INFO] Completed iteration 840/1000 (1ms)
+[2025-03-05 18:25:11.865] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:11.865] [INFO] Memory cleanup: removed 30 low-value info sets
+[2025-03-05 18:25:11.877] [INFO] Completed iteration 850/1000 (1ms)
+[2025-03-05 18:25:11.892] [INFO] Completed iteration 860/1000 (2ms)
+[2025-03-05 18:25:11.892] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:11.892] [INFO] Memory cleanup: removed 13 low-value info sets
+[2025-03-05 18:25:11.906] [INFO] Completed iteration 870/1000 (1ms)
+[2025-03-05 18:25:11.919] [INFO] Completed iteration 880/1000 (1ms)
+[2025-03-05 18:25:11.919] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:11.919] [INFO] Memory cleanup: removed 21 low-value info sets
+[2025-03-05 18:25:11.932] [INFO] Completed iteration 890/1000 (1ms)
+[2025-03-05 18:25:11.946] [INFO] Completed iteration 900/1000 (2ms)
+[2025-03-05 18:25:11.946] [INFO] Iteration 900 complete. Info sets: 786
+[2025-03-05 18:25:11.946] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:11.946] [INFO] Memory cleanup: removed 14 low-value info sets
+[2025-03-05 18:25:11.961] [INFO] Completed iteration 910/1000 (1ms)
+[2025-03-05 18:25:11.976] [INFO] Completed iteration 920/1000 (2ms)
+[2025-03-05 18:25:11.976] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:11.976] [INFO] Memory cleanup: removed 28 low-value info sets
+[2025-03-05 18:25:11.987] [INFO] Completed iteration 930/1000 (1ms)
+[2025-03-05 18:25:12.002] [INFO] Completed iteration 940/1000 (1ms)
+[2025-03-05 18:25:12.002] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:12.002] [INFO] Memory cleanup: removed 22 low-value info sets
+[2025-03-05 18:25:12.016] [INFO] Completed iteration 950/1000 (1ms)
+[2025-03-05 18:25:12.031] [INFO] Completed iteration 960/1000 (2ms)
+[2025-03-05 18:25:12.031] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:12.031] [INFO] Memory cleanup: removed 29 low-value info sets
+[2025-03-05 18:25:12.045] [INFO] Completed iteration 970/1000 (1ms)
+[2025-03-05 18:25:12.060] [INFO] Completed iteration 980/1000 (1ms)
+[2025-03-05 18:25:12.060] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:12.060] [INFO] Memory cleanup: removed 20 low-value info sets
+[2025-03-05 18:25:12.072] [INFO] Completed iteration 990/1000 (1ms)
+[2025-03-05 18:25:12.084] [INFO] Completed iteration 1000/1000 (1ms)
+[2025-03-05 18:25:12.084] [INFO] Iteration 1000 complete. Info sets: 843
+[2025-03-05 18:25:12.084] [INFO] Performing memory cleanup...
+[2025-03-05 18:25:12.084] [INFO] Memory cleanup: removed 16 low-value info sets
+[2025-03-05 18:25:12.084] [INFO] Training completed in 1319ms
+[2025-03-05 18:25:12.084] [INFO] Processed information sets: 827
+[2025-03-05 18:25:12.084] [INFO] Training completed in 1 seconds
+[2025-03-05 18:25:12.084] [INFO] Saving strategy to data/strategies/strategy.dat
+[2025-03-05 18:25:12.084] [INFO] Saving strategy to: data/strategies/strategy.dat
+[2025-03-05 18:25:12.086] [INFO] Strategy saved successfully
+[2025-03-05 18:25:12.086] [INFO] Strategy saved successfully
+[2025-03-05 18:25:12.086] [INFO] Final statistics:
+[2025-03-05 18:25:12.086] [INFO]   Iterations: 1000
+[2025-03-05 18:25:12.086] [INFO]   Info sets: 827
+[2025-03-05 18:25:12.086] [INFO]   Exploitability: 0.000000
+[2025-03-05 18:25:12.086] [INFO]   Avg time per iteration: 1.035000 ms
+[2025-03-05 18:25:12.087] [INFO] Example completed successfully
+[2025-03-05 18:26:04.829] [INFO] Starting 3-player CFRM-based Poker Bot example
+[2025-03-05 18:26:04.829] [INFO] Precomputing hand abstractions...
+[2025-03-05 18:26:04.829] [INFO] Initializing CFR solver...
+[2025-03-05 18:26:04.829] [INFO] Starting CFR training for 1000 iterations...
+[2025-03-05 18:26:04.829] [INFO] Starting CFRM training for 1000 iterations
+[2025-03-05 18:26:04.829] [INFO] Hand abstraction: Minimal
+[2025-03-05 18:26:04.829] [INFO] Bet abstraction: Minimal
+[2025-03-05 18:26:04.829] [INFO] Using Monte Carlo sampling: Yes
+[2025-03-05 18:26:04.843] [INFO] Completed iteration 10/1000 (1ms)
+[2025-03-05 18:26:04.854] [INFO] Completed iteration 20/1000 (1ms)
+[2025-03-05 18:26:04.854] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:04.854] [INFO] Memory cleanup: removed 44 low-value info sets
+[2025-03-05 18:26:04.867] [INFO] Completed iteration 30/1000 (1ms)
+[2025-03-05 18:26:04.881] [INFO] Completed iteration 40/1000 (1ms)
+[2025-03-05 18:26:04.881] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:04.881] [INFO] Memory cleanup: removed 61 low-value info sets
+[2025-03-05 18:26:04.890] [INFO] Completed iteration 50/1000 (0ms)
+[2025-03-05 18:26:04.904] [INFO] Completed iteration 60/1000 (1ms)
+[2025-03-05 18:26:04.904] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:04.904] [INFO] Memory cleanup: removed 48 low-value info sets
+[2025-03-05 18:26:04.915] [INFO] Completed iteration 70/1000 (1ms)
+[2025-03-05 18:26:04.927] [INFO] Completed iteration 80/1000 (1ms)
+[2025-03-05 18:26:04.927] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:04.927] [INFO] Memory cleanup: removed 42 low-value info sets
+[2025-03-05 18:26:04.937] [INFO] Completed iteration 90/1000 (1ms)
+[2025-03-05 18:26:04.949] [INFO] Completed iteration 100/1000 (1ms)
+[2025-03-05 18:26:04.949] [INFO] Iteration 100 complete. Info sets: 207
+[2025-03-05 18:26:04.949] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:04.949] [INFO] Memory cleanup: removed 52 low-value info sets
+[2025-03-05 18:26:04.962] [INFO] Completed iteration 110/1000 (1ms)
+[2025-03-05 18:26:04.974] [INFO] Completed iteration 120/1000 (1ms)
+[2025-03-05 18:26:04.974] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:04.974] [INFO] Memory cleanup: removed 36 low-value info sets
+[2025-03-05 18:26:04.987] [INFO] Completed iteration 130/1000 (1ms)
+[2025-03-05 18:26:04.998] [INFO] Completed iteration 140/1000 (1ms)
+[2025-03-05 18:26:04.998] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:04.998] [INFO] Memory cleanup: removed 40 low-value info sets
+[2025-03-05 18:26:05.009] [INFO] Completed iteration 150/1000 (0ms)
+[2025-03-05 18:26:05.020] [INFO] Completed iteration 160/1000 (1ms)
+[2025-03-05 18:26:05.021] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.021] [INFO] Memory cleanup: removed 42 low-value info sets
+[2025-03-05 18:26:05.036] [INFO] Completed iteration 170/1000 (1ms)
+[2025-03-05 18:26:05.050] [INFO] Completed iteration 180/1000 (1ms)
+[2025-03-05 18:26:05.050] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.050] [INFO] Memory cleanup: removed 44 low-value info sets
+[2025-03-05 18:26:05.061] [INFO] Completed iteration 190/1000 (1ms)
+[2025-03-05 18:26:05.072] [INFO] Completed iteration 200/1000 (1ms)
+[2025-03-05 18:26:05.072] [INFO] Iteration 200 complete. Info sets: 291
+[2025-03-05 18:26:05.072] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.072] [INFO] Memory cleanup: removed 34 low-value info sets
+[2025-03-05 18:26:05.086] [INFO] Completed iteration 210/1000 (1ms)
+[2025-03-05 18:26:05.099] [INFO] Completed iteration 220/1000 (1ms)
+[2025-03-05 18:26:05.099] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.099] [INFO] Memory cleanup: removed 29 low-value info sets
+[2025-03-05 18:26:05.108] [INFO] Completed iteration 230/1000 (1ms)
+[2025-03-05 18:26:05.121] [INFO] Completed iteration 240/1000 (1ms)
+[2025-03-05 18:26:05.121] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.121] [INFO] Memory cleanup: removed 29 low-value info sets
+[2025-03-05 18:26:05.134] [INFO] Completed iteration 250/1000 (1ms)
+[2025-03-05 18:26:05.148] [INFO] Completed iteration 260/1000 (1ms)
+[2025-03-05 18:26:05.148] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.148] [INFO] Memory cleanup: removed 27 low-value info sets
+[2025-03-05 18:26:05.161] [INFO] Completed iteration 270/1000 (1ms)
+[2025-03-05 18:26:05.172] [INFO] Completed iteration 280/1000 (1ms)
+[2025-03-05 18:26:05.172] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.172] [INFO] Memory cleanup: removed 29 low-value info sets
+[2025-03-05 18:26:05.185] [INFO] Completed iteration 290/1000 (1ms)
+[2025-03-05 18:26:05.199] [INFO] Completed iteration 300/1000 (1ms)
+[2025-03-05 18:26:05.199] [INFO] Iteration 300 complete. Info sets: 383
+[2025-03-05 18:26:05.199] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.199] [INFO] Memory cleanup: removed 26 low-value info sets
+[2025-03-05 18:26:05.211] [INFO] Completed iteration 310/1000 (2ms)
+[2025-03-05 18:26:05.222] [INFO] Completed iteration 320/1000 (1ms)
+[2025-03-05 18:26:05.222] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.222] [INFO] Memory cleanup: removed 29 low-value info sets
+[2025-03-05 18:26:05.235] [INFO] Completed iteration 330/1000 (1ms)
+[2025-03-05 18:26:05.247] [INFO] Completed iteration 340/1000 (1ms)
+[2025-03-05 18:26:05.247] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.247] [INFO] Memory cleanup: removed 18 low-value info sets
+[2025-03-05 18:26:05.260] [INFO] Completed iteration 350/1000 (1ms)
+[2025-03-05 18:26:05.271] [INFO] Completed iteration 360/1000 (1ms)
+[2025-03-05 18:26:05.271] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.271] [INFO] Memory cleanup: removed 35 low-value info sets
+[2025-03-05 18:26:05.285] [INFO] Completed iteration 370/1000 (1ms)
+[2025-03-05 18:26:05.299] [INFO] Completed iteration 380/1000 (1ms)
+[2025-03-05 18:26:05.301] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.301] [INFO] Memory cleanup: removed 30 low-value info sets
+[2025-03-05 18:26:05.316] [INFO] Completed iteration 390/1000 (1ms)
+[2025-03-05 18:26:05.327] [INFO] Completed iteration 400/1000 (1ms)
+[2025-03-05 18:26:05.327] [INFO] Iteration 400 complete. Info sets: 463
+[2025-03-05 18:26:05.327] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.327] [INFO] Memory cleanup: removed 30 low-value info sets
+[2025-03-05 18:26:05.341] [INFO] Completed iteration 410/1000 (1ms)
+[2025-03-05 18:26:05.355] [INFO] Completed iteration 420/1000 (1ms)
+[2025-03-05 18:26:05.355] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.356] [INFO] Memory cleanup: removed 17 low-value info sets
+[2025-03-05 18:26:05.368] [INFO] Completed iteration 430/1000 (1ms)
+[2025-03-05 18:26:05.379] [INFO] Completed iteration 440/1000 (1ms)
+[2025-03-05 18:26:05.379] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.379] [INFO] Memory cleanup: removed 23 low-value info sets
+[2025-03-05 18:26:05.403] [INFO] Completed iteration 450/1000 (1ms)
+[2025-03-05 18:26:05.418] [INFO] Completed iteration 460/1000 (1ms)
+[2025-03-05 18:26:05.418] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.418] [INFO] Memory cleanup: removed 29 low-value info sets
+[2025-03-05 18:26:05.429] [INFO] Completed iteration 470/1000 (1ms)
+[2025-03-05 18:26:05.442] [INFO] Completed iteration 480/1000 (1ms)
+[2025-03-05 18:26:05.442] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.442] [INFO] Memory cleanup: removed 18 low-value info sets
+[2025-03-05 18:26:05.456] [INFO] Completed iteration 490/1000 (1ms)
+[2025-03-05 18:26:05.468] [INFO] Completed iteration 500/1000 (1ms)
+[2025-03-05 18:26:05.468] [INFO] Iteration 500 complete. Info sets: 516
+[2025-03-05 18:26:05.468] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.468] [INFO] Memory cleanup: removed 24 low-value info sets
+[2025-03-05 18:26:05.482] [INFO] Completed iteration 510/1000 (1ms)
+[2025-03-05 18:26:05.494] [INFO] Completed iteration 520/1000 (1ms)
+[2025-03-05 18:26:05.494] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.494] [INFO] Memory cleanup: removed 22 low-value info sets
+[2025-03-05 18:26:05.508] [INFO] Completed iteration 530/1000 (1ms)
+[2025-03-05 18:26:05.519] [INFO] Completed iteration 540/1000 (1ms)
+[2025-03-05 18:26:05.519] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.519] [INFO] Memory cleanup: removed 27 low-value info sets
+[2025-03-05 18:26:05.530] [INFO] Completed iteration 550/1000 (1ms)
+[2025-03-05 18:26:05.543] [INFO] Completed iteration 560/1000 (1ms)
+[2025-03-05 18:26:05.543] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.543] [INFO] Memory cleanup: removed 15 low-value info sets
+[2025-03-05 18:26:05.557] [INFO] Completed iteration 570/1000 (3ms)
+[2025-03-05 18:26:05.570] [INFO] Completed iteration 580/1000 (1ms)
+[2025-03-05 18:26:05.570] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.570] [INFO] Memory cleanup: removed 20 low-value info sets
+[2025-03-05 18:26:05.585] [INFO] Completed iteration 590/1000 (1ms)
+[2025-03-05 18:26:05.598] [INFO] Completed iteration 600/1000 (1ms)
+[2025-03-05 18:26:05.598] [INFO] Iteration 600 complete. Info sets: 568
+[2025-03-05 18:26:05.598] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.598] [INFO] Memory cleanup: removed 23 low-value info sets
+[2025-03-05 18:26:05.611] [INFO] Completed iteration 610/1000 (1ms)
+[2025-03-05 18:26:05.625] [INFO] Completed iteration 620/1000 (1ms)
+[2025-03-05 18:26:05.625] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.625] [INFO] Memory cleanup: removed 30 low-value info sets
+[2025-03-05 18:26:05.637] [INFO] Completed iteration 630/1000 (1ms)
+[2025-03-05 18:26:05.649] [INFO] Completed iteration 640/1000 (1ms)
+[2025-03-05 18:26:05.649] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.649] [INFO] Memory cleanup: removed 16 low-value info sets
+[2025-03-05 18:26:05.663] [INFO] Completed iteration 650/1000 (1ms)
+[2025-03-05 18:26:05.677] [INFO] Completed iteration 660/1000 (2ms)
+[2025-03-05 18:26:05.677] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.677] [INFO] Memory cleanup: removed 21 low-value info sets
+[2025-03-05 18:26:05.689] [INFO] Completed iteration 670/1000 (1ms)
+[2025-03-05 18:26:05.702] [INFO] Completed iteration 680/1000 (1ms)
+[2025-03-05 18:26:05.702] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.702] [INFO] Memory cleanup: removed 22 low-value info sets
+[2025-03-05 18:26:05.713] [INFO] Completed iteration 690/1000 (1ms)
+[2025-03-05 18:26:05.725] [INFO] Completed iteration 700/1000 (1ms)
+[2025-03-05 18:26:05.725] [INFO] Iteration 700 complete. Info sets: 618
+[2025-03-05 18:26:05.725] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.725] [INFO] Memory cleanup: removed 13 low-value info sets
+[2025-03-05 18:26:05.739] [INFO] Completed iteration 710/1000 (1ms)
+[2025-03-05 18:26:05.750] [INFO] Completed iteration 720/1000 (1ms)
+[2025-03-05 18:26:05.750] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.750] [INFO] Memory cleanup: removed 20 low-value info sets
+[2025-03-05 18:26:05.765] [INFO] Completed iteration 730/1000 (1ms)
+[2025-03-05 18:26:05.779] [INFO] Completed iteration 740/1000 (1ms)
+[2025-03-05 18:26:05.779] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.779] [INFO] Memory cleanup: removed 23 low-value info sets
+[2025-03-05 18:26:05.791] [INFO] Completed iteration 750/1000 (1ms)
+[2025-03-05 18:26:05.803] [INFO] Completed iteration 760/1000 (1ms)
+[2025-03-05 18:26:05.803] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.803] [INFO] Memory cleanup: removed 25 low-value info sets
+[2025-03-05 18:26:05.817] [INFO] Completed iteration 770/1000 (1ms)
+[2025-03-05 18:26:05.828] [INFO] Completed iteration 780/1000 (1ms)
+[2025-03-05 18:26:05.828] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.828] [INFO] Memory cleanup: removed 21 low-value info sets
+[2025-03-05 18:26:05.838] [INFO] Completed iteration 790/1000 (0ms)
+[2025-03-05 18:26:05.851] [INFO] Completed iteration 800/1000 (1ms)
+[2025-03-05 18:26:05.851] [INFO] Iteration 800 complete. Info sets: 680
+[2025-03-05 18:26:05.851] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.851] [INFO] Memory cleanup: removed 20 low-value info sets
+[2025-03-05 18:26:05.862] [INFO] Completed iteration 810/1000 (1ms)
+[2025-03-05 18:26:05.877] [INFO] Completed iteration 820/1000 (1ms)
+[2025-03-05 18:26:05.877] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.877] [INFO] Memory cleanup: removed 26 low-value info sets
+[2025-03-05 18:26:05.890] [INFO] Completed iteration 830/1000 (1ms)
+[2025-03-05 18:26:05.903] [INFO] Completed iteration 840/1000 (1ms)
+[2025-03-05 18:26:05.903] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.903] [INFO] Memory cleanup: removed 20 low-value info sets
+[2025-03-05 18:26:05.917] [INFO] Completed iteration 850/1000 (1ms)
+[2025-03-05 18:26:05.931] [INFO] Completed iteration 860/1000 (1ms)
+[2025-03-05 18:26:05.931] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.931] [INFO] Memory cleanup: removed 20 low-value info sets
+[2025-03-05 18:26:05.945] [INFO] Completed iteration 870/1000 (1ms)
+[2025-03-05 18:26:05.958] [INFO] Completed iteration 880/1000 (2ms)
+[2025-03-05 18:26:05.958] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.958] [INFO] Memory cleanup: removed 15 low-value info sets
+[2025-03-05 18:26:05.973] [INFO] Completed iteration 890/1000 (1ms)
+[2025-03-05 18:26:05.986] [INFO] Completed iteration 900/1000 (1ms)
+[2025-03-05 18:26:05.986] [INFO] Iteration 900 complete. Info sets: 726
+[2025-03-05 18:26:05.986] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:05.986] [INFO] Memory cleanup: removed 17 low-value info sets
+[2025-03-05 18:26:05.999] [INFO] Completed iteration 910/1000 (1ms)
+[2025-03-05 18:26:06.013] [INFO] Completed iteration 920/1000 (1ms)
+[2025-03-05 18:26:06.013] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:06.013] [INFO] Memory cleanup: removed 21 low-value info sets
+[2025-03-05 18:26:06.029] [INFO] Completed iteration 930/1000 (2ms)
+[2025-03-05 18:26:06.045] [INFO] Completed iteration 940/1000 (1ms)
+[2025-03-05 18:26:06.045] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:06.045] [INFO] Memory cleanup: removed 28 low-value info sets
+[2025-03-05 18:26:06.058] [INFO] Completed iteration 950/1000 (1ms)
+[2025-03-05 18:26:06.073] [INFO] Completed iteration 960/1000 (2ms)
+[2025-03-05 18:26:06.073] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:06.073] [INFO] Memory cleanup: removed 19 low-value info sets
+[2025-03-05 18:26:06.085] [INFO] Completed iteration 970/1000 (1ms)
+[2025-03-05 18:26:06.099] [INFO] Completed iteration 980/1000 (1ms)
+[2025-03-05 18:26:06.099] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:06.099] [INFO] Memory cleanup: removed 21 low-value info sets
+[2025-03-05 18:26:06.112] [INFO] Completed iteration 990/1000 (1ms)
+[2025-03-05 18:26:06.125] [INFO] Completed iteration 1000/1000 (1ms)
+[2025-03-05 18:26:06.125] [INFO] Iteration 1000 complete. Info sets: 762
+[2025-03-05 18:26:06.125] [INFO] Performing memory cleanup...
+[2025-03-05 18:26:06.125] [INFO] Memory cleanup: removed 19 low-value info sets
+[2025-03-05 18:26:06.125] [INFO] Training completed in 1296ms
+[2025-03-05 18:26:06.125] [INFO] Processed information sets: 743
+[2025-03-05 18:26:06.125] [INFO] Training completed in 1 seconds
+[2025-03-05 18:26:06.125] [INFO] Saving strategy to data/strategies/strategy.dat
+[2025-03-05 18:26:06.125] [INFO] Saving strategy to: data/strategies/strategy.dat
+[2025-03-05 18:26:06.127] [INFO] Strategy saved successfully
+[2025-03-05 18:26:06.127] [INFO] Strategy saved successfully
+[2025-03-05 18:26:06.127] [INFO] Final statistics:
+[2025-03-05 18:26:06.127] [INFO]   Iterations: 1000
+[2025-03-05 18:26:06.127] [INFO]   Info sets: 743
+[2025-03-05 18:26:06.127] [INFO]   Exploitability: 0.000000
+[2025-03-05 18:26:06.127] [INFO]   Avg time per iteration: 1.032000 ms
+[2025-03-05 18:26:06.128] [INFO] Example completed successfully

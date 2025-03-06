@@ -50,5 +50,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/poker_cfr_lib.dir/DependInfo.cmake"
   "CMakeFiles/poker_cfr_bot.dir/DependInfo.cmake"
+  "CMakeFiles/strategy_viewer.dir/DependInfo.cmake"
   "CMakeFiles/poker_cfr_tests.dir/DependInfo.cmake"
   )

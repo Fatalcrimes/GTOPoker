@@ -198,6 +198,19 @@ poker_cfr_bot/fast:
 .PHONY : poker_cfr_bot/fast
 
 #=============================================================================
+# Target rules for targets named strategy_viewer
+
+# Build rule for target.
+strategy_viewer: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 strategy_viewer
+.PHONY : strategy_viewer
+
+# fast build rule for target.
+strategy_viewer/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/build
+.PHONY : strategy_viewer/fast
+
+#=============================================================================
 # Target rules for targets named poker_cfr_tests
 
 # Build rule for target.
@@ -233,6 +246,30 @@ examples/basic_cfr_example.s: examples/basic_cfr_example.cpp.s
 examples/basic_cfr_example.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/examples/basic_cfr_example.cpp.s
 .PHONY : examples/basic_cfr_example.cpp.s
+
+examples/strategy_viewer.o: examples/strategy_viewer.cpp.o
+.PHONY : examples/strategy_viewer.o
+
+# target to build an object file
+examples/strategy_viewer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/examples/strategy_viewer.cpp.o
+.PHONY : examples/strategy_viewer.cpp.o
+
+examples/strategy_viewer.i: examples/strategy_viewer.cpp.i
+.PHONY : examples/strategy_viewer.i
+
+# target to preprocess a source file
+examples/strategy_viewer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/examples/strategy_viewer.cpp.i
+.PHONY : examples/strategy_viewer.cpp.i
+
+examples/strategy_viewer.s: examples/strategy_viewer.cpp.s
+.PHONY : examples/strategy_viewer.s
+
+# target to generate assembly for a file
+examples/strategy_viewer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/examples/strategy_viewer.cpp.s
+.PHONY : examples/strategy_viewer.cpp.s
 
 src/abstraction/BetAbstraction.o: src/abstraction/BetAbstraction.cpp.o
 .PHONY : src/abstraction/BetAbstraction.o
@@ -538,9 +575,13 @@ help:
 	@echo "... poker_cfr_bot"
 	@echo "... poker_cfr_lib"
 	@echo "... poker_cfr_tests"
+	@echo "... strategy_viewer"
 	@echo "... examples/basic_cfr_example.o"
 	@echo "... examples/basic_cfr_example.i"
 	@echo "... examples/basic_cfr_example.s"
+	@echo "... examples/strategy_viewer.o"
+	@echo "... examples/strategy_viewer.i"
+	@echo "... examples/strategy_viewer.s"
 	@echo "... src/abstraction/BetAbstraction.o"
 	@echo "... src/abstraction/BetAbstraction.i"
 	@echo "... src/abstraction/BetAbstraction.s"

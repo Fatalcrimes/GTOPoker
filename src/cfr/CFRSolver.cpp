@@ -3,6 +3,7 @@
 #include "utils/Random.hpp"
 #include "abstraction/BetAbstraction.hpp"
 #include <chrono>
+#include <iostream>
 #include <thread>
 #include <numeric>
 #include <algorithm>
@@ -46,12 +47,29 @@ void CFRSolver::train(int iterations, bool useMonteCarloSampling) {
     LOG_INFO("Bet abstraction: " + betAbstraction_->getName());
     LOG_INFO("Using Monte Carlo sampling: " + std::string(useMonteCarloSampling ? "Yes" : "No"));
     
+    // OPTIMIZATION: Initialize game state once and reuse it
+    auto gameState = initialState_->clone();
+    
     // Run the specified number of iterations
     for (int i = 0; i < iterations; ++i) {
         auto iterationStart = std::chrono::high_resolution_clock::now();
         
-        // Run a single iteration
-        runIteration(useMonteCarloSampling);
+        // Reset game state instead of creating new one
+        gameState->reset();
+        gameState->dealHoleCards();
+        
+        // Initialize reach probabilities
+        std::unordered_map<Position, double> reachProbabilities;
+        reachProbabilities[Position::SB] = 1.0;
+        reachProbabilities[Position::BB] = 1.0;
+        reachProbabilities[Position::BTN] = 1.0;
+        
+        // Run CFR directly instead of through runIteration
+        if (useMonteCarloSampling) {
+            monteCarloSample(*gameState, reachProbabilities, 0);
+        } else {
+            cfr(*gameState, reachProbabilities, 0);
+        }
         
         auto iterationEnd = std::chrono::high_resolution_clock::now();
         auto iterationTime = std::chrono::duration_cast<std::chrono::milliseconds>(
@@ -65,7 +83,7 @@ void CFRSolver::train(int iterations, bool useMonteCarloSampling) {
         }
         
         // Report progress
-        if ((i + 1) % 100 == 0 || i == iterations - 1) {
+        if ((i + 1) % 10 == 0 || i == iterations - 1) {  // Changed from 100 to 10 for more frequent updates
             LOG_INFO("Completed iteration " + std::to_string(i + 1) + "/" + 
                     std::to_string(iterations) + " (" + std::to_string(iterationTime) + "ms)");
             
@@ -73,6 +91,16 @@ void CFRSolver::train(int iterations, bool useMonteCarloSampling) {
             if (progressCallback_) {
                 progressCallback_(i + 1, getTrainingStats());
             }
+        }
+        
+        // OPTIMIZATION: Perform memory cleanup periodically
+        if ((i + 1) % 20 == 0) {
+            LOG_INFO("Performing memory cleanup...");
+            size_t beforeSize = regretTable_.size();
+            pruneStrategiesAndRegrets();
+            size_t afterSize = regretTable_.size();
+            LOG_INFO("Memory cleanup: removed " + std::to_string(beforeSize - afterSize) + 
+                     " low-value info sets");
         }
     }
     
@@ -82,6 +110,13 @@ void CFRSolver::train(int iterations, bool useMonteCarloSampling) {
     
     LOG_INFO("Training completed in " + std::to_string(totalTime) + "ms");
     LOG_INFO("Processed information sets: " + std::to_string(regretTable_.size()));
+}
+
+// You'll need to add this helper method to the CFRSolver class:
+void CFRSolver::pruneStrategiesAndRegrets() {
+    // Remove info sets with very small regrets to save memory
+    const double REGRET_THRESHOLD = 0.01;
+    regretTable_.prune(REGRET_THRESHOLD);
 }
 
 void CFRSolver::runIteration(bool useMonteCarloSampling) {
@@ -99,9 +134,9 @@ void CFRSolver::runIteration(bool useMonteCarloSampling) {
     
     // Run CFR recursion
     if (useMonteCarloSampling) {
-        monteCarloSample(*gameState, reachProbabilities);
+        monteCarloSample(*gameState, reachProbabilities, 0);
     } else {
-        cfr(*gameState, reachProbabilities);
+        cfr(*gameState, reachProbabilities, 0);
     }
 }
 
@@ -216,97 +251,148 @@ void CFRSolver::setProgressCallback(ProgressCallback callback) {
 }
 
 std::unordered_map<Position, double> 
-CFRSolver::cfr(GameState& state, std::unordered_map<Position, double>& reachProbabilities) {
-    // If we're at a terminal state, return the payoffs
+CFRSolver::cfr(GameState& state, std::unordered_map<Position, double>& reachProbabilities, int depth) {
+    const int MAX_RECURSION_DEPTH = 100;
+    
+    // Check recursion depth
+    if (depth > MAX_RECURSION_DEPTH) {
+        LOG_WARNING("Maximum recursion depth exceeded in CFR");
+        std::unordered_map<Position, double> emergency_payoffs;
+        for (int i = 0; i < NUM_PLAYERS; ++i) {
+            emergency_payoffs[static_cast<Position>(i)] = 0.0;
+        }
+        return emergency_payoffs;
+    }
+    
+    // Terminal state check (fast path)
     if (state.isTerminal()) {
         return state.getPayoffs();
     }
     
-    // Get current player and their info set
+    // Get current player and info set
     Position currentPosition = state.getCurrentPosition();
     std::string infoSet = getAbstractedInfoSet(state, currentPosition);
     
-    // Get valid actions for current player
+    // Get valid actions with abstraction
     std::vector<Action> validActions = getAbstractedActions(state);
+    if (validActions.empty()) {
+        LOG_ERROR("No valid actions for non-terminal state");
+        std::unordered_map<Position, double> emergency_payoffs;
+        for (int i = 0; i < NUM_PLAYERS; ++i) {
+            emergency_payoffs[static_cast<Position>(i)] = 0.0;
+        }
+        return emergency_payoffs;
+    }
     
-    // Get current strategy for this info set
+    // Get strategy using positive regrets only
     auto strategy = getStrategy(infoSet, validActions);
     
-    // Update strategy table
-    for (const auto& [action, prob] : strategy) {
-        if (prob > 0.0) {
-            strategyTable_.setStrategy(infoSet, action, prob);
+    // OPTIMIZATION: Only update strategy sum if reach probability is significant
+    double reachProb = reachProbabilities[currentPosition];
+    if (reachProb > 0.00001) {
+        for (const auto& [action, prob] : strategy) {
+            if (prob > 0.0) {
+                strategyTable_.addToStrategySum(infoSet, action, reachProb * prob);
+            }
         }
     }
     
-    // Add contribution to average strategy weighted by reach probability
-    for (const auto& [action, prob] : strategy) {
-        if (prob > 0.0) {
-            strategyTable_.addToStrategySum(infoSet, action, reachProbabilities[currentPosition] * prob);
-        }
-    }
-    
-    // Initialize utilities for each action
-    std::unordered_map<Action, std::unordered_map<Position, double>> actionUtilities;
-    
-    // Initialize expected utility for the current player
-    std::unordered_map<Position, double> expectedUtility;
+    // Initialize expected utilities
+    std::unordered_map<Position, double> expectedUtilities;
     for (int i = 0; i < NUM_PLAYERS; ++i) {
-        expectedUtility[static_cast<Position>(i)] = 0.0;
+        expectedUtilities[static_cast<Position>(i)] = 0.0;
     }
+    
+    // OPTIMIZATION: Store action utilities in a vector instead of map
+    std::vector<std::unordered_map<Position, double>> actionUtilities(validActions.size());
+    
+    // OPTIMIZATION: Use preallocated nextReachProbs to avoid repeated allocation
+    auto nextReachProbs = reachProbabilities;
     
     // Recurse for each action
-    for (const auto& action : validActions) {
+    for (size_t i = 0; i < validActions.size(); ++i) {
+        const Action& action = validActions[i];
+        
+        // OPTIMIZATION: Update reach probabilities without creating new map
+        double oldReachProb = nextReachProbs[currentPosition];
+        nextReachProbs[currentPosition] = reachProb * strategy[action];
+        
         // Create a copy of the game state
         auto nextState = state.clone();
         
-        // Apply the action
-        bool roundOver = nextState->applyAction(action);
+        // Apply action and handle round transition
+        bool roundOver = false;
+        try {
+            roundOver = nextState->applyAction(action);
+        } catch (const std::exception& e) {
+            LOG_ERROR("Error applying action: " + std::string(e.what()));
+            continue;
+        }
         
-        // If round is over but game is not terminal, start next round
         if (roundOver && !nextState->isTerminal()) {
             nextState->startNextBettingRound();
         }
         
-        // Update reach probabilities for recursion
-        auto nextReachProbs = reachProbabilities;
-        nextReachProbs[currentPosition] *= strategy[action];
+        // Recursive call
+        actionUtilities[i] = cfr(*nextState, nextReachProbs, depth + 1);
         
-        // Recursively calculate utilities
-        auto actionUtil = cfr(*nextState, nextReachProbs);
-        
-        // Store utilities for this action
-        actionUtilities[action] = actionUtil;
-        
-        // Update expected utility
-        for (const auto& [pos, util] : actionUtil) {
-            expectedUtility[pos] += strategy[action] * util;
+        // Update expected utilities
+        for (const auto& [pos, util] : actionUtilities[i]) {
+            expectedUtilities[pos] += strategy[action] * util;
         }
+        
+        // OPTIMIZATION: Restore original reach probability
+        nextReachProbs[currentPosition] = oldReachProb;
     }
     
-    // Calculate counterfactual regrets
-    for (const auto& action : validActions) {
+    // OPTIMIZATION: Only compute regrets if reach probability is significant
+    if (reachProb > 0.00001) {
         // Calculate counterfactual probability
-        double counterfactualProb = 1.0;
+        double counterFactProb = 1.0;
         for (const auto& [pos, prob] : reachProbabilities) {
             if (pos != currentPosition) {
-                counterfactualProb *= prob;
+                counterFactProb *= prob;
             }
         }
         
-        // Calculate regret as counterfactual utility difference
-        double regret = counterfactualProb * (actionUtilities[action][currentPosition] - 
-                                             expectedUtility[currentPosition]);
-        
-        // Add to regret table
-        regretTable_.addRegret(infoSet, action, regret);
+        // Calculate regrets
+        for (size_t i = 0; i < validActions.size(); ++i) {
+            const Action& action = validActions[i];
+            
+            // OPTIMIZATION: Only process if we have utilities for this action
+            if (actionUtilities[i].empty()) continue;
+            
+            // Calculate regret
+            double actionUtil = actionUtilities[i][currentPosition];
+            double regret = counterFactProb * (actionUtil - expectedUtilities[currentPosition]);
+            
+            // CFR+ uses positive regrets only
+            if (regret > 0.0) {
+                regretTable_.addRegret(infoSet, action, regret);
+            }
+        }
     }
     
-    return expectedUtility;
+    return expectedUtilities;
 }
 
 std::unordered_map<Position, double> 
-CFRSolver::monteCarloSample(GameState& state, std::unordered_map<Position, double>& reachProbabilities) {
+CFRSolver::monteCarloSample(GameState& state, std::unordered_map<Position, double>& reachProbabilities, int depth = 0) {
+    
+    if (depth > MAX_RECURSION_DEPTH) {
+        LOG_ERROR("Maximum recursion depth exceeded in monteCarloSample");
+        std::unordered_map<Position, double> emergency_payoffs;
+        for (int i = 0; i < NUM_PLAYERS; ++i) {
+            emergency_payoffs[static_cast<Position>(i)] = 0.0;
+        }
+        return emergency_payoffs;
+    }
+    
+    // Add debug logging
+    LOG_DEBUG("monteCarloSample depth=" + std::to_string(depth) + 
+              " round=" + bettingRoundToString(state.getBettingRound()) + 
+              " position=" + positionToString(state.getCurrentPosition()));
+
     // If we're at a terminal state, return the payoffs
     if (state.isTerminal()) {
         return state.getPayoffs();
@@ -398,7 +484,7 @@ CFRSolver::monteCarloSample(GameState& state, std::unordered_map<Position, doubl
     nextReachProbs[currentPosition] *= strategy[sampledAction];
     
     // Recursively calculate utilities
-    auto sampledUtil = monteCarloSample(*nextState, nextReachProbs);
+    auto sampledUtil = monteCarloSample(*nextState, nextReachProbs, depth + 1);
     
     // Initialize expected utility
     std::unordered_map<Position, double> expectedUtility = sampledUtil;

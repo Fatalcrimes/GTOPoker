@@ -36,6 +36,8 @@ public:
     // Check if an information set exists in the table
     bool hasInfoSet(const std::string& infoSet) const;
     
+    void prune(double threshold);
+
     // Clear all regrets
     void clear();
     

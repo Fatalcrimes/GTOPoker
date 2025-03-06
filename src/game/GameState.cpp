@@ -1,4 +1,5 @@
 #include "game/GameState.hpp"
+#include "utils/Logger.hpp"
 #include <algorithm>
 #include <random>
 #include <sstream>
@@ -417,6 +418,16 @@ void GameState::dealRiver() {
 }
 
 bool GameState::applyAction(const Action& requestedAction) {
+    if (!isActionValid(requestedAction)) {
+        // Find the closest valid action for error reporting
+        std::ostringstream oss;
+        oss << "Invalid action: " << requestedAction.toString() << ". Valid actions are: ";
+        for (const auto& validAction : getValidActions()) {
+            oss << validAction.toString() << ", ";
+        }
+        throw std::invalid_argument(oss.str());
+    }
+    
     // Find the closest valid action
     Action action = findClosestValidAction(requestedAction);
     
@@ -492,7 +503,34 @@ bool GameState::applyAction(const Action& requestedAction) {
     return advanceAction();
 }
 
+bool GameState::isActionValid(const Action& requestedAction) const {
+    auto validActions = getValidActions();
+    
+    // Use a small epsilon for floating point comparisons
+    const double EPSILON = 0.01;
+    
+    for (const auto& validAction : validActions) {
+        if (validAction.getType() == requestedAction.getType()) {
+            // For bet actions, compare amounts with tolerance
+            if (validAction.getType() == ActionType::BET || 
+                validAction.getType() == ActionType::RAISE || 
+                validAction.getType() == ActionType::CALL) {
+                if (std::abs(validAction.getAmount() - requestedAction.getAmount()) < EPSILON) {
+                    return true;
+                }
+            } else {
+                // For non-bet actions (fold/check), just compare type
+                return true;
+            }
+        }
+    }
+    
+    return false;
+}
+
 bool GameState::advanceAction() {
+    LOG_DEBUG("Advancing action from position " + positionToString(currentPosition_));
+    
     // Count active (not folded) players
     int activePlayers = 0;
     for (const auto& player : players_) {
@@ -503,6 +541,7 @@ bool GameState::advanceAction() {
     
     // If only one player left, round is over
     if (activePlayers <= 1) {
+        LOG_DEBUG("Round over: only one active player");
         return true;
     }
     
@@ -516,27 +555,39 @@ bool GameState::advanceAction() {
             if (!foundFirst) {
                 firstBet = player.currentBet;
                 foundFirst = true;
-            } else if (player.currentBet != firstBet) {
+            } else if (std::abs(player.currentBet - firstBet) > 0.001) {
                 allEqualBets = false;
                 break;
             }
         }
     }
     
+    LOG_DEBUG("All equal bets: " + std::string(allEqualBets ? "true" : "false"));
+    
     // Find the next position to act
     Position nextPos = currentPosition_;
+    int safeguard = 0; // Prevent infinite loop
     do {
         nextPos = nextPosition(nextPos);
+        safeguard++;
+        if (safeguard > NUM_PLAYERS) {
+            LOG_ERROR("Infinite loop detected in advanceAction");
+            return true; // Emergency exit
+        }
     } while (players_[static_cast<size_t>(nextPos)].folded);
+    
+    LOG_DEBUG("Next position: " + positionToString(nextPos));
     
     // If we're back to the last aggressor (or start of the round) and all bets are equal,
     // the betting round is over
     if (allEqualBets && (nextPos == lastAggressor_ || lastAggressor_ == Position::SB)) {
+        LOG_DEBUG("Round over: back to aggressor with equal bets");
         return true;
     }
     
     // Otherwise, move to the next player
     currentPosition_ = nextPos;
+    LOG_DEBUG("Moving to next position: " + positionToString(currentPosition_));
     return false;
 }
 
@@ -579,6 +630,10 @@ void GameState::startNextBettingRound() {
 }
 
 bool GameState::isTerminal() const {
+    // Add detailed logging to see when this is checked
+    LOG_DEBUG("Checking if state is terminal: round=" + bettingRoundToString(bettingRound_) +
+              " position=" + positionToString(currentPosition_));
+    
     // Count active players
     int activePlayers = 0;
     for (const auto& player : players_) {
@@ -587,8 +642,11 @@ bool GameState::isTerminal() const {
         }
     }
     
+    LOG_DEBUG("Active players: " + std::to_string(activePlayers));
+    
     // If only one player left, game is terminal
     if (activePlayers <= 1) {
+        LOG_DEBUG("Terminal state detected: only one active player");
         return true;
     }
     
@@ -597,21 +655,25 @@ bool GameState::isTerminal() const {
         // Check if all active players have the same bet
         double firstBet = 0.0;
         bool foundFirst = false;
+        bool allEqualBets = true;
         
         for (const auto& player : players_) {
             if (!player.folded) {
                 if (!foundFirst) {
                     firstBet = player.currentBet;
                     foundFirst = true;
-                } else if (player.currentBet != firstBet) {
-                    return false;  // Not all players have same bet
+                } else if (std::abs(player.currentBet - firstBet) > 0.001) {
+                    allEqualBets = false;
+                    break;
                 }
             }
         }
         
-        return true;  // All players have same bet, river round complete
+        LOG_DEBUG("River round, all equal bets: " + std::string(allEqualBets ? "true" : "false"));
+        return allEqualBets;  // Terminal if all players have same bet on river
     }
     
+    LOG_DEBUG("Not terminal state");
     return false;  // Not terminal
 }
 

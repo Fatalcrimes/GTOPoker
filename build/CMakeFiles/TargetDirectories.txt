@@ -1,5 +1,6 @@
 /Users/maxim/Desktop/GTOPoker/build/CMakeFiles/poker_cfr_lib.dir
 /Users/maxim/Desktop/GTOPoker/build/CMakeFiles/poker_cfr_bot.dir
+/Users/maxim/Desktop/GTOPoker/build/CMakeFiles/strategy_viewer.dir
 /Users/maxim/Desktop/GTOPoker/build/CMakeFiles/poker_cfr_tests.dir
 /Users/maxim/Desktop/GTOPoker/build/CMakeFiles/test.dir
 /Users/maxim/Desktop/GTOPoker/build/CMakeFiles/edit_cache.dir

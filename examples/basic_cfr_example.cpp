@@ -22,7 +22,7 @@ int main(int argc, char* argv[]) {
     int iterations = 1000;
     std::string loadFile = "";
     std::string saveFile = "strategy.dat";
-    bool useMonteCarloSampling = false;
+    bool useMonteCarloSampling = true;
     bool runTest = true;
     
     for (int i = 1; i < argc; ++i) {
@@ -52,8 +52,8 @@ int main(int argc, char* argv[]) {
     
     try {
         // Create abstraction objects
-        auto handAbstraction = HandAbstraction::create(HandAbstraction::Level::STANDARD);
-        auto betAbstraction = BetAbstraction::create(BetAbstraction::Level::STANDARD);
+        auto handAbstraction = HandAbstraction::create(HandAbstraction::Level::MINIMAL);
+        auto betAbstraction = BetAbstraction::create(BetAbstraction::Level::MINIMAL);
         
         // Precompute abstractions
         LOG_INFO("Precomputing hand abstractions...");

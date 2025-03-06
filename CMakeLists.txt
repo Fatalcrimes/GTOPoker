@@ -41,10 +41,19 @@ target_include_directories(poker_cfr_lib PUBLIC
 add_executable(poker_cfr_bot ${PROJECT_SOURCE_DIR}/examples/basic_cfr_example.cpp)
 target_link_libraries(poker_cfr_bot poker_cfr_lib)
 
+# Add strategy viewer executable
+add_executable(strategy_viewer
+    examples/strategy_viewer.cpp
+)
+target_link_libraries(strategy_viewer
+    poker_cfr_lib
+)
+
 # Tests
 option(BUILD_TESTS "Build tests" ON)
 if(BUILD_TESTS)
   enable_testing()
+  
   # The below assumes googletest is available
   # If using a different testing framework, adjust accordingly
   # add_subdirectory(third_party/googletest)

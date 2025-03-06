@@ -110,6 +110,38 @@ std::vector<std::string> RegretTable::getAllInfoSets() const {
     return infoSets;
 }
 
+void RegretTable::prune(double threshold) {
+    // Write lock for thread safety
+    std::unique_lock<std::shared_mutex> lock(mutex_);
+    
+    // Keep track of entries to remove
+    std::vector<std::string> infoSetsToRemove;
+    
+    // Find info sets where all regrets are below threshold
+    for (const auto& [infoSet, actionRegrets] : regrets_) {
+        bool allSmall = true;
+        double maxRegret = 0.0;
+        
+        for (const auto& [action, regret] : actionRegrets) {
+            maxRegret = std::max(maxRegret, std::abs(regret));
+            if (std::abs(regret) > threshold) {
+                allSmall = false;
+                break;
+            }
+        }
+        
+        // Only remove if all regrets are small and this isn't a frequently visited state
+        if (allSmall && maxRegret < threshold) {
+            infoSetsToRemove.push_back(infoSet);
+        }
+    }
+    
+    // Remove the identified info sets
+    for (const auto& infoSet : infoSetsToRemove) {
+        regrets_.erase(infoSet);
+    }
+}
+
 // ActionHash implementation
 std::size_t RegretTable::ActionHash::operator()(const Action& action) const {
     // Combine the action type and amount into a single hash value

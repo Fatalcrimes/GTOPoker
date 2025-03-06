@@ -67,11 +67,11 @@ public:
 private:
     // CFR+ implementation with regret matching and averaging
     std::unordered_map<Position, double> 
-    cfr(GameState& state, std::unordered_map<Position, double>& reachProbabilities);
+    cfr(GameState& state, std::unordered_map<Position, double>& reachProbabilities, int depth);
     
     // Monte Carlo CFR implementation for faster convergence
     std::unordered_map<Position, double> 
-    monteCarloSample(GameState& state, std::unordered_map<Position, double>& reachProbabilities);
+    monteCarloSample(GameState& state, std::unordered_map<Position, double>& reachProbabilities, int depth);
     
     // Get abstracted information set
     std::string getAbstractedInfoSet(const GameState& state, Position position) const;
@@ -79,6 +79,8 @@ private:
     // Get abstracted actions
     std::vector<Action> getAbstractedActions(const GameState& state) const;
     
+    void pruneStrategiesAndRegrets();
+
     // Update strategy based on current regrets
     void updateStrategy(const std::string& infoSet, const std::vector<Action>& validActions);
     
@@ -91,6 +93,7 @@ private:
     StrategyTable strategyTable_;
     
     // Training statistics - no need for atomic since we protect with mutex
+    static constexpr int MAX_RECURSION_DEPTH = 100;
     int iterationsCompleted_{0};
     double totalTrainingTime_{0.0};
     ProgressCallback progressCallback_;

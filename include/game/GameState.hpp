@@ -56,6 +56,8 @@ public:
     
     Action findClosestValidAction(const Action& action) const;
 
+    bool isActionValid(const Action& action) const;
+
     // Information sets
     std::string getInfoSet(Position position) const;
     
