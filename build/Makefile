@@ -172,19 +172,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named poker_cfr_lib
-
-# Build rule for target.
-poker_cfr_lib: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 poker_cfr_lib
-.PHONY : poker_cfr_lib
-
-# fast build rule for target.
-poker_cfr_lib/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_lib.dir/build.make CMakeFiles/poker_cfr_lib.dir/build
-.PHONY : poker_cfr_lib/fast
-
-#=============================================================================
 # Target rules for targets named poker_cfr_bot
 
 # Build rule for target.
@@ -209,19 +196,6 @@ strategy_viewer: cmake_check_build_system
 strategy_viewer/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/build
 .PHONY : strategy_viewer/fast
-
-#=============================================================================
-# Target rules for targets named poker_cfr_tests
-
-# Build rule for target.
-poker_cfr_tests: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 poker_cfr_tests
-.PHONY : poker_cfr_tests
-
-# fast build rule for target.
-poker_cfr_tests/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_tests.dir/build.make CMakeFiles/poker_cfr_tests.dir/build
-.PHONY : poker_cfr_tests/fast
 
 examples/basic_cfr_example.o: examples/basic_cfr_example.cpp.o
 .PHONY : examples/basic_cfr_example.o
@@ -276,7 +250,8 @@ src/abstraction/BetAbstraction.o: src/abstraction/BetAbstraction.cpp.o
 
 # target to build an object file
 src/abstraction/BetAbstraction.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_lib.dir/build.make CMakeFiles/poker_cfr_lib.dir/src/abstraction/BetAbstraction.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/abstraction/BetAbstraction.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/abstraction/BetAbstraction.cpp.o
 .PHONY : src/abstraction/BetAbstraction.cpp.o
 
 src/abstraction/BetAbstraction.i: src/abstraction/BetAbstraction.cpp.i
@@ -284,7 +259,8 @@ src/abstraction/BetAbstraction.i: src/abstraction/BetAbstraction.cpp.i
 
 # target to preprocess a source file
 src/abstraction/BetAbstraction.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_lib.dir/build.make CMakeFiles/poker_cfr_lib.dir/src/abstraction/BetAbstraction.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/abstraction/BetAbstraction.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/abstraction/BetAbstraction.cpp.i
 .PHONY : src/abstraction/BetAbstraction.cpp.i
 
 src/abstraction/BetAbstraction.s: src/abstraction/BetAbstraction.cpp.s
@@ -292,7 +268,8 @@ src/abstraction/BetAbstraction.s: src/abstraction/BetAbstraction.cpp.s
 
 # target to generate assembly for a file
 src/abstraction/BetAbstraction.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_lib.dir/build.make CMakeFiles/poker_cfr_lib.dir/src/abstraction/BetAbstraction.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/abstraction/BetAbstraction.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/abstraction/BetAbstraction.cpp.s
 .PHONY : src/abstraction/BetAbstraction.cpp.s
 
 src/abstraction/HandAbstraction.o: src/abstraction/HandAbstraction.cpp.o
@@ -300,7 +277,8 @@ src/abstraction/HandAbstraction.o: src/abstraction/HandAbstraction.cpp.o
 
 # target to build an object file
 src/abstraction/HandAbstraction.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_lib.dir/build.make CMakeFiles/poker_cfr_lib.dir/src/abstraction/HandAbstraction.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/abstraction/HandAbstraction.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/abstraction/HandAbstraction.cpp.o
 .PHONY : src/abstraction/HandAbstraction.cpp.o
 
 src/abstraction/HandAbstraction.i: src/abstraction/HandAbstraction.cpp.i
@@ -308,7 +286,8 @@ src/abstraction/HandAbstraction.i: src/abstraction/HandAbstraction.cpp.i
 
 # target to preprocess a source file
 src/abstraction/HandAbstraction.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_lib.dir/build.make CMakeFiles/poker_cfr_lib.dir/src/abstraction/HandAbstraction.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/abstraction/HandAbstraction.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/abstraction/HandAbstraction.cpp.i
 .PHONY : src/abstraction/HandAbstraction.cpp.i
 
 src/abstraction/HandAbstraction.s: src/abstraction/HandAbstraction.cpp.s
@@ -316,7 +295,8 @@ src/abstraction/HandAbstraction.s: src/abstraction/HandAbstraction.cpp.s
 
 # target to generate assembly for a file
 src/abstraction/HandAbstraction.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_lib.dir/build.make CMakeFiles/poker_cfr_lib.dir/src/abstraction/HandAbstraction.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/abstraction/HandAbstraction.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/abstraction/HandAbstraction.cpp.s
 .PHONY : src/abstraction/HandAbstraction.cpp.s
 
 src/cfr/CFRSolver.o: src/cfr/CFRSolver.cpp.o
@@ -324,7 +304,8 @@ src/cfr/CFRSolver.o: src/cfr/CFRSolver.cpp.o
 
 # target to build an object file
 src/cfr/CFRSolver.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_lib.dir/build.make CMakeFiles/poker_cfr_lib.dir/src/cfr/CFRSolver.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/cfr/CFRSolver.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/cfr/CFRSolver.cpp.o
 .PHONY : src/cfr/CFRSolver.cpp.o
 
 src/cfr/CFRSolver.i: src/cfr/CFRSolver.cpp.i
@@ -332,7 +313,8 @@ src/cfr/CFRSolver.i: src/cfr/CFRSolver.cpp.i
 
 # target to preprocess a source file
 src/cfr/CFRSolver.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_lib.dir/build.make CMakeFiles/poker_cfr_lib.dir/src/cfr/CFRSolver.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/cfr/CFRSolver.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/cfr/CFRSolver.cpp.i
 .PHONY : src/cfr/CFRSolver.cpp.i
 
 src/cfr/CFRSolver.s: src/cfr/CFRSolver.cpp.s
@@ -340,7 +322,8 @@ src/cfr/CFRSolver.s: src/cfr/CFRSolver.cpp.s
 
 # target to generate assembly for a file
 src/cfr/CFRSolver.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_lib.dir/build.make CMakeFiles/poker_cfr_lib.dir/src/cfr/CFRSolver.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/cfr/CFRSolver.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/cfr/CFRSolver.cpp.s
 .PHONY : src/cfr/CFRSolver.cpp.s
 
 src/cfr/RegretTable.o: src/cfr/RegretTable.cpp.o
@@ -348,7 +331,8 @@ src/cfr/RegretTable.o: src/cfr/RegretTable.cpp.o
 
 # target to build an object file
 src/cfr/RegretTable.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_lib.dir/build.make CMakeFiles/poker_cfr_lib.dir/src/cfr/RegretTable.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/cfr/RegretTable.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/cfr/RegretTable.cpp.o
 .PHONY : src/cfr/RegretTable.cpp.o
 
 src/cfr/RegretTable.i: src/cfr/RegretTable.cpp.i
@@ -356,7 +340,8 @@ src/cfr/RegretTable.i: src/cfr/RegretTable.cpp.i
 
 # target to preprocess a source file
 src/cfr/RegretTable.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_lib.dir/build.make CMakeFiles/poker_cfr_lib.dir/src/cfr/RegretTable.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/cfr/RegretTable.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/cfr/RegretTable.cpp.i
 .PHONY : src/cfr/RegretTable.cpp.i
 
 src/cfr/RegretTable.s: src/cfr/RegretTable.cpp.s
@@ -364,7 +349,8 @@ src/cfr/RegretTable.s: src/cfr/RegretTable.cpp.s
 
 # target to generate assembly for a file
 src/cfr/RegretTable.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_lib.dir/build.make CMakeFiles/poker_cfr_lib.dir/src/cfr/RegretTable.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/cfr/RegretTable.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/cfr/RegretTable.cpp.s
 .PHONY : src/cfr/RegretTable.cpp.s
 
 src/cfr/StrategyTable.o: src/cfr/StrategyTable.cpp.o
@@ -372,7 +358,8 @@ src/cfr/StrategyTable.o: src/cfr/StrategyTable.cpp.o
 
 # target to build an object file
 src/cfr/StrategyTable.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_lib.dir/build.make CMakeFiles/poker_cfr_lib.dir/src/cfr/StrategyTable.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/cfr/StrategyTable.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/cfr/StrategyTable.cpp.o
 .PHONY : src/cfr/StrategyTable.cpp.o
 
 src/cfr/StrategyTable.i: src/cfr/StrategyTable.cpp.i
@@ -380,7 +367,8 @@ src/cfr/StrategyTable.i: src/cfr/StrategyTable.cpp.i
 
 # target to preprocess a source file
 src/cfr/StrategyTable.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_lib.dir/build.make CMakeFiles/poker_cfr_lib.dir/src/cfr/StrategyTable.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/cfr/StrategyTable.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/cfr/StrategyTable.cpp.i
 .PHONY : src/cfr/StrategyTable.cpp.i
 
 src/cfr/StrategyTable.s: src/cfr/StrategyTable.cpp.s
@@ -388,7 +376,8 @@ src/cfr/StrategyTable.s: src/cfr/StrategyTable.cpp.s
 
 # target to generate assembly for a file
 src/cfr/StrategyTable.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_lib.dir/build.make CMakeFiles/poker_cfr_lib.dir/src/cfr/StrategyTable.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/cfr/StrategyTable.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/cfr/StrategyTable.cpp.s
 .PHONY : src/cfr/StrategyTable.cpp.s
 
 src/game/Action.o: src/game/Action.cpp.o
@@ -396,7 +385,8 @@ src/game/Action.o: src/game/Action.cpp.o
 
 # target to build an object file
 src/game/Action.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_lib.dir/build.make CMakeFiles/poker_cfr_lib.dir/src/game/Action.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/game/Action.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/game/Action.cpp.o
 .PHONY : src/game/Action.cpp.o
 
 src/game/Action.i: src/game/Action.cpp.i
@@ -404,7 +394,8 @@ src/game/Action.i: src/game/Action.cpp.i
 
 # target to preprocess a source file
 src/game/Action.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_lib.dir/build.make CMakeFiles/poker_cfr_lib.dir/src/game/Action.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/game/Action.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/game/Action.cpp.i
 .PHONY : src/game/Action.cpp.i
 
 src/game/Action.s: src/game/Action.cpp.s
@@ -412,7 +403,8 @@ src/game/Action.s: src/game/Action.cpp.s
 
 # target to generate assembly for a file
 src/game/Action.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_lib.dir/build.make CMakeFiles/poker_cfr_lib.dir/src/game/Action.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/game/Action.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/game/Action.cpp.s
 .PHONY : src/game/Action.cpp.s
 
 src/game/GameState.o: src/game/GameState.cpp.o
@@ -420,7 +412,8 @@ src/game/GameState.o: src/game/GameState.cpp.o
 
 # target to build an object file
 src/game/GameState.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_lib.dir/build.make CMakeFiles/poker_cfr_lib.dir/src/game/GameState.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/game/GameState.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/game/GameState.cpp.o
 .PHONY : src/game/GameState.cpp.o
 
 src/game/GameState.i: src/game/GameState.cpp.i
@@ -428,7 +421,8 @@ src/game/GameState.i: src/game/GameState.cpp.i
 
 # target to preprocess a source file
 src/game/GameState.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_lib.dir/build.make CMakeFiles/poker_cfr_lib.dir/src/game/GameState.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/game/GameState.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/game/GameState.cpp.i
 .PHONY : src/game/GameState.cpp.i
 
 src/game/GameState.s: src/game/GameState.cpp.s
@@ -436,15 +430,44 @@ src/game/GameState.s: src/game/GameState.cpp.s
 
 # target to generate assembly for a file
 src/game/GameState.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_lib.dir/build.make CMakeFiles/poker_cfr_lib.dir/src/game/GameState.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/game/GameState.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/game/GameState.cpp.s
 .PHONY : src/game/GameState.cpp.s
+
+src/game/HandEvaluator.o: src/game/HandEvaluator.cpp.o
+.PHONY : src/game/HandEvaluator.o
+
+# target to build an object file
+src/game/HandEvaluator.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/game/HandEvaluator.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/game/HandEvaluator.cpp.o
+.PHONY : src/game/HandEvaluator.cpp.o
+
+src/game/HandEvaluator.i: src/game/HandEvaluator.cpp.i
+.PHONY : src/game/HandEvaluator.i
+
+# target to preprocess a source file
+src/game/HandEvaluator.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/game/HandEvaluator.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/game/HandEvaluator.cpp.i
+.PHONY : src/game/HandEvaluator.cpp.i
+
+src/game/HandEvaluator.s: src/game/HandEvaluator.cpp.s
+.PHONY : src/game/HandEvaluator.s
+
+# target to generate assembly for a file
+src/game/HandEvaluator.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/game/HandEvaluator.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/game/HandEvaluator.cpp.s
+.PHONY : src/game/HandEvaluator.cpp.s
 
 src/game/PokerDefs.o: src/game/PokerDefs.cpp.o
 .PHONY : src/game/PokerDefs.o
 
 # target to build an object file
 src/game/PokerDefs.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_lib.dir/build.make CMakeFiles/poker_cfr_lib.dir/src/game/PokerDefs.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/game/PokerDefs.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/game/PokerDefs.cpp.o
 .PHONY : src/game/PokerDefs.cpp.o
 
 src/game/PokerDefs.i: src/game/PokerDefs.cpp.i
@@ -452,7 +475,8 @@ src/game/PokerDefs.i: src/game/PokerDefs.cpp.i
 
 # target to preprocess a source file
 src/game/PokerDefs.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_lib.dir/build.make CMakeFiles/poker_cfr_lib.dir/src/game/PokerDefs.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/game/PokerDefs.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/game/PokerDefs.cpp.i
 .PHONY : src/game/PokerDefs.cpp.i
 
 src/game/PokerDefs.s: src/game/PokerDefs.cpp.s
@@ -460,15 +484,44 @@ src/game/PokerDefs.s: src/game/PokerDefs.cpp.s
 
 # target to generate assembly for a file
 src/game/PokerDefs.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_lib.dir/build.make CMakeFiles/poker_cfr_lib.dir/src/game/PokerDefs.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/game/PokerDefs.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/game/PokerDefs.cpp.s
 .PHONY : src/game/PokerDefs.cpp.s
+
+src/utils/Converter.o: src/utils/Converter.cpp.o
+.PHONY : src/utils/Converter.o
+
+# target to build an object file
+src/utils/Converter.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/utils/Converter.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/utils/Converter.cpp.o
+.PHONY : src/utils/Converter.cpp.o
+
+src/utils/Converter.i: src/utils/Converter.cpp.i
+.PHONY : src/utils/Converter.i
+
+# target to preprocess a source file
+src/utils/Converter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/utils/Converter.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/utils/Converter.cpp.i
+.PHONY : src/utils/Converter.cpp.i
+
+src/utils/Converter.s: src/utils/Converter.cpp.s
+.PHONY : src/utils/Converter.s
+
+# target to generate assembly for a file
+src/utils/Converter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/utils/Converter.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/utils/Converter.cpp.s
+.PHONY : src/utils/Converter.cpp.s
 
 src/utils/Logger.o: src/utils/Logger.cpp.o
 .PHONY : src/utils/Logger.o
 
 # target to build an object file
 src/utils/Logger.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_lib.dir/build.make CMakeFiles/poker_cfr_lib.dir/src/utils/Logger.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/utils/Logger.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/utils/Logger.cpp.o
 .PHONY : src/utils/Logger.cpp.o
 
 src/utils/Logger.i: src/utils/Logger.cpp.i
@@ -476,7 +529,8 @@ src/utils/Logger.i: src/utils/Logger.cpp.i
 
 # target to preprocess a source file
 src/utils/Logger.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_lib.dir/build.make CMakeFiles/poker_cfr_lib.dir/src/utils/Logger.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/utils/Logger.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/utils/Logger.cpp.i
 .PHONY : src/utils/Logger.cpp.i
 
 src/utils/Logger.s: src/utils/Logger.cpp.s
@@ -484,7 +538,8 @@ src/utils/Logger.s: src/utils/Logger.cpp.s
 
 # target to generate assembly for a file
 src/utils/Logger.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_lib.dir/build.make CMakeFiles/poker_cfr_lib.dir/src/utils/Logger.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/utils/Logger.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/utils/Logger.cpp.s
 .PHONY : src/utils/Logger.cpp.s
 
 src/utils/Random.o: src/utils/Random.cpp.o
@@ -492,7 +547,8 @@ src/utils/Random.o: src/utils/Random.cpp.o
 
 # target to build an object file
 src/utils/Random.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_lib.dir/build.make CMakeFiles/poker_cfr_lib.dir/src/utils/Random.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/utils/Random.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/utils/Random.cpp.o
 .PHONY : src/utils/Random.cpp.o
 
 src/utils/Random.i: src/utils/Random.cpp.i
@@ -500,7 +556,8 @@ src/utils/Random.i: src/utils/Random.cpp.i
 
 # target to preprocess a source file
 src/utils/Random.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_lib.dir/build.make CMakeFiles/poker_cfr_lib.dir/src/utils/Random.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/utils/Random.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/utils/Random.cpp.i
 .PHONY : src/utils/Random.cpp.i
 
 src/utils/Random.s: src/utils/Random.cpp.s
@@ -508,7 +565,8 @@ src/utils/Random.s: src/utils/Random.cpp.s
 
 # target to generate assembly for a file
 src/utils/Random.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_lib.dir/build.make CMakeFiles/poker_cfr_lib.dir/src/utils/Random.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/utils/Random.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/utils/Random.cpp.s
 .PHONY : src/utils/Random.cpp.s
 
 src/utils/Serialization.o: src/utils/Serialization.cpp.o
@@ -516,7 +574,8 @@ src/utils/Serialization.o: src/utils/Serialization.cpp.o
 
 # target to build an object file
 src/utils/Serialization.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_lib.dir/build.make CMakeFiles/poker_cfr_lib.dir/src/utils/Serialization.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/utils/Serialization.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/utils/Serialization.cpp.o
 .PHONY : src/utils/Serialization.cpp.o
 
 src/utils/Serialization.i: src/utils/Serialization.cpp.i
@@ -524,7 +583,8 @@ src/utils/Serialization.i: src/utils/Serialization.cpp.i
 
 # target to preprocess a source file
 src/utils/Serialization.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_lib.dir/build.make CMakeFiles/poker_cfr_lib.dir/src/utils/Serialization.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/utils/Serialization.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/utils/Serialization.cpp.i
 .PHONY : src/utils/Serialization.cpp.i
 
 src/utils/Serialization.s: src/utils/Serialization.cpp.s
@@ -532,32 +592,9 @@ src/utils/Serialization.s: src/utils/Serialization.cpp.s
 
 # target to generate assembly for a file
 src/utils/Serialization.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_lib.dir/build.make CMakeFiles/poker_cfr_lib.dir/src/utils/Serialization.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_bot.dir/build.make CMakeFiles/poker_cfr_bot.dir/src/utils/Serialization.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/strategy_viewer.dir/build.make CMakeFiles/strategy_viewer.dir/src/utils/Serialization.cpp.s
 .PHONY : src/utils/Serialization.cpp.s
-
-tests/test_game.o: tests/test_game.cpp.o
-.PHONY : tests/test_game.o
-
-# target to build an object file
-tests/test_game.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_tests.dir/build.make CMakeFiles/poker_cfr_tests.dir/tests/test_game.cpp.o
-.PHONY : tests/test_game.cpp.o
-
-tests/test_game.i: tests/test_game.cpp.i
-.PHONY : tests/test_game.i
-
-# target to preprocess a source file
-tests/test_game.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_tests.dir/build.make CMakeFiles/poker_cfr_tests.dir/tests/test_game.cpp.i
-.PHONY : tests/test_game.cpp.i
-
-tests/test_game.s: tests/test_game.cpp.s
-.PHONY : tests/test_game.s
-
-# target to generate assembly for a file
-tests/test_game.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/poker_cfr_tests.dir/build.make CMakeFiles/poker_cfr_tests.dir/tests/test_game.cpp.s
-.PHONY : tests/test_game.cpp.s
 
 # Help Target
 help:
@@ -573,8 +610,6 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... poker_cfr_bot"
-	@echo "... poker_cfr_lib"
-	@echo "... poker_cfr_tests"
 	@echo "... strategy_viewer"
 	@echo "... examples/basic_cfr_example.o"
 	@echo "... examples/basic_cfr_example.i"
@@ -603,9 +638,15 @@ help:
 	@echo "... src/game/GameState.o"
 	@echo "... src/game/GameState.i"
 	@echo "... src/game/GameState.s"
+	@echo "... src/game/HandEvaluator.o"
+	@echo "... src/game/HandEvaluator.i"
+	@echo "... src/game/HandEvaluator.s"
 	@echo "... src/game/PokerDefs.o"
 	@echo "... src/game/PokerDefs.i"
 	@echo "... src/game/PokerDefs.s"
+	@echo "... src/utils/Converter.o"
+	@echo "... src/utils/Converter.i"
+	@echo "... src/utils/Converter.s"
 	@echo "... src/utils/Logger.o"
 	@echo "... src/utils/Logger.i"
 	@echo "... src/utils/Logger.s"
@@ -615,9 +656,6 @@ help:
 	@echo "... src/utils/Serialization.o"
 	@echo "... src/utils/Serialization.i"
 	@echo "... src/utils/Serialization.s"
-	@echo "... tests/test_game.o"
-	@echo "... tests/test_game.i"
-	@echo "... tests/test_game.s"
 .PHONY : help
 
 

@@ -86,18 +86,225 @@ CMakeFiles/poker_cfr_bot.dir/examples/basic_cfr_example.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/poker_cfr_bot.dir/examples/basic_cfr_example.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/maxim/Desktop/GTOPoker/examples/basic_cfr_example.cpp -o CMakeFiles/poker_cfr_bot.dir/examples/basic_cfr_example.cpp.s
 
+CMakeFiles/poker_cfr_bot.dir/src/game/Action.cpp.o: CMakeFiles/poker_cfr_bot.dir/flags.make
+CMakeFiles/poker_cfr_bot.dir/src/game/Action.cpp.o: /Users/maxim/Desktop/GTOPoker/src/game/Action.cpp
+CMakeFiles/poker_cfr_bot.dir/src/game/Action.cpp.o: CMakeFiles/poker_cfr_bot.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/maxim/Desktop/GTOPoker/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/poker_cfr_bot.dir/src/game/Action.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/poker_cfr_bot.dir/src/game/Action.cpp.o -MF CMakeFiles/poker_cfr_bot.dir/src/game/Action.cpp.o.d -o CMakeFiles/poker_cfr_bot.dir/src/game/Action.cpp.o -c /Users/maxim/Desktop/GTOPoker/src/game/Action.cpp
+
+CMakeFiles/poker_cfr_bot.dir/src/game/Action.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/poker_cfr_bot.dir/src/game/Action.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/maxim/Desktop/GTOPoker/src/game/Action.cpp > CMakeFiles/poker_cfr_bot.dir/src/game/Action.cpp.i
+
+CMakeFiles/poker_cfr_bot.dir/src/game/Action.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/poker_cfr_bot.dir/src/game/Action.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/maxim/Desktop/GTOPoker/src/game/Action.cpp -o CMakeFiles/poker_cfr_bot.dir/src/game/Action.cpp.s
+
+CMakeFiles/poker_cfr_bot.dir/src/game/GameState.cpp.o: CMakeFiles/poker_cfr_bot.dir/flags.make
+CMakeFiles/poker_cfr_bot.dir/src/game/GameState.cpp.o: /Users/maxim/Desktop/GTOPoker/src/game/GameState.cpp
+CMakeFiles/poker_cfr_bot.dir/src/game/GameState.cpp.o: CMakeFiles/poker_cfr_bot.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/maxim/Desktop/GTOPoker/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/poker_cfr_bot.dir/src/game/GameState.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/poker_cfr_bot.dir/src/game/GameState.cpp.o -MF CMakeFiles/poker_cfr_bot.dir/src/game/GameState.cpp.o.d -o CMakeFiles/poker_cfr_bot.dir/src/game/GameState.cpp.o -c /Users/maxim/Desktop/GTOPoker/src/game/GameState.cpp
+
+CMakeFiles/poker_cfr_bot.dir/src/game/GameState.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/poker_cfr_bot.dir/src/game/GameState.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/maxim/Desktop/GTOPoker/src/game/GameState.cpp > CMakeFiles/poker_cfr_bot.dir/src/game/GameState.cpp.i
+
+CMakeFiles/poker_cfr_bot.dir/src/game/GameState.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/poker_cfr_bot.dir/src/game/GameState.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/maxim/Desktop/GTOPoker/src/game/GameState.cpp -o CMakeFiles/poker_cfr_bot.dir/src/game/GameState.cpp.s
+
+CMakeFiles/poker_cfr_bot.dir/src/game/PokerDefs.cpp.o: CMakeFiles/poker_cfr_bot.dir/flags.make
+CMakeFiles/poker_cfr_bot.dir/src/game/PokerDefs.cpp.o: /Users/maxim/Desktop/GTOPoker/src/game/PokerDefs.cpp
+CMakeFiles/poker_cfr_bot.dir/src/game/PokerDefs.cpp.o: CMakeFiles/poker_cfr_bot.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/maxim/Desktop/GTOPoker/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/poker_cfr_bot.dir/src/game/PokerDefs.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/poker_cfr_bot.dir/src/game/PokerDefs.cpp.o -MF CMakeFiles/poker_cfr_bot.dir/src/game/PokerDefs.cpp.o.d -o CMakeFiles/poker_cfr_bot.dir/src/game/PokerDefs.cpp.o -c /Users/maxim/Desktop/GTOPoker/src/game/PokerDefs.cpp
+
+CMakeFiles/poker_cfr_bot.dir/src/game/PokerDefs.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/poker_cfr_bot.dir/src/game/PokerDefs.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/maxim/Desktop/GTOPoker/src/game/PokerDefs.cpp > CMakeFiles/poker_cfr_bot.dir/src/game/PokerDefs.cpp.i
+
+CMakeFiles/poker_cfr_bot.dir/src/game/PokerDefs.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/poker_cfr_bot.dir/src/game/PokerDefs.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/maxim/Desktop/GTOPoker/src/game/PokerDefs.cpp -o CMakeFiles/poker_cfr_bot.dir/src/game/PokerDefs.cpp.s
+
+CMakeFiles/poker_cfr_bot.dir/src/cfr/CFRSolver.cpp.o: CMakeFiles/poker_cfr_bot.dir/flags.make
+CMakeFiles/poker_cfr_bot.dir/src/cfr/CFRSolver.cpp.o: /Users/maxim/Desktop/GTOPoker/src/cfr/CFRSolver.cpp
+CMakeFiles/poker_cfr_bot.dir/src/cfr/CFRSolver.cpp.o: CMakeFiles/poker_cfr_bot.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/maxim/Desktop/GTOPoker/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/poker_cfr_bot.dir/src/cfr/CFRSolver.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/poker_cfr_bot.dir/src/cfr/CFRSolver.cpp.o -MF CMakeFiles/poker_cfr_bot.dir/src/cfr/CFRSolver.cpp.o.d -o CMakeFiles/poker_cfr_bot.dir/src/cfr/CFRSolver.cpp.o -c /Users/maxim/Desktop/GTOPoker/src/cfr/CFRSolver.cpp
+
+CMakeFiles/poker_cfr_bot.dir/src/cfr/CFRSolver.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/poker_cfr_bot.dir/src/cfr/CFRSolver.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/maxim/Desktop/GTOPoker/src/cfr/CFRSolver.cpp > CMakeFiles/poker_cfr_bot.dir/src/cfr/CFRSolver.cpp.i
+
+CMakeFiles/poker_cfr_bot.dir/src/cfr/CFRSolver.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/poker_cfr_bot.dir/src/cfr/CFRSolver.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/maxim/Desktop/GTOPoker/src/cfr/CFRSolver.cpp -o CMakeFiles/poker_cfr_bot.dir/src/cfr/CFRSolver.cpp.s
+
+CMakeFiles/poker_cfr_bot.dir/src/cfr/RegretTable.cpp.o: CMakeFiles/poker_cfr_bot.dir/flags.make
+CMakeFiles/poker_cfr_bot.dir/src/cfr/RegretTable.cpp.o: /Users/maxim/Desktop/GTOPoker/src/cfr/RegretTable.cpp
+CMakeFiles/poker_cfr_bot.dir/src/cfr/RegretTable.cpp.o: CMakeFiles/poker_cfr_bot.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/maxim/Desktop/GTOPoker/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/poker_cfr_bot.dir/src/cfr/RegretTable.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/poker_cfr_bot.dir/src/cfr/RegretTable.cpp.o -MF CMakeFiles/poker_cfr_bot.dir/src/cfr/RegretTable.cpp.o.d -o CMakeFiles/poker_cfr_bot.dir/src/cfr/RegretTable.cpp.o -c /Users/maxim/Desktop/GTOPoker/src/cfr/RegretTable.cpp
+
+CMakeFiles/poker_cfr_bot.dir/src/cfr/RegretTable.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/poker_cfr_bot.dir/src/cfr/RegretTable.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/maxim/Desktop/GTOPoker/src/cfr/RegretTable.cpp > CMakeFiles/poker_cfr_bot.dir/src/cfr/RegretTable.cpp.i
+
+CMakeFiles/poker_cfr_bot.dir/src/cfr/RegretTable.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/poker_cfr_bot.dir/src/cfr/RegretTable.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/maxim/Desktop/GTOPoker/src/cfr/RegretTable.cpp -o CMakeFiles/poker_cfr_bot.dir/src/cfr/RegretTable.cpp.s
+
+CMakeFiles/poker_cfr_bot.dir/src/cfr/StrategyTable.cpp.o: CMakeFiles/poker_cfr_bot.dir/flags.make
+CMakeFiles/poker_cfr_bot.dir/src/cfr/StrategyTable.cpp.o: /Users/maxim/Desktop/GTOPoker/src/cfr/StrategyTable.cpp
+CMakeFiles/poker_cfr_bot.dir/src/cfr/StrategyTable.cpp.o: CMakeFiles/poker_cfr_bot.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/maxim/Desktop/GTOPoker/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/poker_cfr_bot.dir/src/cfr/StrategyTable.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/poker_cfr_bot.dir/src/cfr/StrategyTable.cpp.o -MF CMakeFiles/poker_cfr_bot.dir/src/cfr/StrategyTable.cpp.o.d -o CMakeFiles/poker_cfr_bot.dir/src/cfr/StrategyTable.cpp.o -c /Users/maxim/Desktop/GTOPoker/src/cfr/StrategyTable.cpp
+
+CMakeFiles/poker_cfr_bot.dir/src/cfr/StrategyTable.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/poker_cfr_bot.dir/src/cfr/StrategyTable.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/maxim/Desktop/GTOPoker/src/cfr/StrategyTable.cpp > CMakeFiles/poker_cfr_bot.dir/src/cfr/StrategyTable.cpp.i
+
+CMakeFiles/poker_cfr_bot.dir/src/cfr/StrategyTable.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/poker_cfr_bot.dir/src/cfr/StrategyTable.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/maxim/Desktop/GTOPoker/src/cfr/StrategyTable.cpp -o CMakeFiles/poker_cfr_bot.dir/src/cfr/StrategyTable.cpp.s
+
+CMakeFiles/poker_cfr_bot.dir/src/abstraction/HandAbstraction.cpp.o: CMakeFiles/poker_cfr_bot.dir/flags.make
+CMakeFiles/poker_cfr_bot.dir/src/abstraction/HandAbstraction.cpp.o: /Users/maxim/Desktop/GTOPoker/src/abstraction/HandAbstraction.cpp
+CMakeFiles/poker_cfr_bot.dir/src/abstraction/HandAbstraction.cpp.o: CMakeFiles/poker_cfr_bot.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/maxim/Desktop/GTOPoker/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/poker_cfr_bot.dir/src/abstraction/HandAbstraction.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/poker_cfr_bot.dir/src/abstraction/HandAbstraction.cpp.o -MF CMakeFiles/poker_cfr_bot.dir/src/abstraction/HandAbstraction.cpp.o.d -o CMakeFiles/poker_cfr_bot.dir/src/abstraction/HandAbstraction.cpp.o -c /Users/maxim/Desktop/GTOPoker/src/abstraction/HandAbstraction.cpp
+
+CMakeFiles/poker_cfr_bot.dir/src/abstraction/HandAbstraction.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/poker_cfr_bot.dir/src/abstraction/HandAbstraction.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/maxim/Desktop/GTOPoker/src/abstraction/HandAbstraction.cpp > CMakeFiles/poker_cfr_bot.dir/src/abstraction/HandAbstraction.cpp.i
+
+CMakeFiles/poker_cfr_bot.dir/src/abstraction/HandAbstraction.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/poker_cfr_bot.dir/src/abstraction/HandAbstraction.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/maxim/Desktop/GTOPoker/src/abstraction/HandAbstraction.cpp -o CMakeFiles/poker_cfr_bot.dir/src/abstraction/HandAbstraction.cpp.s
+
+CMakeFiles/poker_cfr_bot.dir/src/abstraction/BetAbstraction.cpp.o: CMakeFiles/poker_cfr_bot.dir/flags.make
+CMakeFiles/poker_cfr_bot.dir/src/abstraction/BetAbstraction.cpp.o: /Users/maxim/Desktop/GTOPoker/src/abstraction/BetAbstraction.cpp
+CMakeFiles/poker_cfr_bot.dir/src/abstraction/BetAbstraction.cpp.o: CMakeFiles/poker_cfr_bot.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/maxim/Desktop/GTOPoker/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/poker_cfr_bot.dir/src/abstraction/BetAbstraction.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/poker_cfr_bot.dir/src/abstraction/BetAbstraction.cpp.o -MF CMakeFiles/poker_cfr_bot.dir/src/abstraction/BetAbstraction.cpp.o.d -o CMakeFiles/poker_cfr_bot.dir/src/abstraction/BetAbstraction.cpp.o -c /Users/maxim/Desktop/GTOPoker/src/abstraction/BetAbstraction.cpp
+
+CMakeFiles/poker_cfr_bot.dir/src/abstraction/BetAbstraction.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/poker_cfr_bot.dir/src/abstraction/BetAbstraction.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/maxim/Desktop/GTOPoker/src/abstraction/BetAbstraction.cpp > CMakeFiles/poker_cfr_bot.dir/src/abstraction/BetAbstraction.cpp.i
+
+CMakeFiles/poker_cfr_bot.dir/src/abstraction/BetAbstraction.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/poker_cfr_bot.dir/src/abstraction/BetAbstraction.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/maxim/Desktop/GTOPoker/src/abstraction/BetAbstraction.cpp -o CMakeFiles/poker_cfr_bot.dir/src/abstraction/BetAbstraction.cpp.s
+
+CMakeFiles/poker_cfr_bot.dir/src/utils/Random.cpp.o: CMakeFiles/poker_cfr_bot.dir/flags.make
+CMakeFiles/poker_cfr_bot.dir/src/utils/Random.cpp.o: /Users/maxim/Desktop/GTOPoker/src/utils/Random.cpp
+CMakeFiles/poker_cfr_bot.dir/src/utils/Random.cpp.o: CMakeFiles/poker_cfr_bot.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/maxim/Desktop/GTOPoker/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/poker_cfr_bot.dir/src/utils/Random.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/poker_cfr_bot.dir/src/utils/Random.cpp.o -MF CMakeFiles/poker_cfr_bot.dir/src/utils/Random.cpp.o.d -o CMakeFiles/poker_cfr_bot.dir/src/utils/Random.cpp.o -c /Users/maxim/Desktop/GTOPoker/src/utils/Random.cpp
+
+CMakeFiles/poker_cfr_bot.dir/src/utils/Random.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/poker_cfr_bot.dir/src/utils/Random.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/maxim/Desktop/GTOPoker/src/utils/Random.cpp > CMakeFiles/poker_cfr_bot.dir/src/utils/Random.cpp.i
+
+CMakeFiles/poker_cfr_bot.dir/src/utils/Random.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/poker_cfr_bot.dir/src/utils/Random.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/maxim/Desktop/GTOPoker/src/utils/Random.cpp -o CMakeFiles/poker_cfr_bot.dir/src/utils/Random.cpp.s
+
+CMakeFiles/poker_cfr_bot.dir/src/utils/Logger.cpp.o: CMakeFiles/poker_cfr_bot.dir/flags.make
+CMakeFiles/poker_cfr_bot.dir/src/utils/Logger.cpp.o: /Users/maxim/Desktop/GTOPoker/src/utils/Logger.cpp
+CMakeFiles/poker_cfr_bot.dir/src/utils/Logger.cpp.o: CMakeFiles/poker_cfr_bot.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/maxim/Desktop/GTOPoker/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/poker_cfr_bot.dir/src/utils/Logger.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/poker_cfr_bot.dir/src/utils/Logger.cpp.o -MF CMakeFiles/poker_cfr_bot.dir/src/utils/Logger.cpp.o.d -o CMakeFiles/poker_cfr_bot.dir/src/utils/Logger.cpp.o -c /Users/maxim/Desktop/GTOPoker/src/utils/Logger.cpp
+
+CMakeFiles/poker_cfr_bot.dir/src/utils/Logger.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/poker_cfr_bot.dir/src/utils/Logger.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/maxim/Desktop/GTOPoker/src/utils/Logger.cpp > CMakeFiles/poker_cfr_bot.dir/src/utils/Logger.cpp.i
+
+CMakeFiles/poker_cfr_bot.dir/src/utils/Logger.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/poker_cfr_bot.dir/src/utils/Logger.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/maxim/Desktop/GTOPoker/src/utils/Logger.cpp -o CMakeFiles/poker_cfr_bot.dir/src/utils/Logger.cpp.s
+
+CMakeFiles/poker_cfr_bot.dir/src/utils/Serialization.cpp.o: CMakeFiles/poker_cfr_bot.dir/flags.make
+CMakeFiles/poker_cfr_bot.dir/src/utils/Serialization.cpp.o: /Users/maxim/Desktop/GTOPoker/src/utils/Serialization.cpp
+CMakeFiles/poker_cfr_bot.dir/src/utils/Serialization.cpp.o: CMakeFiles/poker_cfr_bot.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/maxim/Desktop/GTOPoker/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/poker_cfr_bot.dir/src/utils/Serialization.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/poker_cfr_bot.dir/src/utils/Serialization.cpp.o -MF CMakeFiles/poker_cfr_bot.dir/src/utils/Serialization.cpp.o.d -o CMakeFiles/poker_cfr_bot.dir/src/utils/Serialization.cpp.o -c /Users/maxim/Desktop/GTOPoker/src/utils/Serialization.cpp
+
+CMakeFiles/poker_cfr_bot.dir/src/utils/Serialization.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/poker_cfr_bot.dir/src/utils/Serialization.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/maxim/Desktop/GTOPoker/src/utils/Serialization.cpp > CMakeFiles/poker_cfr_bot.dir/src/utils/Serialization.cpp.i
+
+CMakeFiles/poker_cfr_bot.dir/src/utils/Serialization.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/poker_cfr_bot.dir/src/utils/Serialization.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/maxim/Desktop/GTOPoker/src/utils/Serialization.cpp -o CMakeFiles/poker_cfr_bot.dir/src/utils/Serialization.cpp.s
+
+CMakeFiles/poker_cfr_bot.dir/src/utils/Converter.cpp.o: CMakeFiles/poker_cfr_bot.dir/flags.make
+CMakeFiles/poker_cfr_bot.dir/src/utils/Converter.cpp.o: /Users/maxim/Desktop/GTOPoker/src/utils/Converter.cpp
+CMakeFiles/poker_cfr_bot.dir/src/utils/Converter.cpp.o: CMakeFiles/poker_cfr_bot.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/maxim/Desktop/GTOPoker/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/poker_cfr_bot.dir/src/utils/Converter.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/poker_cfr_bot.dir/src/utils/Converter.cpp.o -MF CMakeFiles/poker_cfr_bot.dir/src/utils/Converter.cpp.o.d -o CMakeFiles/poker_cfr_bot.dir/src/utils/Converter.cpp.o -c /Users/maxim/Desktop/GTOPoker/src/utils/Converter.cpp
+
+CMakeFiles/poker_cfr_bot.dir/src/utils/Converter.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/poker_cfr_bot.dir/src/utils/Converter.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/maxim/Desktop/GTOPoker/src/utils/Converter.cpp > CMakeFiles/poker_cfr_bot.dir/src/utils/Converter.cpp.i
+
+CMakeFiles/poker_cfr_bot.dir/src/utils/Converter.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/poker_cfr_bot.dir/src/utils/Converter.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/maxim/Desktop/GTOPoker/src/utils/Converter.cpp -o CMakeFiles/poker_cfr_bot.dir/src/utils/Converter.cpp.s
+
+CMakeFiles/poker_cfr_bot.dir/src/game/HandEvaluator.cpp.o: CMakeFiles/poker_cfr_bot.dir/flags.make
+CMakeFiles/poker_cfr_bot.dir/src/game/HandEvaluator.cpp.o: /Users/maxim/Desktop/GTOPoker/src/game/HandEvaluator.cpp
+CMakeFiles/poker_cfr_bot.dir/src/game/HandEvaluator.cpp.o: CMakeFiles/poker_cfr_bot.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/maxim/Desktop/GTOPoker/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/poker_cfr_bot.dir/src/game/HandEvaluator.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/poker_cfr_bot.dir/src/game/HandEvaluator.cpp.o -MF CMakeFiles/poker_cfr_bot.dir/src/game/HandEvaluator.cpp.o.d -o CMakeFiles/poker_cfr_bot.dir/src/game/HandEvaluator.cpp.o -c /Users/maxim/Desktop/GTOPoker/src/game/HandEvaluator.cpp
+
+CMakeFiles/poker_cfr_bot.dir/src/game/HandEvaluator.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/poker_cfr_bot.dir/src/game/HandEvaluator.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/maxim/Desktop/GTOPoker/src/game/HandEvaluator.cpp > CMakeFiles/poker_cfr_bot.dir/src/game/HandEvaluator.cpp.i
+
+CMakeFiles/poker_cfr_bot.dir/src/game/HandEvaluator.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/poker_cfr_bot.dir/src/game/HandEvaluator.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/maxim/Desktop/GTOPoker/src/game/HandEvaluator.cpp -o CMakeFiles/poker_cfr_bot.dir/src/game/HandEvaluator.cpp.s
+
 # Object files for target poker_cfr_bot
 poker_cfr_bot_OBJECTS = \
-"CMakeFiles/poker_cfr_bot.dir/examples/basic_cfr_example.cpp.o"
+"CMakeFiles/poker_cfr_bot.dir/examples/basic_cfr_example.cpp.o" \
+"CMakeFiles/poker_cfr_bot.dir/src/game/Action.cpp.o" \
+"CMakeFiles/poker_cfr_bot.dir/src/game/GameState.cpp.o" \
+"CMakeFiles/poker_cfr_bot.dir/src/game/PokerDefs.cpp.o" \
+"CMakeFiles/poker_cfr_bot.dir/src/cfr/CFRSolver.cpp.o" \
+"CMakeFiles/poker_cfr_bot.dir/src/cfr/RegretTable.cpp.o" \
+"CMakeFiles/poker_cfr_bot.dir/src/cfr/StrategyTable.cpp.o" \
+"CMakeFiles/poker_cfr_bot.dir/src/abstraction/HandAbstraction.cpp.o" \
+"CMakeFiles/poker_cfr_bot.dir/src/abstraction/BetAbstraction.cpp.o" \
+"CMakeFiles/poker_cfr_bot.dir/src/utils/Random.cpp.o" \
+"CMakeFiles/poker_cfr_bot.dir/src/utils/Logger.cpp.o" \
+"CMakeFiles/poker_cfr_bot.dir/src/utils/Serialization.cpp.o" \
+"CMakeFiles/poker_cfr_bot.dir/src/utils/Converter.cpp.o" \
+"CMakeFiles/poker_cfr_bot.dir/src/game/HandEvaluator.cpp.o"
 
 # External object files for target poker_cfr_bot
 poker_cfr_bot_EXTERNAL_OBJECTS =
 
 poker_cfr_bot: CMakeFiles/poker_cfr_bot.dir/examples/basic_cfr_example.cpp.o
+poker_cfr_bot: CMakeFiles/poker_cfr_bot.dir/src/game/Action.cpp.o
+poker_cfr_bot: CMakeFiles/poker_cfr_bot.dir/src/game/GameState.cpp.o
+poker_cfr_bot: CMakeFiles/poker_cfr_bot.dir/src/game/PokerDefs.cpp.o
+poker_cfr_bot: CMakeFiles/poker_cfr_bot.dir/src/cfr/CFRSolver.cpp.o
+poker_cfr_bot: CMakeFiles/poker_cfr_bot.dir/src/cfr/RegretTable.cpp.o
+poker_cfr_bot: CMakeFiles/poker_cfr_bot.dir/src/cfr/StrategyTable.cpp.o
+poker_cfr_bot: CMakeFiles/poker_cfr_bot.dir/src/abstraction/HandAbstraction.cpp.o
+poker_cfr_bot: CMakeFiles/poker_cfr_bot.dir/src/abstraction/BetAbstraction.cpp.o
+poker_cfr_bot: CMakeFiles/poker_cfr_bot.dir/src/utils/Random.cpp.o
+poker_cfr_bot: CMakeFiles/poker_cfr_bot.dir/src/utils/Logger.cpp.o
+poker_cfr_bot: CMakeFiles/poker_cfr_bot.dir/src/utils/Serialization.cpp.o
+poker_cfr_bot: CMakeFiles/poker_cfr_bot.dir/src/utils/Converter.cpp.o
+poker_cfr_bot: CMakeFiles/poker_cfr_bot.dir/src/game/HandEvaluator.cpp.o
 poker_cfr_bot: CMakeFiles/poker_cfr_bot.dir/build.make
-poker_cfr_bot: libpoker_cfr_lib.a
 poker_cfr_bot: CMakeFiles/poker_cfr_bot.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/maxim/Desktop/GTOPoker/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable poker_cfr_bot"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/maxim/Desktop/GTOPoker/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX executable poker_cfr_bot"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/poker_cfr_bot.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

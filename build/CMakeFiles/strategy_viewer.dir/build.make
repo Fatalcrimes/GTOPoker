@@ -86,18 +86,225 @@ CMakeFiles/strategy_viewer.dir/examples/strategy_viewer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/strategy_viewer.dir/examples/strategy_viewer.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/maxim/Desktop/GTOPoker/examples/strategy_viewer.cpp -o CMakeFiles/strategy_viewer.dir/examples/strategy_viewer.cpp.s
 
+CMakeFiles/strategy_viewer.dir/src/game/Action.cpp.o: CMakeFiles/strategy_viewer.dir/flags.make
+CMakeFiles/strategy_viewer.dir/src/game/Action.cpp.o: /Users/maxim/Desktop/GTOPoker/src/game/Action.cpp
+CMakeFiles/strategy_viewer.dir/src/game/Action.cpp.o: CMakeFiles/strategy_viewer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/maxim/Desktop/GTOPoker/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/strategy_viewer.dir/src/game/Action.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/strategy_viewer.dir/src/game/Action.cpp.o -MF CMakeFiles/strategy_viewer.dir/src/game/Action.cpp.o.d -o CMakeFiles/strategy_viewer.dir/src/game/Action.cpp.o -c /Users/maxim/Desktop/GTOPoker/src/game/Action.cpp
+
+CMakeFiles/strategy_viewer.dir/src/game/Action.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/strategy_viewer.dir/src/game/Action.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/maxim/Desktop/GTOPoker/src/game/Action.cpp > CMakeFiles/strategy_viewer.dir/src/game/Action.cpp.i
+
+CMakeFiles/strategy_viewer.dir/src/game/Action.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/strategy_viewer.dir/src/game/Action.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/maxim/Desktop/GTOPoker/src/game/Action.cpp -o CMakeFiles/strategy_viewer.dir/src/game/Action.cpp.s
+
+CMakeFiles/strategy_viewer.dir/src/game/GameState.cpp.o: CMakeFiles/strategy_viewer.dir/flags.make
+CMakeFiles/strategy_viewer.dir/src/game/GameState.cpp.o: /Users/maxim/Desktop/GTOPoker/src/game/GameState.cpp
+CMakeFiles/strategy_viewer.dir/src/game/GameState.cpp.o: CMakeFiles/strategy_viewer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/maxim/Desktop/GTOPoker/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/strategy_viewer.dir/src/game/GameState.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/strategy_viewer.dir/src/game/GameState.cpp.o -MF CMakeFiles/strategy_viewer.dir/src/game/GameState.cpp.o.d -o CMakeFiles/strategy_viewer.dir/src/game/GameState.cpp.o -c /Users/maxim/Desktop/GTOPoker/src/game/GameState.cpp
+
+CMakeFiles/strategy_viewer.dir/src/game/GameState.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/strategy_viewer.dir/src/game/GameState.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/maxim/Desktop/GTOPoker/src/game/GameState.cpp > CMakeFiles/strategy_viewer.dir/src/game/GameState.cpp.i
+
+CMakeFiles/strategy_viewer.dir/src/game/GameState.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/strategy_viewer.dir/src/game/GameState.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/maxim/Desktop/GTOPoker/src/game/GameState.cpp -o CMakeFiles/strategy_viewer.dir/src/game/GameState.cpp.s
+
+CMakeFiles/strategy_viewer.dir/src/game/PokerDefs.cpp.o: CMakeFiles/strategy_viewer.dir/flags.make
+CMakeFiles/strategy_viewer.dir/src/game/PokerDefs.cpp.o: /Users/maxim/Desktop/GTOPoker/src/game/PokerDefs.cpp
+CMakeFiles/strategy_viewer.dir/src/game/PokerDefs.cpp.o: CMakeFiles/strategy_viewer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/maxim/Desktop/GTOPoker/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/strategy_viewer.dir/src/game/PokerDefs.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/strategy_viewer.dir/src/game/PokerDefs.cpp.o -MF CMakeFiles/strategy_viewer.dir/src/game/PokerDefs.cpp.o.d -o CMakeFiles/strategy_viewer.dir/src/game/PokerDefs.cpp.o -c /Users/maxim/Desktop/GTOPoker/src/game/PokerDefs.cpp
+
+CMakeFiles/strategy_viewer.dir/src/game/PokerDefs.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/strategy_viewer.dir/src/game/PokerDefs.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/maxim/Desktop/GTOPoker/src/game/PokerDefs.cpp > CMakeFiles/strategy_viewer.dir/src/game/PokerDefs.cpp.i
+
+CMakeFiles/strategy_viewer.dir/src/game/PokerDefs.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/strategy_viewer.dir/src/game/PokerDefs.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/maxim/Desktop/GTOPoker/src/game/PokerDefs.cpp -o CMakeFiles/strategy_viewer.dir/src/game/PokerDefs.cpp.s
+
+CMakeFiles/strategy_viewer.dir/src/cfr/CFRSolver.cpp.o: CMakeFiles/strategy_viewer.dir/flags.make
+CMakeFiles/strategy_viewer.dir/src/cfr/CFRSolver.cpp.o: /Users/maxim/Desktop/GTOPoker/src/cfr/CFRSolver.cpp
+CMakeFiles/strategy_viewer.dir/src/cfr/CFRSolver.cpp.o: CMakeFiles/strategy_viewer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/maxim/Desktop/GTOPoker/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/strategy_viewer.dir/src/cfr/CFRSolver.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/strategy_viewer.dir/src/cfr/CFRSolver.cpp.o -MF CMakeFiles/strategy_viewer.dir/src/cfr/CFRSolver.cpp.o.d -o CMakeFiles/strategy_viewer.dir/src/cfr/CFRSolver.cpp.o -c /Users/maxim/Desktop/GTOPoker/src/cfr/CFRSolver.cpp
+
+CMakeFiles/strategy_viewer.dir/src/cfr/CFRSolver.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/strategy_viewer.dir/src/cfr/CFRSolver.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/maxim/Desktop/GTOPoker/src/cfr/CFRSolver.cpp > CMakeFiles/strategy_viewer.dir/src/cfr/CFRSolver.cpp.i
+
+CMakeFiles/strategy_viewer.dir/src/cfr/CFRSolver.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/strategy_viewer.dir/src/cfr/CFRSolver.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/maxim/Desktop/GTOPoker/src/cfr/CFRSolver.cpp -o CMakeFiles/strategy_viewer.dir/src/cfr/CFRSolver.cpp.s
+
+CMakeFiles/strategy_viewer.dir/src/cfr/RegretTable.cpp.o: CMakeFiles/strategy_viewer.dir/flags.make
+CMakeFiles/strategy_viewer.dir/src/cfr/RegretTable.cpp.o: /Users/maxim/Desktop/GTOPoker/src/cfr/RegretTable.cpp
+CMakeFiles/strategy_viewer.dir/src/cfr/RegretTable.cpp.o: CMakeFiles/strategy_viewer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/maxim/Desktop/GTOPoker/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/strategy_viewer.dir/src/cfr/RegretTable.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/strategy_viewer.dir/src/cfr/RegretTable.cpp.o -MF CMakeFiles/strategy_viewer.dir/src/cfr/RegretTable.cpp.o.d -o CMakeFiles/strategy_viewer.dir/src/cfr/RegretTable.cpp.o -c /Users/maxim/Desktop/GTOPoker/src/cfr/RegretTable.cpp
+
+CMakeFiles/strategy_viewer.dir/src/cfr/RegretTable.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/strategy_viewer.dir/src/cfr/RegretTable.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/maxim/Desktop/GTOPoker/src/cfr/RegretTable.cpp > CMakeFiles/strategy_viewer.dir/src/cfr/RegretTable.cpp.i
+
+CMakeFiles/strategy_viewer.dir/src/cfr/RegretTable.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/strategy_viewer.dir/src/cfr/RegretTable.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/maxim/Desktop/GTOPoker/src/cfr/RegretTable.cpp -o CMakeFiles/strategy_viewer.dir/src/cfr/RegretTable.cpp.s
+
+CMakeFiles/strategy_viewer.dir/src/cfr/StrategyTable.cpp.o: CMakeFiles/strategy_viewer.dir/flags.make
+CMakeFiles/strategy_viewer.dir/src/cfr/StrategyTable.cpp.o: /Users/maxim/Desktop/GTOPoker/src/cfr/StrategyTable.cpp
+CMakeFiles/strategy_viewer.dir/src/cfr/StrategyTable.cpp.o: CMakeFiles/strategy_viewer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/maxim/Desktop/GTOPoker/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/strategy_viewer.dir/src/cfr/StrategyTable.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/strategy_viewer.dir/src/cfr/StrategyTable.cpp.o -MF CMakeFiles/strategy_viewer.dir/src/cfr/StrategyTable.cpp.o.d -o CMakeFiles/strategy_viewer.dir/src/cfr/StrategyTable.cpp.o -c /Users/maxim/Desktop/GTOPoker/src/cfr/StrategyTable.cpp
+
+CMakeFiles/strategy_viewer.dir/src/cfr/StrategyTable.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/strategy_viewer.dir/src/cfr/StrategyTable.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/maxim/Desktop/GTOPoker/src/cfr/StrategyTable.cpp > CMakeFiles/strategy_viewer.dir/src/cfr/StrategyTable.cpp.i
+
+CMakeFiles/strategy_viewer.dir/src/cfr/StrategyTable.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/strategy_viewer.dir/src/cfr/StrategyTable.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/maxim/Desktop/GTOPoker/src/cfr/StrategyTable.cpp -o CMakeFiles/strategy_viewer.dir/src/cfr/StrategyTable.cpp.s
+
+CMakeFiles/strategy_viewer.dir/src/abstraction/HandAbstraction.cpp.o: CMakeFiles/strategy_viewer.dir/flags.make
+CMakeFiles/strategy_viewer.dir/src/abstraction/HandAbstraction.cpp.o: /Users/maxim/Desktop/GTOPoker/src/abstraction/HandAbstraction.cpp
+CMakeFiles/strategy_viewer.dir/src/abstraction/HandAbstraction.cpp.o: CMakeFiles/strategy_viewer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/maxim/Desktop/GTOPoker/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/strategy_viewer.dir/src/abstraction/HandAbstraction.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/strategy_viewer.dir/src/abstraction/HandAbstraction.cpp.o -MF CMakeFiles/strategy_viewer.dir/src/abstraction/HandAbstraction.cpp.o.d -o CMakeFiles/strategy_viewer.dir/src/abstraction/HandAbstraction.cpp.o -c /Users/maxim/Desktop/GTOPoker/src/abstraction/HandAbstraction.cpp
+
+CMakeFiles/strategy_viewer.dir/src/abstraction/HandAbstraction.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/strategy_viewer.dir/src/abstraction/HandAbstraction.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/maxim/Desktop/GTOPoker/src/abstraction/HandAbstraction.cpp > CMakeFiles/strategy_viewer.dir/src/abstraction/HandAbstraction.cpp.i
+
+CMakeFiles/strategy_viewer.dir/src/abstraction/HandAbstraction.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/strategy_viewer.dir/src/abstraction/HandAbstraction.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/maxim/Desktop/GTOPoker/src/abstraction/HandAbstraction.cpp -o CMakeFiles/strategy_viewer.dir/src/abstraction/HandAbstraction.cpp.s
+
+CMakeFiles/strategy_viewer.dir/src/abstraction/BetAbstraction.cpp.o: CMakeFiles/strategy_viewer.dir/flags.make
+CMakeFiles/strategy_viewer.dir/src/abstraction/BetAbstraction.cpp.o: /Users/maxim/Desktop/GTOPoker/src/abstraction/BetAbstraction.cpp
+CMakeFiles/strategy_viewer.dir/src/abstraction/BetAbstraction.cpp.o: CMakeFiles/strategy_viewer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/maxim/Desktop/GTOPoker/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/strategy_viewer.dir/src/abstraction/BetAbstraction.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/strategy_viewer.dir/src/abstraction/BetAbstraction.cpp.o -MF CMakeFiles/strategy_viewer.dir/src/abstraction/BetAbstraction.cpp.o.d -o CMakeFiles/strategy_viewer.dir/src/abstraction/BetAbstraction.cpp.o -c /Users/maxim/Desktop/GTOPoker/src/abstraction/BetAbstraction.cpp
+
+CMakeFiles/strategy_viewer.dir/src/abstraction/BetAbstraction.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/strategy_viewer.dir/src/abstraction/BetAbstraction.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/maxim/Desktop/GTOPoker/src/abstraction/BetAbstraction.cpp > CMakeFiles/strategy_viewer.dir/src/abstraction/BetAbstraction.cpp.i
+
+CMakeFiles/strategy_viewer.dir/src/abstraction/BetAbstraction.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/strategy_viewer.dir/src/abstraction/BetAbstraction.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/maxim/Desktop/GTOPoker/src/abstraction/BetAbstraction.cpp -o CMakeFiles/strategy_viewer.dir/src/abstraction/BetAbstraction.cpp.s
+
+CMakeFiles/strategy_viewer.dir/src/utils/Random.cpp.o: CMakeFiles/strategy_viewer.dir/flags.make
+CMakeFiles/strategy_viewer.dir/src/utils/Random.cpp.o: /Users/maxim/Desktop/GTOPoker/src/utils/Random.cpp
+CMakeFiles/strategy_viewer.dir/src/utils/Random.cpp.o: CMakeFiles/strategy_viewer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/maxim/Desktop/GTOPoker/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/strategy_viewer.dir/src/utils/Random.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/strategy_viewer.dir/src/utils/Random.cpp.o -MF CMakeFiles/strategy_viewer.dir/src/utils/Random.cpp.o.d -o CMakeFiles/strategy_viewer.dir/src/utils/Random.cpp.o -c /Users/maxim/Desktop/GTOPoker/src/utils/Random.cpp
+
+CMakeFiles/strategy_viewer.dir/src/utils/Random.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/strategy_viewer.dir/src/utils/Random.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/maxim/Desktop/GTOPoker/src/utils/Random.cpp > CMakeFiles/strategy_viewer.dir/src/utils/Random.cpp.i
+
+CMakeFiles/strategy_viewer.dir/src/utils/Random.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/strategy_viewer.dir/src/utils/Random.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/maxim/Desktop/GTOPoker/src/utils/Random.cpp -o CMakeFiles/strategy_viewer.dir/src/utils/Random.cpp.s
+
+CMakeFiles/strategy_viewer.dir/src/utils/Logger.cpp.o: CMakeFiles/strategy_viewer.dir/flags.make
+CMakeFiles/strategy_viewer.dir/src/utils/Logger.cpp.o: /Users/maxim/Desktop/GTOPoker/src/utils/Logger.cpp
+CMakeFiles/strategy_viewer.dir/src/utils/Logger.cpp.o: CMakeFiles/strategy_viewer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/maxim/Desktop/GTOPoker/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/strategy_viewer.dir/src/utils/Logger.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/strategy_viewer.dir/src/utils/Logger.cpp.o -MF CMakeFiles/strategy_viewer.dir/src/utils/Logger.cpp.o.d -o CMakeFiles/strategy_viewer.dir/src/utils/Logger.cpp.o -c /Users/maxim/Desktop/GTOPoker/src/utils/Logger.cpp
+
+CMakeFiles/strategy_viewer.dir/src/utils/Logger.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/strategy_viewer.dir/src/utils/Logger.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/maxim/Desktop/GTOPoker/src/utils/Logger.cpp > CMakeFiles/strategy_viewer.dir/src/utils/Logger.cpp.i
+
+CMakeFiles/strategy_viewer.dir/src/utils/Logger.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/strategy_viewer.dir/src/utils/Logger.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/maxim/Desktop/GTOPoker/src/utils/Logger.cpp -o CMakeFiles/strategy_viewer.dir/src/utils/Logger.cpp.s
+
+CMakeFiles/strategy_viewer.dir/src/utils/Serialization.cpp.o: CMakeFiles/strategy_viewer.dir/flags.make
+CMakeFiles/strategy_viewer.dir/src/utils/Serialization.cpp.o: /Users/maxim/Desktop/GTOPoker/src/utils/Serialization.cpp
+CMakeFiles/strategy_viewer.dir/src/utils/Serialization.cpp.o: CMakeFiles/strategy_viewer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/maxim/Desktop/GTOPoker/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/strategy_viewer.dir/src/utils/Serialization.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/strategy_viewer.dir/src/utils/Serialization.cpp.o -MF CMakeFiles/strategy_viewer.dir/src/utils/Serialization.cpp.o.d -o CMakeFiles/strategy_viewer.dir/src/utils/Serialization.cpp.o -c /Users/maxim/Desktop/GTOPoker/src/utils/Serialization.cpp
+
+CMakeFiles/strategy_viewer.dir/src/utils/Serialization.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/strategy_viewer.dir/src/utils/Serialization.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/maxim/Desktop/GTOPoker/src/utils/Serialization.cpp > CMakeFiles/strategy_viewer.dir/src/utils/Serialization.cpp.i
+
+CMakeFiles/strategy_viewer.dir/src/utils/Serialization.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/strategy_viewer.dir/src/utils/Serialization.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/maxim/Desktop/GTOPoker/src/utils/Serialization.cpp -o CMakeFiles/strategy_viewer.dir/src/utils/Serialization.cpp.s
+
+CMakeFiles/strategy_viewer.dir/src/utils/Converter.cpp.o: CMakeFiles/strategy_viewer.dir/flags.make
+CMakeFiles/strategy_viewer.dir/src/utils/Converter.cpp.o: /Users/maxim/Desktop/GTOPoker/src/utils/Converter.cpp
+CMakeFiles/strategy_viewer.dir/src/utils/Converter.cpp.o: CMakeFiles/strategy_viewer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/maxim/Desktop/GTOPoker/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/strategy_viewer.dir/src/utils/Converter.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/strategy_viewer.dir/src/utils/Converter.cpp.o -MF CMakeFiles/strategy_viewer.dir/src/utils/Converter.cpp.o.d -o CMakeFiles/strategy_viewer.dir/src/utils/Converter.cpp.o -c /Users/maxim/Desktop/GTOPoker/src/utils/Converter.cpp
+
+CMakeFiles/strategy_viewer.dir/src/utils/Converter.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/strategy_viewer.dir/src/utils/Converter.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/maxim/Desktop/GTOPoker/src/utils/Converter.cpp > CMakeFiles/strategy_viewer.dir/src/utils/Converter.cpp.i
+
+CMakeFiles/strategy_viewer.dir/src/utils/Converter.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/strategy_viewer.dir/src/utils/Converter.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/maxim/Desktop/GTOPoker/src/utils/Converter.cpp -o CMakeFiles/strategy_viewer.dir/src/utils/Converter.cpp.s
+
+CMakeFiles/strategy_viewer.dir/src/game/HandEvaluator.cpp.o: CMakeFiles/strategy_viewer.dir/flags.make
+CMakeFiles/strategy_viewer.dir/src/game/HandEvaluator.cpp.o: /Users/maxim/Desktop/GTOPoker/src/game/HandEvaluator.cpp
+CMakeFiles/strategy_viewer.dir/src/game/HandEvaluator.cpp.o: CMakeFiles/strategy_viewer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/maxim/Desktop/GTOPoker/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/strategy_viewer.dir/src/game/HandEvaluator.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/strategy_viewer.dir/src/game/HandEvaluator.cpp.o -MF CMakeFiles/strategy_viewer.dir/src/game/HandEvaluator.cpp.o.d -o CMakeFiles/strategy_viewer.dir/src/game/HandEvaluator.cpp.o -c /Users/maxim/Desktop/GTOPoker/src/game/HandEvaluator.cpp
+
+CMakeFiles/strategy_viewer.dir/src/game/HandEvaluator.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/strategy_viewer.dir/src/game/HandEvaluator.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/maxim/Desktop/GTOPoker/src/game/HandEvaluator.cpp > CMakeFiles/strategy_viewer.dir/src/game/HandEvaluator.cpp.i
+
+CMakeFiles/strategy_viewer.dir/src/game/HandEvaluator.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/strategy_viewer.dir/src/game/HandEvaluator.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/maxim/Desktop/GTOPoker/src/game/HandEvaluator.cpp -o CMakeFiles/strategy_viewer.dir/src/game/HandEvaluator.cpp.s
+
 # Object files for target strategy_viewer
 strategy_viewer_OBJECTS = \
-"CMakeFiles/strategy_viewer.dir/examples/strategy_viewer.cpp.o"
+"CMakeFiles/strategy_viewer.dir/examples/strategy_viewer.cpp.o" \
+"CMakeFiles/strategy_viewer.dir/src/game/Action.cpp.o" \
+"CMakeFiles/strategy_viewer.dir/src/game/GameState.cpp.o" \
+"CMakeFiles/strategy_viewer.dir/src/game/PokerDefs.cpp.o" \
+"CMakeFiles/strategy_viewer.dir/src/cfr/CFRSolver.cpp.o" \
+"CMakeFiles/strategy_viewer.dir/src/cfr/RegretTable.cpp.o" \
+"CMakeFiles/strategy_viewer.dir/src/cfr/StrategyTable.cpp.o" \
+"CMakeFiles/strategy_viewer.dir/src/abstraction/HandAbstraction.cpp.o" \
+"CMakeFiles/strategy_viewer.dir/src/abstraction/BetAbstraction.cpp.o" \
+"CMakeFiles/strategy_viewer.dir/src/utils/Random.cpp.o" \
+"CMakeFiles/strategy_viewer.dir/src/utils/Logger.cpp.o" \
+"CMakeFiles/strategy_viewer.dir/src/utils/Serialization.cpp.o" \
+"CMakeFiles/strategy_viewer.dir/src/utils/Converter.cpp.o" \
+"CMakeFiles/strategy_viewer.dir/src/game/HandEvaluator.cpp.o"
 
 # External object files for target strategy_viewer
 strategy_viewer_EXTERNAL_OBJECTS =
 
 strategy_viewer: CMakeFiles/strategy_viewer.dir/examples/strategy_viewer.cpp.o
+strategy_viewer: CMakeFiles/strategy_viewer.dir/src/game/Action.cpp.o
+strategy_viewer: CMakeFiles/strategy_viewer.dir/src/game/GameState.cpp.o
+strategy_viewer: CMakeFiles/strategy_viewer.dir/src/game/PokerDefs.cpp.o
+strategy_viewer: CMakeFiles/strategy_viewer.dir/src/cfr/CFRSolver.cpp.o
+strategy_viewer: CMakeFiles/strategy_viewer.dir/src/cfr/RegretTable.cpp.o
+strategy_viewer: CMakeFiles/strategy_viewer.dir/src/cfr/StrategyTable.cpp.o
+strategy_viewer: CMakeFiles/strategy_viewer.dir/src/abstraction/HandAbstraction.cpp.o
+strategy_viewer: CMakeFiles/strategy_viewer.dir/src/abstraction/BetAbstraction.cpp.o
+strategy_viewer: CMakeFiles/strategy_viewer.dir/src/utils/Random.cpp.o
+strategy_viewer: CMakeFiles/strategy_viewer.dir/src/utils/Logger.cpp.o
+strategy_viewer: CMakeFiles/strategy_viewer.dir/src/utils/Serialization.cpp.o
+strategy_viewer: CMakeFiles/strategy_viewer.dir/src/utils/Converter.cpp.o
+strategy_viewer: CMakeFiles/strategy_viewer.dir/src/game/HandEvaluator.cpp.o
 strategy_viewer: CMakeFiles/strategy_viewer.dir/build.make
-strategy_viewer: libpoker_cfr_lib.a
 strategy_viewer: CMakeFiles/strategy_viewer.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/maxim/Desktop/GTOPoker/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable strategy_viewer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/maxim/Desktop/GTOPoker/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX executable strategy_viewer"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/strategy_viewer.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

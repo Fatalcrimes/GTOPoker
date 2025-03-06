@@ -4,9 +4,9 @@
 # compile CXX with /Library/Developer/CommandLineTools/usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/maxim/Desktop/GTOPoker/include -I/Users/maxim/Desktop/GTOPoker/third_party
+CXX_INCLUDES = -I/Users/maxim/Desktop/GTOPoker/include -I/Users/maxim/Desktop/GTOPoker/third_party/pokerstove/src/lib -I/opt/homebrew/include
 
-CXX_FLAGSarm64 =  -Wall -Wextra -pedantic -O3 -DNDEBUG -O3 -std=c++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk
+CXX_FLAGSarm64 =  -Wall -Wextra -O3 -DNDEBUG -O3 -DNDEBUG -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk
 
-CXX_FLAGS =  -Wall -Wextra -pedantic -O3 -DNDEBUG -O3 -std=c++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk
+CXX_FLAGS =  -Wall -Wextra -O3 -DNDEBUG -O3 -DNDEBUG -std=gnu++17 -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.4.sdk
 
