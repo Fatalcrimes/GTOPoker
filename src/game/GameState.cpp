@@ -31,7 +31,6 @@ GameState::GameState(const GameState& other)
     : players_(other.players_),
       communityCards_(other.communityCards_),
       deck_(other.deck_),
-      usedCards_(other.usedCards_),
       currentPosition_(other.currentPosition_),
       lastAggressor_(other.lastAggressor_),
       bettingRound_(other.bettingRound_),
@@ -46,7 +45,6 @@ GameState& GameState::operator=(const GameState& other) {
         players_ = other.players_;
         communityCards_ = other.communityCards_;
         deck_ = other.deck_;
-        usedCards_ = other.usedCards_;
         currentPosition_ = other.currentPosition_;
         lastAggressor_ = other.lastAggressor_;
         bettingRound_ = other.bettingRound_;
@@ -83,10 +81,9 @@ void GameState::reset() {
 }
 
 void GameState::dealHoleCards() {
-    // Deal two cards to each player
     for (auto& player : players_) {
         for (int i = 0; i < 2; ++i) {
-            player.holeCards[i] = deck_.deal(1);
+            player.holeCards.insert(deck_.deal(1));
         }
     }
 }
@@ -105,27 +102,13 @@ void GameState::dealTurn() {
 void GameState::dealRiver() {
     communityCards_.insert(deck_.deal(1));
 }
+//#implement
+void GameState::showdown() {
 
-bool GameState::applyAction(const Action& requestedAction) {
-    if (!isActionValid(requestedAction)) {
-        // Log the invalid action attempt for debugging
-        LOG_WARNING("Attempted invalid action: " + requestedAction.toString() + 
-                    " in state: " + this->toString());
+}
 
-        // Construct a detailed error message
-        std::ostringstream oss;
-        oss << "Invalid action: " << requestedAction.toString() 
-            << ". Valid actions are: ";
-        for (const auto& validAction : getValidActions()) {
-            oss << validAction.toString() << ", ";
-        }
-        oss << ". Current game state: " << this->toString();
-
-        // Throw the exception with the detailed message
-        throw std::invalid_argument(oss.str());
-    }
-
-    // Apply the action directly (assuming Action is a value type)
+void GameState::applyAction(const Action& requestedAction) {
+    
     Action action = requestedAction;
     
     // Get current player
@@ -138,7 +121,7 @@ bool GameState::applyAction(const Action& requestedAction) {
             break;
             
         case ActionType::CHECK:
-            // No change to state
+            player.checked = true;
             break;
             
         case ActionType::CALL: {
@@ -162,95 +145,7 @@ bool GameState::applyAction(const Action& requestedAction) {
     // Record the action
     actionHistory_.addAction(currentPosition_, action);
     
-    // Advance to next player or round
-    return advanceAction();
-}
-
-bool GameState::isActionValid(const Action& requestedAction) const {
-    auto validActions = getValidActions();
-    
-    // Use a small epsilon for floating point comparisons
-    const double EPSILON = 0.01;
-    
-    for (const auto& validAction : validActions) {
-        if (validAction.getType() == requestedAction.getType()) {
-            // For bet actions, compare amounts with tolerance
-            if (validAction.getType() == ActionType::BET || 
-                validAction.getType() == ActionType::RAISE || 
-                validAction.getType() == ActionType::CALL) {
-                if (std::abs(validAction.getAmount() - requestedAction.getAmount()) < EPSILON) {
-                    return true;
-                }
-            } else {
-                // For non-bet actions (fold/check), just compare type
-                return true;
-            }
-        }
-    }
-    
-    return false;
-}
-
-bool GameState::advanceAction() {
-    
-    // Count active (not folded) players
-    int activePlayers = 0;
-    for (const auto& player : players_) {
-        if (!player.folded) {
-            activePlayers++;
-        }
-    }
-    
-    // If only one player left, round is over
-    if (activePlayers <= 1) {
-        LOG_DEBUG("Round over: only one active player");
-        return true;
-    }
-    
-    // Check if all active players have the same bet
-    bool allEqualBets = true;
-    double firstBet = 0.0;
-    bool foundFirst = false;
-    
-    for (const auto& player : players_) {
-        if (!player.folded) {
-            if (!foundFirst) {
-                firstBet = player.currentBet;
-                foundFirst = true;
-            } else if (std::abs(player.currentBet - firstBet) > 0.001) {
-                allEqualBets = false;
-                break;
-            }
-        }
-    }
-    
-    LOG_DEBUG("All equal bets: " + std::string(allEqualBets ? "true" : "false"));
-    
-    // Find the next position to act
-    Position nextPos = currentPosition_;
-    int safeguard = 0; // Prevent infinite loop
-    do {
-        nextPos = nextPosition(nextPos);
-        safeguard++;
-        if (safeguard > NUM_PLAYERS) {
-            LOG_ERROR("Infinite loop detected in advanceAction");
-            return true; // Emergency exit
-        }
-    } while (players_[static_cast<size_t>(nextPos)].folded);
-    
-    LOG_DEBUG("Next position: " + positionToString(nextPos));
-    
-    // If we're back to the last aggressor (or start of the round) and all bets are equal,
-    // the betting round is over
-    if (allEqualBets && (nextPos == lastAggressor_ || lastAggressor_ == Position::SB)) {
-        LOG_DEBUG("Round over: back to aggressor with equal bets");
-        return true;
-    }
-    
-    // Otherwise, move to the next player
-    currentPosition_ = nextPos;
-    LOG_DEBUG("Moving to next position: " + positionToString(currentPosition_));
-    return false;
+    nextPosition(currentPosition_);
 }
 
 void GameState::startNextBettingRound() {
@@ -272,6 +167,9 @@ void GameState::startNextBettingRound() {
             break;
         case BettingRound::RIVER:
             dealRiver();
+            break;
+        case BettingRound::SHOWDOWN:
+            showdown();
             break;
         default:
             // Should not happen
@@ -317,7 +215,7 @@ bool GameState::isTerminal() const {
                 if (!foundFirst) {
                     firstBet = player.currentBet;
                     foundFirst = true;
-                } else if (std::abs(player.currentBet - firstBet) > 0.001) {
+                } else if (std::abs(player.currentBet - firstBet) != 0) {
                     allEqualBets = false;
                     break;
                 }
@@ -329,7 +227,9 @@ bool GameState::isTerminal() const {
     
     return false;  // Not terminal
 }
-
+/*
+REVIEW THE LOGIC!!!
+*/
 std::vector<Action> GameState::getValidActions() const {
     std::vector<Action> validActions;
     
@@ -368,21 +268,21 @@ std::vector<Action> GameState::getValidActions() const {
             double twoPot = std::min(pot_ * 2.0, player.stack);
             
             // Add bet actions (avoid duplicates)
-            if (halfPot > 0.0) {
-                validActions.push_back(Action::bet(halfPot));
+            if (halfPot >= 1.0) {
+                validActions.push_back(Action::raise(halfPot));
             }
             
             if (fullPot > halfPot) {
-                validActions.push_back(Action::bet(fullPot));
+                validActions.push_back(Action::raise(fullPot));
             }
             
             if (twoPot > fullPot) {
-                validActions.push_back(Action::bet(twoPot));
+                validActions.push_back(Action::raise(twoPot));
             }
             
             // All-in bet if not already covered
             if (player.stack > twoPot) {
-                validActions.push_back(Action::bet(player.stack));
+                validActions.push_back(Action::raise(player.stack));
             }
         } else {
             // There's a bet to call, can raise
@@ -441,10 +341,10 @@ std::unordered_map<Position, double> GameState::getPayoffs() const {
     }
 
     // Multiple active players: evaluate hands with PokerStove
-    std::vector<std::pair<Position, HandStrength>> handStrengths;
+    std::vector<std::pair<Position, pokerstove::PokerHandEvaluation>> handStrengths;
     for (Position pos : activePlayers) {
         const PlayerState& player = players_[static_cast<size_t>(pos)];
-        HandStrength strength = handEvaluator_->evaluateHand(player.holeCards, communityCards_);
+        pokerstove::PokerHandEvaluation strength = handEvaluator.evaluateHand(player.holeCards, communityCards_);
         handStrengths.emplace_back(pos, strength);
     }
 
@@ -454,7 +354,7 @@ std::unordered_map<Position, double> GameState::getPayoffs() const {
 
     // Identify winners (handle ties)
     std::vector<Position> winners;
-    HandStrength winningStrength = handStrengths[0].second;
+    pokerstove::PokerHandEvaluation winningStrength = handStrengths[0].second;
     for (const auto& [pos, strength] : handStrengths) {
         if (strength == winningStrength) {
             winners.push_back(pos);

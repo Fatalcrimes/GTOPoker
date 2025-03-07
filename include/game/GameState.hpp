@@ -19,12 +19,14 @@ class HandEvaluator;
 
 // Player state
 struct PlayerState {
+    Position pos;
     double stack;
     double currentBet;
     bool folded;
+    bool checked;
     pokerstove::CardSet holeCards;
     
-    PlayerState() : stack(STARTING_STACK), currentBet(0.0), folded(false) {}
+    PlayerState() : stack(STARTING_STACK), currentBet(0.0), folded(false), checked(false), holeCards() {}
 };
 
 class GameState {
@@ -35,16 +37,41 @@ public:
     GameState& operator=(const GameState& other);
     ~GameState();
     
-    // Game initialization
+/*
+This resets the game state including player chips, hole cards, deck, and action.
+*/
     void reset();
+/*
+Deals the 2 Hole cards to each player.
+*/    
     void dealHoleCards();
+/*
+Puts 3 cards in the community cardset and removes them from the deck
+*/
     void dealFlop();
+/*
+Puts 1 card in the community set and removes it from the deck
+*/
     void dealTurn();
+/*
+Puts 1 card in the community set and removes it from the deck
+*/
     void dealRiver();
-    
-    // Game progression
-    bool applyAction(const Action& action);
-    bool advanceAction();
+/*
+Showdown for final result
+*/
+    void GameState::showdown();
+/*
+The applies some action either fold, raise, or call.
+*/  
+    void applyAction(const Action& action);
+/*
+Checks if there are any actions left to be made else go to the next betting round.
+*/
+    bool checkActions();
+/*
+Starts the next betting round after all actions are done
+*/
     void startNextBettingRound();
     
     // State queries
@@ -55,11 +82,6 @@ public:
     
     // Actions
     std::vector<Action> getValidActions() const;
-
-    bool isActionValid(const Action& action) const;
-
-    // Information sets
-    std::string getInfoSet(Position position) const;
     
     // Payoffs
     std::unordered_map<Position, double> getPayoffs() const;
@@ -103,7 +125,7 @@ private:
     std::mt19937 rng_;
     
     // Hand evaluator
-    std::shared_ptr<HandEvaluator> handEvaluator_;
+    pokerstove::HoldemHandEvaluator handEvaluator;
 };
 
 } // namespace poker

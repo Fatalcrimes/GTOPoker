@@ -26,11 +26,16 @@ enum class BettingRound : uint8_t {
     PREFLOP,
     FLOP,
     TURN,
-    RIVER
+    RIVER,
+    SHOWDOWN
 };
 
 // Define number of players
 constexpr int NUM_PLAYERS = 3;
+
+Position nextPosition(Position pos);
+
+BettingRound nextBettingRound(BettingRound round);
 
 // Stream operators for enum types
 std::ostream& operator<<(std::ostream& os, Position pos);

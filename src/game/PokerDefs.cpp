@@ -6,9 +6,9 @@ namespace poker {
 
 Position nextPosition(Position pos) {
     switch (pos) {
+        case Position::BTN: return Position::SB;
         case Position::SB:  return Position::BB;
         case Position::BB:  return Position::BTN;
-        case Position::BTN: return Position::SB;
         default:            return Position::SB; // Shouldn't happen
     }
 }
@@ -18,7 +18,7 @@ BettingRound nextBettingRound(BettingRound round) {
         case BettingRound::PREFLOP: return BettingRound::FLOP;
         case BettingRound::FLOP:    return BettingRound::TURN;
         case BettingRound::TURN:    return BettingRound::RIVER;
-        case BettingRound::RIVER:   return BettingRound::RIVER; // No next round
+        case BettingRound::RIVER:   return BettingRound::SHOWDOWN; // No next round
         default:                     return BettingRound::PREFLOP; // Shouldn't happen
     }
 }
