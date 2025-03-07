@@ -7,7 +7,6 @@
 #include <stdexcept>
 #include <pokerstove/peval/HoldemHandEvaluator.h>
 #include <pokerstove/peval/CardSet.h>
-#include <HandEvaluator.hpp>
 
 namespace poker {
 
@@ -491,59 +490,57 @@ std::unordered_map<Position, double> GameState::getPayoffs() const {
     if (!isTerminal()) {
         throw std::runtime_error("Cannot calculate payoffs for non-terminal state");
     }
-    
-    // Initialize payoffs (negative initial bets)
+
+    // Initialize payoffs with negative bets
     std::unordered_map<Position, double> payoffs;
     for (size_t i = 0; i < players_.size(); ++i) {
         Position pos = static_cast<Position>(i);
         payoffs[pos] = -players_[i].currentBet;
     }
-    
-    // Count active players
+
+    // Identify active players
     std::vector<Position> activePlayers;
     for (size_t i = 0; i < players_.size(); ++i) {
         if (!players_[i].folded) {
             activePlayers.push_back(static_cast<Position>(i));
         }
     }
-    
-    // If only one player is active, they win the pot
+
+    // Single active player wins the pot
     if (activePlayers.size() == 1) {
         payoffs[activePlayers[0]] += pot_;
         return payoffs;
     }
-    
-    // Otherwise, we need to determine the winner based on hand strength
+
+    // Multiple active players: evaluate hands with PokerStove
     std::vector<std::pair<Position, HandStrength>> handStrengths;
-    
     for (Position pos : activePlayers) {
-        const auto& player = players_[static_cast<size_t>(pos)];
+        const PlayerState& player = players_[static_cast<size_t>(pos)];
         HandStrength strength = handEvaluator_->evaluateHand(player.holeCards, communityCards_);
         handStrengths.emplace_back(pos, strength);
     }
-    
+
     // Sort by hand strength (descending)
-    std::sort(handStrengths.begin(), handStrengths.end(), 
+    std::sort(handStrengths.begin(), handStrengths.end(),
               [](const auto& a, const auto& b) { return a.second > b.second; });
-    
-    // Find all players with the winning hand strength
+
+    // Identify winners (handle ties)
     std::vector<Position> winners;
     HandStrength winningStrength = handStrengths[0].second;
-    
     for (const auto& [pos, strength] : handStrengths) {
         if (strength == winningStrength) {
             winners.push_back(pos);
         } else {
-            break;  // No more winners
+            break; // No more winners due to descending order
         }
     }
-    
+
     // Distribute pot among winners
     double winAmount = pot_ / winners.size();
     for (Position winner : winners) {
         payoffs[winner] += winAmount;
     }
-    
+
     return payoffs;
 }
 

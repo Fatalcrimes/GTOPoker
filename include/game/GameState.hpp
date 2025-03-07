@@ -7,8 +7,10 @@
 #include <random>
 #include <unordered_map>
 
-#include "game/PokerDefs.hpp"
-#include "game/Action.hpp"
+#include <game/PokerDefs.hpp>
+#include <game/Action.hpp>
+#include <pokerstove/peval/CardSet.h>
+#include <pokerstove/penum/SimpleDeck.hpp>
 
 namespace poker {
 
@@ -20,7 +22,7 @@ struct PlayerState {
     double stack;
     double currentBet;
     bool folded;
-    std::array<Card, NUM_HOLE_CARDS> holeCards;
+    pokerstove::CardSet holeCards;
     
     PlayerState() : stack(STARTING_STACK), currentBet(0.0), folded(false) {}
 };
@@ -68,7 +70,7 @@ public:
     const PlayerState& getPlayerState(Position position) const { return players_[static_cast<size_t>(position)]; }
     
     // Community cards access
-    const std::vector<Card>& getCommunityCards() const { return communityCards_; }
+    const pokerstove::CardSet& getCommunityCards() const { return communityCards_; }
     
     // Action history
     const ActionHistory& getActionHistory() const { return actionHistory_; }
@@ -82,7 +84,7 @@ public:
 private:
     // Deck management
     void resetDeck();
-    Card dealCard();
+    pokerstove::CardSet dealCard();
     
     // Betting
     void applyBlinds();
@@ -90,11 +92,11 @@ private:
     
     // State variables
     std::array<PlayerState, NUM_PLAYERS> players_;
-    std::vector<Card> communityCards_;
-    std::vector<Card> deck_;
-    std::vector<Card> usedCards_;
+    pokerstove::CardSet communityCards_;
+    pokerstove::SimpleDeck deck_;
+    pokerstove::CardSet usedCards_;
     
-    Position currentPosition_ = Position::SB;
+    Position currentPosition_ = Position::BTN;
     Position lastAggressor_ = Position::SB;
     BettingRound bettingRound_ = BettingRound::PREFLOP;
     
