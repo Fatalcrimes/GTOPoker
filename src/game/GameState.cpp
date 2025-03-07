@@ -66,12 +66,9 @@ void GameState::reset() {
         player.stack = STARTING_STACK;
         player.currentBet = 0.0;
         player.folded = false;
-        // Hole cards will be dealt later
+        player.holeCards.clear();
     }
     
-    // Reset game state
-    communityCards_.clear();
-    usedCards_.clear();
     resetDeck();
     
     currentPosition_ = Position::BTN;
@@ -86,53 +83,27 @@ void GameState::reset() {
 }
 
 void GameState::dealHoleCards() {
-    // Ensure deck is reset and shuffled
-    resetDeck();
-    
     // Deal two cards to each player
     for (auto& player : players_) {
-        for (int i = 0; i < NUM_HOLE_CARDS; ++i) {
-            player.holeCards[i] = dealCard();
+        for (int i = 0; i < 2; ++i) {
+            player.holeCards[i] = deck_.deal(1);
         }
     }
 }
 
 void GameState::dealFlop() {
-    if (!communityCards_.empty()) {
-        throw std::runtime_error("Community cards already exist");
-    }
-    
-    // Burn a card
-    dealCard();
-    
     // Deal the flop (3 cards)
     for (int i = 0; i < 3; ++i) {
-        communityCards_.push_back(dealCard());
+        communityCards_.insert(deck_.deal(1));
     }
 }
 
 void GameState::dealTurn() {
-    if (communityCards_.size() != 3) {
-        throw std::runtime_error("Need flop before turn");
-    }
-    
-    // Burn a card
-    dealCard();
-    
-    // Deal the turn
-    communityCards_.push_back(dealCard());
+    communityCards_.insert(deck_.deal(1));
 }
 
 void GameState::dealRiver() {
-    if (communityCards_.size() != 4) {
-        throw std::runtime_error("Need turn before river");
-    }
-    
-    // Burn a card
-    dealCard();
-    
-    // Deal the river
-    communityCards_.push_back(dealCard());
+    communityCards_.insert(deck_.deal(1));
 }
 
 bool GameState::applyAction(const Action& requestedAction) {
@@ -179,14 +150,6 @@ bool GameState::applyAction(const Action& requestedAction) {
             break;
         }
             
-        case ActionType::BET: {
-            player.stack -= action.getAmount();
-            player.currentBet += action.getAmount();
-            pot_ += action.getAmount();
-            lastAggressor_ = currentPosition_;
-            break;
-        }
-            
         case ActionType::RAISE: {
             player.stack -= action.getAmount();
             player.currentBet += action.getAmount();
@@ -229,7 +192,6 @@ bool GameState::isActionValid(const Action& requestedAction) const {
 }
 
 bool GameState::advanceAction() {
-    LOG_DEBUG("Advancing action from position " + positionToString(currentPosition_));
     
     // Count active (not folded) players
     int activePlayers = 0;
@@ -330,10 +292,6 @@ void GameState::startNextBettingRound() {
 }
 
 bool GameState::isTerminal() const {
-    // Add detailed logging to see when this is checked
-    LOG_DEBUG("Checking if state is terminal: round=" + bettingRoundToString(bettingRound_) +
-              " position=" + positionToString(currentPosition_));
-    
     // Count active players
     int activePlayers = 0;
     for (const auto& player : players_) {
@@ -342,11 +300,8 @@ bool GameState::isTerminal() const {
         }
     }
     
-    LOG_DEBUG("Active players: " + std::to_string(activePlayers));
-    
     // If only one player left, game is terminal
     if (activePlayers <= 1) {
-        LOG_DEBUG("Terminal state detected: only one active player");
         return true;
     }
     
@@ -369,11 +324,9 @@ bool GameState::isTerminal() const {
             }
         }
         
-        LOG_DEBUG("River round, all equal bets: " + std::string(allEqualBets ? "true" : "false"));
         return allEqualBets;  // Terminal if all players have same bet on river
     }
     
-    LOG_DEBUG("Not terminal state");
     return false;  // Not terminal
 }
 
@@ -464,32 +417,7 @@ std::vector<Action> GameState::getValidActions() const {
     return validActions;
 }
 
-std::string GameState::getInfoSet(Position position) const {
-    std::ostringstream oss;
-    
-    // Add hole cards
-    const PlayerState& player = players_[static_cast<size_t>(position)];
-    oss << player.holeCards[0].toString() << player.holeCards[1].toString() << "|";
-    
-    // Add community cards
-    for (const auto& card : communityCards_) {
-        oss << card.toString();
-    }
-    oss << "|";
-    
-    // Add betting round
-    oss << bettingRoundToString(bettingRound_) << "|";
-    
-    // Add action history
-    oss << actionHistory_.toString();
-    
-    return oss.str();
-}
-
 std::unordered_map<Position, double> GameState::getPayoffs() const {
-    if (!isTerminal()) {
-        throw std::runtime_error("Cannot calculate payoffs for non-terminal state");
-    }
 
     // Initialize payoffs with negative bets
     std::unordered_map<Position, double> payoffs;
@@ -584,29 +512,9 @@ std::string GameState::toString() const {
 }
 
 void GameState::resetDeck() {
-    deck_.clear();
-    
-    // Create a full deck
-    for (int suit = 0; suit < NUM_SUITS; ++suit) {
-        for (int rank = static_cast<int>(Rank::TWO); rank <= static_cast<int>(Rank::ACE); ++rank) {
-            deck_.emplace_back(static_cast<Rank>(rank), static_cast<Suit>(suit));
-        }
-    }
-    
-    // Shuffle the deck
-    std::shuffle(deck_.begin(), deck_.end(), rng_);
-}
-
-Card GameState::dealCard() {
-    if (deck_.empty()) {
-        throw std::runtime_error("No cards left in deck");
-    }
-    
-    Card card = deck_.back();
-    deck_.pop_back();
-    usedCards_.push_back(card);
-    
-    return card;
+    communityCards_.clear();
+    deck_.reset();
+    deck_.shuffle();
 }
 
 void GameState::applyBlinds() {
@@ -632,45 +540,6 @@ double GameState::getHighestBet() const {
     }
     
     return highestBet;
-}
-
-Action GameState::findClosestValidAction(const Action& action) const {
-    auto validActions = getValidActions();
-    
-    // First, try to find an exact match
-    for (const auto& validAction : validActions) {
-        if (validAction == action) {
-            return validAction;
-        }
-    }
-    
-    // If not found, find the closest by amount (for BET/RAISE/CALL)
-    if (action.getType() == ActionType::BET || 
-        action.getType() == ActionType::RAISE || 
-        action.getType() == ActionType::CALL) {
-        
-        Action closestAction = action;
-        double minDiff = std::numeric_limits<double>::max();
-        
-        for (const auto& validAction : validActions) {
-            if (validAction.getType() == action.getType()) {
-                double diff = std::abs(validAction.getAmount() - action.getAmount());
-                if (diff < minDiff) {
-                    minDiff = diff;
-                    closestAction = validAction;
-                }
-            }
-        }
-        
-        // If we found a close match with small difference, return it
-        const double EPSILON = 0.01; // 1 cent difference is acceptable
-        if (minDiff < EPSILON) {
-            return closestAction;
-        }
-    }
-    
-    // For non-bet actions or if no close match, return the original
-    return action;
 }
 
 } // namespace poker

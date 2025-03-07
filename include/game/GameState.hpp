@@ -55,8 +55,6 @@ public:
     
     // Actions
     std::vector<Action> getValidActions() const;
-    
-    Action findClosestValidAction(const Action& action) const;
 
     bool isActionValid(const Action& action) const;
 
@@ -84,7 +82,6 @@ public:
 private:
     // Deck management
     void resetDeck();
-    pokerstove::CardSet dealCard();
     
     // Betting
     void applyBlinds();
@@ -94,7 +91,6 @@ private:
     std::array<PlayerState, NUM_PLAYERS> players_;
     pokerstove::CardSet communityCards_;
     pokerstove::SimpleDeck deck_;
-    pokerstove::CardSet usedCards_;
     
     Position currentPosition_ = Position::BTN;
     Position lastAggressor_ = Position::SB;
